@@ -1,241 +1,745 @@
 district,state,date,temperature,rainfall,humidity
-Chennai,Tamil Nadu,2025-01-01,25.1,6.5,56.3
-Chennai,Tamil Nadu,2025-01-16,24.9,21.7,63.5
-Chennai,Tamil Nadu,2025-01-31,23.2,22.4,54.4
-Chennai,Tamil Nadu,2025-02-15,25.2,25.3,58.4
-Chennai,Tamil Nadu,2025-03-02,27.8,17.8,58.3
-Chennai,Tamil Nadu,2025-03-17,27.5,27.4,61.4
-Chennai,Tamil Nadu,2025-04-01,31.7,21.8,56.2
-Chennai,Tamil Nadu,2025-04-16,29.6,20.5,60.6
-Chennai,Tamil Nadu,2025-05-01,31.8,13.3,61.3
-Chennai,Tamil Nadu,2025-05-16,31.2,23.6,66.1
-Chennai,Tamil Nadu,2025-05-31,32.5,22.3,61.0
-Chennai,Tamil Nadu,2025-06-15,31.0,56.6,76.0
-Chennai,Tamil Nadu,2025-06-30,33.0,75.9,71.0
-Chennai,Tamil Nadu,2025-07-15,29.7,63.9,78.6
-Chennai,Tamil Nadu,2025-07-30,32.7,26.7,71.5
-Chennai,Tamil Nadu,2025-08-14,29.0,31.9,71.3
-Chennai,Tamil Nadu,2025-08-29,31.9,96.8,67.5
-Chennai,Tamil Nadu,2025-09-13,28.8,25.4,62.9
-Chennai,Tamil Nadu,2025-09-28,28.3,22.8,55.4
-Chennai,Tamil Nadu,2025-10-13,26.4,125.4,88.8
-Chennai,Tamil Nadu,2025-10-28,27.7,169.9,89.3
-Chennai,Tamil Nadu,2025-11-12,23.2,164.0,89.2
-Chennai,Tamil Nadu,2025-11-27,26.1,141.1,84.2
-Chennai,Tamil Nadu,2025-12-12,23.7,64.3,91.6
-Madurai,Tamil Nadu,2025-01-01,25.9,13.5,54.9
-Madurai,Tamil Nadu,2025-01-16,25.7,22.2,62.3
-Madurai,Tamil Nadu,2025-01-31,26.2,20.7,63.0
-Madurai,Tamil Nadu,2025-02-15,27.3,13.9,64.9
-Madurai,Tamil Nadu,2025-03-02,28.0,25.5,58.0
-Madurai,Tamil Nadu,2025-03-17,29.1,23.7,54.7
-Madurai,Tamil Nadu,2025-04-01,28.3,17.6,57.7
-Madurai,Tamil Nadu,2025-04-16,28.8,18.3,64.2
-Madurai,Tamil Nadu,2025-05-01,31.2,12.5,66.5
-Madurai,Tamil Nadu,2025-05-16,32.7,5.1,67.8
-Madurai,Tamil Nadu,2025-05-31,30.4,12.6,64.3
-Madurai,Tamil Nadu,2025-06-15,33.7,21.7,72.0
-Madurai,Tamil Nadu,2025-06-30,33.6,76.6,68.9
-Madurai,Tamil Nadu,2025-07-15,30.8,82.7,67.3
-Madurai,Tamil Nadu,2025-07-30,33.2,24.8,73.6
-Madurai,Tamil Nadu,2025-08-14,29.1,54.7,75.0
-Madurai,Tamil Nadu,2025-08-29,29.7,82.1,68.9
-Madurai,Tamil Nadu,2025-09-13,29.0,17.1,56.4
-Madurai,Tamil Nadu,2025-09-28,27.9,18.0,60.0
-Madurai,Tamil Nadu,2025-10-13,26.3,177.3,93.6
-Madurai,Tamil Nadu,2025-10-28,27.1,82.0,85.6
-Madurai,Tamil Nadu,2025-11-12,23.2,113.2,89.2
-Madurai,Tamil Nadu,2025-11-27,23.5,103.5,85.7
-Madurai,Tamil Nadu,2025-12-12,24.1,54.2,86.1
-Coimbatore,Tamil Nadu,2025-01-01,25.2,16.2,58.2
-Coimbatore,Tamil Nadu,2025-01-16,25.5,27.6,55.9
-Coimbatore,Tamil Nadu,2025-01-31,24.0,17.5,54.9
-Coimbatore,Tamil Nadu,2025-02-15,25.1,14.8,67.5
-Coimbatore,Tamil Nadu,2025-03-02,29.2,18.5,56.7
-Coimbatore,Tamil Nadu,2025-03-17,30.0,16.2,62.1
-Coimbatore,Tamil Nadu,2025-04-01,28.6,18.9,60.0
-Coimbatore,Tamil Nadu,2025-04-16,28.5,7.8,57.0
-Coimbatore,Tamil Nadu,2025-05-01,32.2,27.3,60.5
-Coimbatore,Tamil Nadu,2025-05-16,32.8,25.5,68.0
-Coimbatore,Tamil Nadu,2025-05-31,31.2,29.6,60.1
-Coimbatore,Tamil Nadu,2025-06-15,31.8,40.0,79.6
-Coimbatore,Tamil Nadu,2025-06-30,32.5,56.5,65.8
-Coimbatore,Tamil Nadu,2025-07-15,31.7,55.6,79.9
-Coimbatore,Tamil Nadu,2025-07-30,33.4,37.8,70.8
-Coimbatore,Tamil Nadu,2025-08-14,29.1,21.1,77.6
-Coimbatore,Tamil Nadu,2025-08-29,31.5,92.0,70.7
-Coimbatore,Tamil Nadu,2025-09-13,26.5,22.4,54.5
-Coimbatore,Tamil Nadu,2025-09-28,29.1,15.6,59.0
-Coimbatore,Tamil Nadu,2025-10-13,26.5,67.8,84.3
-Coimbatore,Tamil Nadu,2025-10-28,25.3,34.4,86.5
-Coimbatore,Tamil Nadu,2025-11-12,26.2,49.8,83.8
-Coimbatore,Tamil Nadu,2025-11-27,23.7,184.3,86.9
-Coimbatore,Tamil Nadu,2025-12-12,23.6,34.3,91.7
-Tiruchirappalli,Tamil Nadu,2025-01-01,25.1,22.1,63.8
-Tiruchirappalli,Tamil Nadu,2025-01-16,24.0,17.7,57.9
-Tiruchirappalli,Tamil Nadu,2025-01-31,26.2,31.6,57.4
-Tiruchirappalli,Tamil Nadu,2025-02-15,24.4,12.3,54.9
-Tiruchirappalli,Tamil Nadu,2025-03-02,28.5,22.0,62.2
-Tiruchirappalli,Tamil Nadu,2025-03-17,30.0,7.4,61.1
-Tiruchirappalli,Tamil Nadu,2025-04-01,28.4,16.0,67.3
-Tiruchirappalli,Tamil Nadu,2025-04-16,29.4,11.2,54.8
-Tiruchirappalli,Tamil Nadu,2025-05-01,32.6,17.7,61.3
-Tiruchirappalli,Tamil Nadu,2025-05-16,31.6,16.4,66.0
-Tiruchirappalli,Tamil Nadu,2025-05-31,29.9,9.7,58.4
-Tiruchirappalli,Tamil Nadu,2025-06-15,33.9,22.1,71.0
-Tiruchirappalli,Tamil Nadu,2025-06-30,32.5,67.5,70.7
-Tiruchirappalli,Tamil Nadu,2025-07-15,33.0,55.5,71.0
-Tiruchirappalli,Tamil Nadu,2025-07-30,31.2,75.2,67.0
-Tiruchirappalli,Tamil Nadu,2025-08-14,30.4,46.8,68.2
-Tiruchirappalli,Tamil Nadu,2025-08-29,31.9,84.7,74.6
-Tiruchirappalli,Tamil Nadu,2025-09-13,26.7,14.2,54.0
-Tiruchirappalli,Tamil Nadu,2025-09-28,28.9,22.9,54.3
-Tiruchirappalli,Tamil Nadu,2025-10-13,25.1,142.5,86.4
-Tiruchirappalli,Tamil Nadu,2025-10-28,27.8,154.2,84.3
-Tiruchirappalli,Tamil Nadu,2025-11-12,26.0,27.0,93.8
-Tiruchirappalli,Tamil Nadu,2025-11-27,25.7,131.4,93.8
-Tiruchirappalli,Tamil Nadu,2025-12-12,25.1,41.7,88.0
-Salem,Tamil Nadu,2025-01-01,23.3,23.0,62.8
-Salem,Tamil Nadu,2025-01-16,24.3,19.0,64.9
-Salem,Tamil Nadu,2025-01-31,26.0,24.9,60.6
-Salem,Tamil Nadu,2025-02-15,25.9,5.3,54.6
-Salem,Tamil Nadu,2025-03-02,28.1,10.1,57.2
-Salem,Tamil Nadu,2025-03-17,27.5,18.8,67.5
-Salem,Tamil Nadu,2025-04-01,30.8,11.7,62.7
-Salem,Tamil Nadu,2025-04-16,29.4,10.5,56.2
-Salem,Tamil Nadu,2025-05-01,32.8,16.7,58.1
-Salem,Tamil Nadu,2025-05-16,31.1,16.4,59.7
-Salem,Tamil Nadu,2025-05-31,32.2,17.7,64.5
-Salem,Tamil Nadu,2025-06-15,31.9,53.7,75.7
-Salem,Tamil Nadu,2025-06-30,33.5,90.7,70.9
-Salem,Tamil Nadu,2025-07-15,29.6,90.5,77.5
-Salem,Tamil Nadu,2025-07-30,30.4,23.3,74.6
-Salem,Tamil Nadu,2025-08-14,29.7,62.8,71.2
-Salem,Tamil Nadu,2025-08-29,28.2,46.6,76.2
-Salem,Tamil Nadu,2025-09-13,27.4,17.1,65.5
-Salem,Tamil Nadu,2025-09-28,26.8,27.9,57.7
-Salem,Tamil Nadu,2025-10-13,27.5,75.0,85.5
-Salem,Tamil Nadu,2025-10-28,25.7,103.8,82.7
-Salem,Tamil Nadu,2025-11-12,22.7,164.5,95.0
-Salem,Tamil Nadu,2025-11-27,25.9,135.1,81.9
-Salem,Tamil Nadu,2025-12-12,25.1,119.8,86.0
-Tirunelveli,Tamil Nadu,2025-01-01,24.3,22.2,66.7
-Tirunelveli,Tamil Nadu,2025-01-16,23.9,11.2,66.4
-Tirunelveli,Tamil Nadu,2025-01-31,23.5,15.3,61.6
-Tirunelveli,Tamil Nadu,2025-02-15,27.1,16.3,67.6
-Tirunelveli,Tamil Nadu,2025-03-02,28.0,28.4,60.8
-Tirunelveli,Tamil Nadu,2025-03-17,26.8,21.4,62.4
-Tirunelveli,Tamil Nadu,2025-04-01,28.3,28.7,57.0
-Tirunelveli,Tamil Nadu,2025-04-16,31.2,17.4,54.1
-Tirunelveli,Tamil Nadu,2025-05-01,30.0,16.4,57.8
-Tirunelveli,Tamil Nadu,2025-05-16,32.7,27.8,55.8
-Tirunelveli,Tamil Nadu,2025-05-31,33.3,10.7,53.8
-Tirunelveli,Tamil Nadu,2025-06-15,32.9,76.6,71.0
-Tirunelveli,Tamil Nadu,2025-06-30,31.6,78.7,79.1
-Tirunelveli,Tamil Nadu,2025-07-15,30.1,83.5,79.0
-Tirunelveli,Tamil Nadu,2025-07-30,32.7,49.6,79.7
-Tirunelveli,Tamil Nadu,2025-08-14,29.9,62.8,76.6
-Tirunelveli,Tamil Nadu,2025-08-29,30.8,54.5,78.8
-Tirunelveli,Tamil Nadu,2025-09-13,27.8,18.7,63.1
-Tirunelveli,Tamil Nadu,2025-09-28,26.9,22.0,57.3
-Tirunelveli,Tamil Nadu,2025-10-13,26.3,120.3,85.9
-Tirunelveli,Tamil Nadu,2025-10-28,24.8,120.2,90.4
-Tirunelveli,Tamil Nadu,2025-11-12,23.9,105.8,82.1
-Tirunelveli,Tamil Nadu,2025-11-27,25.1,166.6,88.6
-Tirunelveli,Tamil Nadu,2025-12-12,22.7,152.9,84.3
-Thanjavur,Tamil Nadu,2025-01-01,24.4,6.8,55.4
-Thanjavur,Tamil Nadu,2025-01-16,26.0,28.8,60.7
-Thanjavur,Tamil Nadu,2025-01-31,24.3,11.2,61.7
-Thanjavur,Tamil Nadu,2025-02-15,26.0,26.9,57.7
-Thanjavur,Tamil Nadu,2025-03-02,30.0,18.5,66.7
-Thanjavur,Tamil Nadu,2025-03-17,28.1,21.5,54.7
-Thanjavur,Tamil Nadu,2025-04-01,28.8,12.7,60.7
-Thanjavur,Tamil Nadu,2025-04-16,29.0,5.3,54.1
-Thanjavur,Tamil Nadu,2025-05-01,31.1,25.8,67.7
-Thanjavur,Tamil Nadu,2025-05-16,33.3,18.0,65.9
-Thanjavur,Tamil Nadu,2025-05-31,32.2,18.7,65.4
-Thanjavur,Tamil Nadu,2025-06-15,30.8,18.6,74.0
-Thanjavur,Tamil Nadu,2025-06-30,34.0,42.5,73.6
-Thanjavur,Tamil Nadu,2025-07-15,30.6,63.4,76.0
-Thanjavur,Tamil Nadu,2025-07-30,30.1,51.4,72.1
-Thanjavur,Tamil Nadu,2025-08-14,29.0,37.6,71.7
-Thanjavur,Tamil Nadu,2025-08-29,31.2,67.1,68.3
-Thanjavur,Tamil Nadu,2025-09-13,28.4,19.0,61.3
-Thanjavur,Tamil Nadu,2025-09-28,29.2,25.0,57.8
-Thanjavur,Tamil Nadu,2025-10-13,24.8,65.3,83.7
-Thanjavur,Tamil Nadu,2025-10-28,27.2,57.9,87.3
-Thanjavur,Tamil Nadu,2025-11-12,23.1,121.9,82.3
-Thanjavur,Tamil Nadu,2025-11-27,24.7,29.8,84.1
-Thanjavur,Tamil Nadu,2025-12-12,22.6,58.6,92.2
-Vellore,Tamil Nadu,2025-01-01,24.2,15.2,62.6
-Vellore,Tamil Nadu,2025-01-16,23.5,26.8,61.5
-Vellore,Tamil Nadu,2025-01-31,26.4,22.7,63.7
-Vellore,Tamil Nadu,2025-02-15,24.6,28.7,60.5
-Vellore,Tamil Nadu,2025-03-02,28.5,21.3,56.4
-Vellore,Tamil Nadu,2025-03-17,26.3,12.0,64.8
-Vellore,Tamil Nadu,2025-04-01,28.3,17.3,60.7
-Vellore,Tamil Nadu,2025-04-16,29.6,16.9,66.6
-Vellore,Tamil Nadu,2025-05-01,30.1,10.9,64.7
-Vellore,Tamil Nadu,2025-05-16,33.3,16.6,65.1
-Vellore,Tamil Nadu,2025-05-31,30.7,32.0,57.4
-Vellore,Tamil Nadu,2025-06-15,33.7,40.9,67.7
-Vellore,Tamil Nadu,2025-06-30,32.0,64.3,74.9
-Vellore,Tamil Nadu,2025-07-15,32.6,52.2,73.1
-Vellore,Tamil Nadu,2025-07-30,29.9,21.2,76.2
-Vellore,Tamil Nadu,2025-08-14,29.9,47.4,66.3
-Vellore,Tamil Nadu,2025-08-29,29.8,70.5,69.5
-Vellore,Tamil Nadu,2025-09-13,28.2,13.7,59.9
-Vellore,Tamil Nadu,2025-09-28,27.7,5.3,57.2
-Vellore,Tamil Nadu,2025-10-13,25.0,165.9,89.6
-Vellore,Tamil Nadu,2025-10-28,24.5,43.4,82.7
-Vellore,Tamil Nadu,2025-11-12,24.5,47.2,86.8
-Vellore,Tamil Nadu,2025-11-27,24.5,140.3,82.5
-Vellore,Tamil Nadu,2025-12-12,22.5,49.9,92.3
-Erode,Tamil Nadu,2025-01-01,26.0,6.5,65.9
-Erode,Tamil Nadu,2025-01-16,25.0,26.8,65.1
-Erode,Tamil Nadu,2025-01-31,25.8,15.4,59.2
-Erode,Tamil Nadu,2025-02-15,25.6,13.8,62.4
-Erode,Tamil Nadu,2025-03-02,27.3,13.7,64.0
-Erode,Tamil Nadu,2025-03-17,28.0,11.4,61.2
-Erode,Tamil Nadu,2025-04-01,31.7,11.4,67.9
-Erode,Tamil Nadu,2025-04-16,29.4,13.3,62.7
-Erode,Tamil Nadu,2025-05-01,31.4,7.5,63.2
-Erode,Tamil Nadu,2025-05-16,29.8,16.4,58.5
-Erode,Tamil Nadu,2025-05-31,29.5,19.0,63.8
-Erode,Tamil Nadu,2025-06-15,32.4,55.2,69.7
-Erode,Tamil Nadu,2025-06-30,32.1,62.0,69.4
-Erode,Tamil Nadu,2025-07-15,30.0,87.4,70.5
-Erode,Tamil Nadu,2025-07-30,31.5,67.8,71.2
-Erode,Tamil Nadu,2025-08-14,29.3,68.4,74.7
-Erode,Tamil Nadu,2025-08-29,30.4,45.9,76.1
-Erode,Tamil Nadu,2025-09-13,26.5,18.5,66.3
-Erode,Tamil Nadu,2025-09-28,28.0,15.8,55.5
-Erode,Tamil Nadu,2025-10-13,25.0,101.2,82.3
-Erode,Tamil Nadu,2025-10-28,27.3,113.2,90.1
-Erode,Tamil Nadu,2025-11-12,24.7,24.3,88.5
-Erode,Tamil Nadu,2025-11-27,23.1,169.5,88.1
-Erode,Tamil Nadu,2025-12-12,24.1,65.5,80.9
-Kanyakumari,Tamil Nadu,2025-01-01,22.9,5.5,65.3
-Kanyakumari,Tamil Nadu,2025-01-16,25.9,14.0,56.5
-Kanyakumari,Tamil Nadu,2025-01-31,24.7,20.5,57.6
-Kanyakumari,Tamil Nadu,2025-02-15,24.6,27.9,58.9
-Kanyakumari,Tamil Nadu,2025-03-02,26.4,16.5,53.9
-Kanyakumari,Tamil Nadu,2025-03-17,26.1,16.6,59.7
-Kanyakumari,Tamil Nadu,2025-04-01,29.6,12.7,55.6
-Kanyakumari,Tamil Nadu,2025-04-16,29.6,11.7,57.2
-Kanyakumari,Tamil Nadu,2025-05-01,30.9,18.0,66.7
-Kanyakumari,Tamil Nadu,2025-05-16,31.6,29.3,67.6
-Kanyakumari,Tamil Nadu,2025-05-31,33.2,20.5,56.5
-Kanyakumari,Tamil Nadu,2025-06-15,32.2,24.6,65.8
-Kanyakumari,Tamil Nadu,2025-06-30,30.2,32.4,67.1
-Kanyakumari,Tamil Nadu,2025-07-15,30.8,99.1,71.6
-Kanyakumari,Tamil Nadu,2025-07-30,31.8,28.6,75.3
-Kanyakumari,Tamil Nadu,2025-08-14,29.3,83.9,74.6
-Kanyakumari,Tamil Nadu,2025-08-29,28.0,37.2,70.3
-Kanyakumari,Tamil Nadu,2025-09-13,27.4,20.4,64.8
-Kanyakumari,Tamil Nadu,2025-09-28,29.8,5.7,58.6
-Kanyakumari,Tamil Nadu,2025-10-13,27.8,59.7,82.4
-Kanyakumari,Tamil Nadu,2025-10-28,24.4,91.1,87.4
-Kanyakumari,Tamil Nadu,2025-11-12,23.7,45.8,84.6
-Kanyakumari,Tamil Nadu,2025-11-27,24.3,69.1,83.4
-Kanyakumari,Tamil Nadu,2025-12-12,25.4,157.2,88.0
+Delhi,Delhi,2025-01-01,25.1,6.5,56.3
+Delhi,Delhi,2025-01-16,24.9,21.7,63.5
+Delhi,Delhi,2025-01-31,23.2,22.4,54.4
+Delhi,Delhi,2025-02-15,25.2,25.3,58.4
+Delhi,Delhi,2025-03-02,27.8,17.8,58.3
+Delhi,Delhi,2025-03-17,27.5,27.4,61.4
+Delhi,Delhi,2025-04-01,31.7,21.8,56.2
+Delhi,Delhi,2025-04-16,29.6,20.5,60.6
+Delhi,Delhi,2025-05-01,31.8,13.3,61.3
+Delhi,Delhi,2025-05-16,31.2,23.6,66.1
+Delhi,Delhi,2025-05-31,32.5,22.3,61.0
+Delhi,Delhi,2025-06-15,31.0,56.6,76.0
+Delhi,Delhi,2025-06-30,33.0,75.9,71.0
+Delhi,Delhi,2025-07-15,29.7,63.9,78.6
+Delhi,Delhi,2025-07-30,32.7,26.7,71.5
+Delhi,Delhi,2025-08-14,29.0,31.9,71.3
+Delhi,Delhi,2025-08-29,31.9,96.8,67.5
+Delhi,Delhi,2025-09-13,28.8,25.4,62.9
+Delhi,Delhi,2025-09-28,28.3,22.8,55.4
+Delhi,Delhi,2025-10-13,26.4,125.4,88.8
+Delhi,Delhi,2025-10-28,27.7,169.9,89.3
+Delhi,Delhi,2025-11-12,23.2,164.0,89.2
+Delhi,Delhi,2025-11-27,26.1,141.1,84.2
+Delhi,Delhi,2025-12-12,23.7,64.3,91.6
+Chandigarh,Chandigarh,2025-01-01,25.9,13.5,54.9
+Chandigarh,Chandigarh,2025-01-16,25.7,22.2,62.3
+Chandigarh,Chandigarh,2025-01-31,26.2,20.7,63.0
+Chandigarh,Chandigarh,2025-02-15,27.3,13.9,64.9
+Chandigarh,Chandigarh,2025-03-02,28.0,25.5,58.0
+Chandigarh,Chandigarh,2025-03-17,29.1,23.7,54.7
+Chandigarh,Chandigarh,2025-04-01,28.3,17.6,57.7
+Chandigarh,Chandigarh,2025-04-16,28.8,18.3,64.2
+Chandigarh,Chandigarh,2025-05-01,31.2,12.5,66.5
+Chandigarh,Chandigarh,2025-05-16,32.7,5.1,67.8
+Chandigarh,Chandigarh,2025-05-31,30.4,12.6,64.3
+Chandigarh,Chandigarh,2025-06-15,33.7,21.7,72.0
+Chandigarh,Chandigarh,2025-06-30,33.6,76.6,68.9
+Chandigarh,Chandigarh,2025-07-15,30.8,82.7,67.3
+Chandigarh,Chandigarh,2025-07-30,33.2,24.8,73.6
+Chandigarh,Chandigarh,2025-08-14,29.1,54.7,75.0
+Chandigarh,Chandigarh,2025-08-29,29.7,82.1,68.9
+Chandigarh,Chandigarh,2025-09-13,29.0,17.1,56.4
+Chandigarh,Chandigarh,2025-09-28,27.9,18.0,60.0
+Chandigarh,Chandigarh,2025-10-13,26.3,177.3,93.6
+Chandigarh,Chandigarh,2025-10-28,27.1,82.0,85.6
+Chandigarh,Chandigarh,2025-11-12,23.2,113.2,89.2
+Chandigarh,Chandigarh,2025-11-27,23.5,103.5,85.7
+Chandigarh,Chandigarh,2025-12-12,24.1,54.2,86.1
+Jaipur,Rajasthan,2025-01-01,25.2,16.2,58.2
+Jaipur,Rajasthan,2025-01-16,25.5,27.6,55.9
+Jaipur,Rajasthan,2025-01-31,24.0,17.5,54.9
+Jaipur,Rajasthan,2025-02-15,25.1,14.8,67.5
+Jaipur,Rajasthan,2025-03-02,29.2,18.5,56.7
+Jaipur,Rajasthan,2025-03-17,30.0,16.2,62.1
+Jaipur,Rajasthan,2025-04-01,28.6,18.9,60.0
+Jaipur,Rajasthan,2025-04-16,28.5,7.8,57.0
+Jaipur,Rajasthan,2025-05-01,32.2,27.3,60.5
+Jaipur,Rajasthan,2025-05-16,32.8,25.5,68.0
+Jaipur,Rajasthan,2025-05-31,31.2,29.6,60.1
+Jaipur,Rajasthan,2025-06-15,31.8,40.0,79.6
+Jaipur,Rajasthan,2025-06-30,32.5,56.5,65.8
+Jaipur,Rajasthan,2025-07-15,31.7,55.6,79.9
+Jaipur,Rajasthan,2025-07-30,33.4,37.8,70.8
+Jaipur,Rajasthan,2025-08-14,29.1,21.1,77.6
+Jaipur,Rajasthan,2025-08-29,31.5,92.0,70.7
+Jaipur,Rajasthan,2025-09-13,26.5,22.4,54.5
+Jaipur,Rajasthan,2025-09-28,29.1,15.6,59.0
+Jaipur,Rajasthan,2025-10-13,26.5,67.8,84.3
+Jaipur,Rajasthan,2025-10-28,25.3,34.4,86.5
+Jaipur,Rajasthan,2025-11-12,26.2,49.8,83.8
+Jaipur,Rajasthan,2025-11-27,23.7,184.3,86.9
+Jaipur,Rajasthan,2025-12-12,23.6,34.3,91.7
+Lucknow,Uttar Pradesh,2025-01-01,25.1,22.1,63.8
+Lucknow,Uttar Pradesh,2025-01-16,24.0,17.7,57.9
+Lucknow,Uttar Pradesh,2025-01-31,26.2,31.6,57.4
+Lucknow,Uttar Pradesh,2025-02-15,24.4,12.3,54.9
+Lucknow,Uttar Pradesh,2025-03-02,28.5,22.0,62.2
+Lucknow,Uttar Pradesh,2025-03-17,30.0,7.4,61.1
+Lucknow,Uttar Pradesh,2025-04-01,28.4,16.0,67.3
+Lucknow,Uttar Pradesh,2025-04-16,29.4,11.2,54.8
+Lucknow,Uttar Pradesh,2025-05-01,32.6,17.7,61.3
+Lucknow,Uttar Pradesh,2025-05-16,31.6,16.4,66.0
+Lucknow,Uttar Pradesh,2025-05-31,29.9,9.7,58.4
+Lucknow,Uttar Pradesh,2025-06-15,33.9,22.1,71.0
+Lucknow,Uttar Pradesh,2025-06-30,32.5,67.5,70.7
+Lucknow,Uttar Pradesh,2025-07-15,33.0,55.5,71.0
+Lucknow,Uttar Pradesh,2025-07-30,31.2,75.2,67.0
+Lucknow,Uttar Pradesh,2025-08-14,30.4,46.8,68.2
+Lucknow,Uttar Pradesh,2025-08-29,31.9,84.7,74.6
+Lucknow,Uttar Pradesh,2025-09-13,26.7,14.2,54.0
+Lucknow,Uttar Pradesh,2025-09-28,28.9,22.9,54.3
+Lucknow,Uttar Pradesh,2025-10-13,25.1,142.5,86.4
+Lucknow,Uttar Pradesh,2025-10-28,27.8,154.2,84.3
+Lucknow,Uttar Pradesh,2025-11-12,26.0,27.0,93.8
+Lucknow,Uttar Pradesh,2025-11-27,25.7,131.4,93.8
+Lucknow,Uttar Pradesh,2025-12-12,25.1,41.7,88.0
+Varanasi,Uttar Pradesh,2025-01-01,23.3,23.0,62.8
+Varanasi,Uttar Pradesh,2025-01-16,24.3,19.0,64.9
+Varanasi,Uttar Pradesh,2025-01-31,26.0,24.9,60.6
+Varanasi,Uttar Pradesh,2025-02-15,25.9,5.3,54.6
+Varanasi,Uttar Pradesh,2025-03-02,28.1,10.1,57.2
+Varanasi,Uttar Pradesh,2025-03-17,27.5,18.8,67.5
+Varanasi,Uttar Pradesh,2025-04-01,30.8,11.7,62.7
+Varanasi,Uttar Pradesh,2025-04-16,29.4,10.5,56.2
+Varanasi,Uttar Pradesh,2025-05-01,32.8,16.7,58.1
+Varanasi,Uttar Pradesh,2025-05-16,31.1,16.4,59.7
+Varanasi,Uttar Pradesh,2025-05-31,32.2,17.7,64.5
+Varanasi,Uttar Pradesh,2025-06-15,31.9,53.7,75.7
+Varanasi,Uttar Pradesh,2025-06-30,33.5,90.7,70.9
+Varanasi,Uttar Pradesh,2025-07-15,29.6,90.5,77.5
+Varanasi,Uttar Pradesh,2025-07-30,30.4,23.3,74.6
+Varanasi,Uttar Pradesh,2025-08-14,29.7,62.8,71.2
+Varanasi,Uttar Pradesh,2025-08-29,28.2,46.6,76.2
+Varanasi,Uttar Pradesh,2025-09-13,27.4,17.1,65.5
+Varanasi,Uttar Pradesh,2025-09-28,26.8,27.9,57.7
+Varanasi,Uttar Pradesh,2025-10-13,27.5,75.0,85.5
+Varanasi,Uttar Pradesh,2025-10-28,25.7,103.8,82.7
+Varanasi,Uttar Pradesh,2025-11-12,22.7,164.5,95.0
+Varanasi,Uttar Pradesh,2025-11-27,25.9,135.1,81.9
+Varanasi,Uttar Pradesh,2025-12-12,25.1,119.8,86.0
+Amritsar,Punjab,2025-01-01,24.3,22.2,66.7
+Amritsar,Punjab,2025-01-16,23.9,11.2,66.4
+Amritsar,Punjab,2025-01-31,23.5,15.3,61.6
+Amritsar,Punjab,2025-02-15,27.1,16.3,67.6
+Amritsar,Punjab,2025-03-02,28.0,28.4,60.8
+Amritsar,Punjab,2025-03-17,26.8,21.4,62.4
+Amritsar,Punjab,2025-04-01,28.3,28.7,57.0
+Amritsar,Punjab,2025-04-16,31.2,17.4,54.1
+Amritsar,Punjab,2025-05-01,30.0,16.4,57.8
+Amritsar,Punjab,2025-05-16,32.7,27.8,55.8
+Amritsar,Punjab,2025-05-31,33.3,10.7,53.8
+Amritsar,Punjab,2025-06-15,32.9,76.6,71.0
+Amritsar,Punjab,2025-06-30,31.6,78.7,79.1
+Amritsar,Punjab,2025-07-15,30.1,83.5,79.0
+Amritsar,Punjab,2025-07-30,32.7,49.6,79.7
+Amritsar,Punjab,2025-08-14,29.9,62.8,76.6
+Amritsar,Punjab,2025-08-29,30.8,54.5,78.8
+Amritsar,Punjab,2025-09-13,27.8,18.7,63.1
+Amritsar,Punjab,2025-09-28,26.9,22.0,57.3
+Amritsar,Punjab,2025-10-13,26.3,120.3,85.9
+Amritsar,Punjab,2025-10-28,24.8,120.2,90.4
+Amritsar,Punjab,2025-11-12,23.9,105.8,82.1
+Amritsar,Punjab,2025-11-27,25.1,166.6,88.6
+Amritsar,Punjab,2025-12-12,22.7,152.9,84.3
+Srinagar,Jammu & Kashmir,2025-01-01,24.4,6.8,55.4
+Srinagar,Jammu & Kashmir,2025-01-16,26.0,28.8,60.7
+Srinagar,Jammu & Kashmir,2025-01-31,24.3,11.2,61.7
+Srinagar,Jammu & Kashmir,2025-02-15,26.0,26.9,57.7
+Srinagar,Jammu & Kashmir,2025-03-02,30.0,18.5,66.7
+Srinagar,Jammu & Kashmir,2025-03-17,28.1,21.5,54.7
+Srinagar,Jammu & Kashmir,2025-04-01,28.8,12.7,60.7
+Srinagar,Jammu & Kashmir,2025-04-16,29.0,5.3,54.1
+Srinagar,Jammu & Kashmir,2025-05-01,31.1,25.8,67.7
+Srinagar,Jammu & Kashmir,2025-05-16,33.3,18.0,65.9
+Srinagar,Jammu & Kashmir,2025-05-31,32.2,18.7,65.4
+Srinagar,Jammu & Kashmir,2025-06-15,30.8,18.6,74.0
+Srinagar,Jammu & Kashmir,2025-06-30,34.0,42.5,73.6
+Srinagar,Jammu & Kashmir,2025-07-15,30.6,63.4,76.0
+Srinagar,Jammu & Kashmir,2025-07-30,30.1,51.4,72.1
+Srinagar,Jammu & Kashmir,2025-08-14,29.0,37.6,71.7
+Srinagar,Jammu & Kashmir,2025-08-29,31.2,67.1,68.3
+Srinagar,Jammu & Kashmir,2025-09-13,28.4,19.0,61.3
+Srinagar,Jammu & Kashmir,2025-09-28,29.2,25.0,57.8
+Srinagar,Jammu & Kashmir,2025-10-13,24.8,65.3,83.7
+Srinagar,Jammu & Kashmir,2025-10-28,27.2,57.9,87.3
+Srinagar,Jammu & Kashmir,2025-11-12,23.1,121.9,82.3
+Srinagar,Jammu & Kashmir,2025-11-27,24.7,29.8,84.1
+Srinagar,Jammu & Kashmir,2025-12-12,22.6,58.6,92.2
+Dehradun,Uttarakhand,2025-01-01,24.2,15.2,62.6
+Dehradun,Uttarakhand,2025-01-16,23.5,26.8,61.5
+Dehradun,Uttarakhand,2025-01-31,26.4,22.7,63.7
+Dehradun,Uttarakhand,2025-02-15,24.6,28.7,60.5
+Dehradun,Uttarakhand,2025-03-02,28.5,21.3,56.4
+Dehradun,Uttarakhand,2025-03-17,26.3,12.0,64.8
+Dehradun,Uttarakhand,2025-04-01,28.3,17.3,60.7
+Dehradun,Uttarakhand,2025-04-16,29.6,16.9,66.6
+Dehradun,Uttarakhand,2025-05-01,30.1,10.9,64.7
+Dehradun,Uttarakhand,2025-05-16,33.3,16.6,65.1
+Dehradun,Uttarakhand,2025-05-31,30.7,32.0,57.4
+Dehradun,Uttarakhand,2025-06-15,33.7,40.9,67.7
+Dehradun,Uttarakhand,2025-06-30,32.0,64.3,74.9
+Dehradun,Uttarakhand,2025-07-15,32.6,52.2,73.1
+Dehradun,Uttarakhand,2025-07-30,29.9,21.2,76.2
+Dehradun,Uttarakhand,2025-08-14,29.9,47.4,66.3
+Dehradun,Uttarakhand,2025-08-29,29.8,70.5,69.5
+Dehradun,Uttarakhand,2025-09-13,28.2,13.7,59.9
+Dehradun,Uttarakhand,2025-09-28,27.7,5.3,57.2
+Dehradun,Uttarakhand,2025-10-13,25.0,165.9,89.6
+Dehradun,Uttarakhand,2025-10-28,24.5,43.4,82.7
+Dehradun,Uttarakhand,2025-11-12,24.5,47.2,86.8
+Dehradun,Uttarakhand,2025-11-27,24.5,140.3,82.5
+Dehradun,Uttarakhand,2025-12-12,22.5,49.9,92.3
+Mumbai,Maharashtra,2025-01-01,26.0,6.5,65.9
+Mumbai,Maharashtra,2025-01-16,25.0,26.8,65.1
+Mumbai,Maharashtra,2025-01-31,25.8,15.4,59.2
+Mumbai,Maharashtra,2025-02-15,25.6,13.8,62.4
+Mumbai,Maharashtra,2025-03-02,27.3,13.7,64.0
+Mumbai,Maharashtra,2025-03-17,28.0,11.4,61.2
+Mumbai,Maharashtra,2025-04-01,31.7,11.4,67.9
+Mumbai,Maharashtra,2025-04-16,29.4,13.3,62.7
+Mumbai,Maharashtra,2025-05-01,31.4,7.5,63.2
+Mumbai,Maharashtra,2025-05-16,29.8,16.4,58.5
+Mumbai,Maharashtra,2025-05-31,29.5,19.0,63.8
+Mumbai,Maharashtra,2025-06-15,32.4,55.2,69.7
+Mumbai,Maharashtra,2025-06-30,32.1,62.0,69.4
+Mumbai,Maharashtra,2025-07-15,30.0,87.4,70.5
+Mumbai,Maharashtra,2025-07-30,31.5,67.8,71.2
+Mumbai,Maharashtra,2025-08-14,29.3,68.4,74.7
+Mumbai,Maharashtra,2025-08-29,30.4,45.9,76.1
+Mumbai,Maharashtra,2025-09-13,26.5,18.5,66.3
+Mumbai,Maharashtra,2025-09-28,28.0,15.8,55.5
+Mumbai,Maharashtra,2025-10-13,25.0,101.2,82.3
+Mumbai,Maharashtra,2025-10-28,27.3,113.2,90.1
+Mumbai,Maharashtra,2025-11-12,24.7,24.3,88.5
+Mumbai,Maharashtra,2025-11-27,23.1,169.5,88.1
+Mumbai,Maharashtra,2025-12-12,24.1,65.5,80.9
+Pune,Maharashtra,2025-01-01,22.9,5.5,65.3
+Pune,Maharashtra,2025-01-16,25.9,14.0,56.5
+Pune,Maharashtra,2025-01-31,24.7,20.5,57.6
+Pune,Maharashtra,2025-02-15,24.6,27.9,58.9
+Pune,Maharashtra,2025-03-02,26.4,16.5,53.9
+Pune,Maharashtra,2025-03-17,26.1,16.6,59.7
+Pune,Maharashtra,2025-04-01,29.6,12.7,55.6
+Pune,Maharashtra,2025-04-16,29.6,11.7,57.2
+Pune,Maharashtra,2025-05-01,30.9,18.0,66.7
+Pune,Maharashtra,2025-05-16,31.6,29.3,67.6
+Pune,Maharashtra,2025-05-31,33.2,20.5,56.5
+Pune,Maharashtra,2025-06-15,32.2,24.6,65.8
+Pune,Maharashtra,2025-06-30,30.2,32.4,67.1
+Pune,Maharashtra,2025-07-15,30.8,99.1,71.6
+Pune,Maharashtra,2025-07-30,31.8,28.6,75.3
+Pune,Maharashtra,2025-08-14,29.3,83.9,74.6
+Pune,Maharashtra,2025-08-29,28.0,37.2,70.3
+Pune,Maharashtra,2025-09-13,27.4,20.4,64.8
+Pune,Maharashtra,2025-09-28,29.8,5.7,58.6
+Pune,Maharashtra,2025-10-13,27.8,59.7,82.4
+Pune,Maharashtra,2025-10-28,24.4,91.1,87.4
+Pune,Maharashtra,2025-11-12,23.7,45.8,84.6
+Pune,Maharashtra,2025-11-27,24.3,69.1,83.4
+Pune,Maharashtra,2025-12-12,25.4,157.2,88.0
+Ahmedabad,Gujarat,2025-01-01,23.2,32.3,65.1
+Ahmedabad,Gujarat,2025-01-16,26.2,8.9,59.0
+Ahmedabad,Gujarat,2025-01-31,23.1,19.8,67.5
+Ahmedabad,Gujarat,2025-02-15,26.6,18.2,55.6
+Ahmedabad,Gujarat,2025-03-02,27.9,11.9,58.1
+Ahmedabad,Gujarat,2025-03-17,29.9,21.5,57.0
+Ahmedabad,Gujarat,2025-04-01,31.2,13.7,59.1
+Ahmedabad,Gujarat,2025-04-16,29.8,27.3,57.1
+Ahmedabad,Gujarat,2025-05-01,31.8,10.0,66.4
+Ahmedabad,Gujarat,2025-05-16,30.4,15.1,60.7
+Ahmedabad,Gujarat,2025-05-31,31.9,27.8,63.6
+Ahmedabad,Gujarat,2025-06-15,32.0,75.6,70.6
+Ahmedabad,Gujarat,2025-06-30,32.8,85.9,67.2
+Ahmedabad,Gujarat,2025-07-15,30.5,49.3,65.5
+Ahmedabad,Gujarat,2025-07-30,30.7,33.5,73.4
+Ahmedabad,Gujarat,2025-08-14,29.4,74.1,76.8
+Ahmedabad,Gujarat,2025-08-29,30.0,85.1,69.5
+Ahmedabad,Gujarat,2025-09-13,29.4,6.1,58.0
+Ahmedabad,Gujarat,2025-09-28,26.5,15.4,59.4
+Ahmedabad,Gujarat,2025-10-13,24.0,140.8,93.2
+Ahmedabad,Gujarat,2025-10-28,26.1,99.7,82.0
+Ahmedabad,Gujarat,2025-11-12,25.5,116.9,85.5
+Ahmedabad,Gujarat,2025-11-27,25.3,92.4,88.2
+Ahmedabad,Gujarat,2025-12-12,25.3,47.6,81.8
+Surat,Gujarat,2025-01-01,24.2,12.8,66.7
+Surat,Gujarat,2025-01-16,25.7,14.1,66.6
+Surat,Gujarat,2025-01-31,25.7,18.1,54.4
+Surat,Gujarat,2025-02-15,24.4,17.8,59.0
+Surat,Gujarat,2025-03-02,28.8,17.1,55.4
+Surat,Gujarat,2025-03-17,29.5,27.0,60.2
+Surat,Gujarat,2025-04-01,30.1,14.6,62.9
+Surat,Gujarat,2025-04-16,31.7,17.1,60.4
+Surat,Gujarat,2025-05-01,29.8,17.7,54.3
+Surat,Gujarat,2025-05-16,29.5,12.5,62.3
+Surat,Gujarat,2025-05-31,30.8,23.3,63.7
+Surat,Gujarat,2025-06-15,31.5,32.0,72.4
+Surat,Gujarat,2025-06-30,33.3,30.3,76.4
+Surat,Gujarat,2025-07-15,31.6,27.9,77.6
+Surat,Gujarat,2025-07-30,32.1,63.3,78.2
+Surat,Gujarat,2025-08-14,30.4,88.6,77.6
+Surat,Gujarat,2025-08-29,30.6,94.2,75.4
+Surat,Gujarat,2025-09-13,28.1,4.6,63.1
+Surat,Gujarat,2025-09-28,26.1,16.6,66.0
+Surat,Gujarat,2025-10-13,25.6,187.7,84.7
+Surat,Gujarat,2025-10-28,26.4,158.6,84.4
+Surat,Gujarat,2025-11-12,24.9,65.8,90.6
+Surat,Gujarat,2025-11-27,22.8,141.1,94.4
+Surat,Gujarat,2025-12-12,23.2,181.3,87.1
+Panaji,Goa,2025-01-01,26.1,20.0,54.7
+Panaji,Goa,2025-01-16,23.7,17.2,54.2
+Panaji,Goa,2025-01-31,23.4,28.4,64.1
+Panaji,Goa,2025-02-15,24.2,23.1,61.6
+Panaji,Goa,2025-03-02,28.6,23.2,61.8
+Panaji,Goa,2025-03-17,27.5,15.6,55.3
+Panaji,Goa,2025-04-01,30.2,12.7,53.1
+Panaji,Goa,2025-04-16,31.6,17.8,55.8
+Panaji,Goa,2025-05-01,30.6,4.6,63.9
+Panaji,Goa,2025-05-16,31.3,16.4,61.8
+Panaji,Goa,2025-05-31,32.8,15.1,66.2
+Panaji,Goa,2025-06-15,30.8,78.1,75.9
+Panaji,Goa,2025-06-30,32.2,97.0,76.6
+Panaji,Goa,2025-07-15,29.5,43.6,79.7
+Panaji,Goa,2025-07-30,29.6,74.4,69.0
+Panaji,Goa,2025-08-14,30.8,64.2,77.5
+Panaji,Goa,2025-08-29,30.1,51.2,72.3
+Panaji,Goa,2025-09-13,26.6,23.9,62.9
+Panaji,Goa,2025-09-28,26.2,13.6,62.4
+Panaji,Goa,2025-10-13,24.9,124.1,87.2
+Panaji,Goa,2025-10-28,26.4,36.7,82.0
+Panaji,Goa,2025-11-12,24.9,168.4,91.3
+Panaji,Goa,2025-11-27,24.0,34.9,83.4
+Panaji,Goa,2025-12-12,23.0,156.2,81.3
+Bengaluru,Karnataka,2025-01-01,23.4,21.0,54.6
+Bengaluru,Karnataka,2025-01-16,24.7,13.6,61.4
+Bengaluru,Karnataka,2025-01-31,25.7,18.7,60.6
+Bengaluru,Karnataka,2025-02-15,25.9,12.9,56.9
+Bengaluru,Karnataka,2025-03-02,28.6,12.0,62.9
+Bengaluru,Karnataka,2025-03-17,27.0,4.4,68.0
+Bengaluru,Karnataka,2025-04-01,29.1,29.0,58.2
+Bengaluru,Karnataka,2025-04-16,30.0,18.5,58.1
+Bengaluru,Karnataka,2025-05-01,31.4,11.0,64.6
+Bengaluru,Karnataka,2025-05-16,31.1,15.7,63.5
+Bengaluru,Karnataka,2025-05-31,30.9,20.3,67.2
+Bengaluru,Karnataka,2025-06-15,33.3,82.2,76.7
+Bengaluru,Karnataka,2025-06-30,31.3,95.1,73.6
+Bengaluru,Karnataka,2025-07-15,29.6,50.7,76.6
+Bengaluru,Karnataka,2025-07-30,31.9,39.0,68.6
+Bengaluru,Karnataka,2025-08-14,29.1,26.4,73.6
+Bengaluru,Karnataka,2025-08-29,31.2,31.6,79.9
+Bengaluru,Karnataka,2025-09-13,28.8,15.2,60.1
+Bengaluru,Karnataka,2025-09-28,27.6,17.8,62.1
+Bengaluru,Karnataka,2025-10-13,25.5,75.3,82.2
+Bengaluru,Karnataka,2025-10-28,25.3,135.1,89.1
+Bengaluru,Karnataka,2025-11-12,23.0,61.3,91.2
+Bengaluru,Karnataka,2025-11-27,23.0,120.2,94.0
+Bengaluru,Karnataka,2025-12-12,25.5,107.8,94.0
+Hyderabad,Telangana,2025-01-01,25.1,12.2,61.1
+Hyderabad,Telangana,2025-01-16,24.4,16.0,67.2
+Hyderabad,Telangana,2025-01-31,26.1,12.7,63.7
+Hyderabad,Telangana,2025-02-15,27.0,21.1,65.8
+Hyderabad,Telangana,2025-03-02,26.6,17.8,67.6
+Hyderabad,Telangana,2025-03-17,27.2,29.8,60.0
+Hyderabad,Telangana,2025-04-01,28.7,20.1,58.7
+Hyderabad,Telangana,2025-04-16,30.9,13.5,56.1
+Hyderabad,Telangana,2025-05-01,32.0,18.5,66.0
+Hyderabad,Telangana,2025-05-16,29.5,14.4,60.1
+Hyderabad,Telangana,2025-05-31,32.0,25.1,54.9
+Hyderabad,Telangana,2025-06-15,31.5,71.7,65.6
+Hyderabad,Telangana,2025-06-30,33.7,55.4,67.3
+Hyderabad,Telangana,2025-07-15,30.4,77.6,73.1
+Hyderabad,Telangana,2025-07-30,32.1,27.6,67.7
+Hyderabad,Telangana,2025-08-14,30.8,36.0,74.1
+Hyderabad,Telangana,2025-08-29,31.0,93.6,76.9
+Hyderabad,Telangana,2025-09-13,26.9,11.1,62.9
+Hyderabad,Telangana,2025-09-28,28.7,18.6,55.7
+Hyderabad,Telangana,2025-10-13,27.4,95.5,92.4
+Hyderabad,Telangana,2025-10-28,24.0,29.8,80.2
+Hyderabad,Telangana,2025-11-12,24.8,170.5,80.6
+Hyderabad,Telangana,2025-11-27,22.8,79.2,87.3
+Hyderabad,Telangana,2025-12-12,25.7,86.7,86.5
+Chennai,Tamil Nadu,2025-01-01,24.6,15.6,57.9
+Chennai,Tamil Nadu,2025-01-16,23.7,10.3,54.2
+Chennai,Tamil Nadu,2025-01-31,24.8,19.6,55.9
+Chennai,Tamil Nadu,2025-02-15,25.7,10.7,58.2
+Chennai,Tamil Nadu,2025-03-02,29.7,16.0,55.3
+Chennai,Tamil Nadu,2025-03-17,28.8,10.5,53.3
+Chennai,Tamil Nadu,2025-04-01,30.3,13.3,55.6
+Chennai,Tamil Nadu,2025-04-16,31.4,25.5,53.3
+Chennai,Tamil Nadu,2025-05-01,31.6,12.5,59.9
+Chennai,Tamil Nadu,2025-05-16,32.2,12.2,67.9
+Chennai,Tamil Nadu,2025-05-31,30.4,13.4,55.1
+Chennai,Tamil Nadu,2025-06-15,33.6,44.5,68.1
+Chennai,Tamil Nadu,2025-06-30,32.6,57.6,66.0
+Chennai,Tamil Nadu,2025-07-15,31.2,98.1,79.0
+Chennai,Tamil Nadu,2025-07-30,32.2,49.1,72.1
+Chennai,Tamil Nadu,2025-08-14,28.9,57.2,78.9
+Chennai,Tamil Nadu,2025-08-29,29.3,50.3,71.1
+Chennai,Tamil Nadu,2025-09-13,27.8,15.9,67.9
+Chennai,Tamil Nadu,2025-09-28,27.8,27.8,57.3
+Chennai,Tamil Nadu,2025-10-13,26.0,57.5,93.4
+Chennai,Tamil Nadu,2025-10-28,25.3,134.4,82.5
+Chennai,Tamil Nadu,2025-11-12,24.1,156.6,88.5
+Chennai,Tamil Nadu,2025-11-27,23.3,178.2,80.1
+Chennai,Tamil Nadu,2025-12-12,23.6,41.7,83.7
+Coimbatore,Tamil Nadu,2025-01-01,26.0,25.2,57.5
+Coimbatore,Tamil Nadu,2025-01-16,24.9,18.3,57.5
+Coimbatore,Tamil Nadu,2025-01-31,26.0,13.5,56.1
+Coimbatore,Tamil Nadu,2025-02-15,27.4,14.8,62.3
+Coimbatore,Tamil Nadu,2025-03-02,26.0,11.8,54.8
+Coimbatore,Tamil Nadu,2025-03-17,26.8,18.4,57.6
+Coimbatore,Tamil Nadu,2025-04-01,29.3,17.5,66.7
+Coimbatore,Tamil Nadu,2025-04-16,31.7,10.7,61.5
+Coimbatore,Tamil Nadu,2025-05-01,30.6,17.3,62.4
+Coimbatore,Tamil Nadu,2025-05-16,31.1,13.5,59.8
+Coimbatore,Tamil Nadu,2025-05-31,29.6,17.2,55.9
+Coimbatore,Tamil Nadu,2025-06-15,30.1,54.0,66.7
+Coimbatore,Tamil Nadu,2025-06-30,33.0,64.3,68.0
+Coimbatore,Tamil Nadu,2025-07-15,30.9,37.6,75.6
+Coimbatore,Tamil Nadu,2025-07-30,33.1,19.8,66.3
+Coimbatore,Tamil Nadu,2025-08-14,31.3,77.1,73.0
+Coimbatore,Tamil Nadu,2025-08-29,30.6,78.4,79.2
+Coimbatore,Tamil Nadu,2025-09-13,26.1,14.9,59.9
+Coimbatore,Tamil Nadu,2025-09-28,28.6,22.7,59.0
+Coimbatore,Tamil Nadu,2025-10-13,27.1,110.7,89.9
+Coimbatore,Tamil Nadu,2025-10-28,27.8,32.8,92.2
+Coimbatore,Tamil Nadu,2025-11-12,23.1,110.9,88.7
+Coimbatore,Tamil Nadu,2025-11-27,24.9,125.5,92.7
+Coimbatore,Tamil Nadu,2025-12-12,22.9,138.3,84.8
+Madurai,Tamil Nadu,2025-01-01,23.7,17.8,53.2
+Madurai,Tamil Nadu,2025-01-16,26.1,27.1,62.3
+Madurai,Tamil Nadu,2025-01-31,23.5,16.2,61.2
+Madurai,Tamil Nadu,2025-02-15,26.9,32.5,64.7
+Madurai,Tamil Nadu,2025-03-02,27.2,8.0,64.7
+Madurai,Tamil Nadu,2025-03-17,26.1,28.0,63.9
+Madurai,Tamil Nadu,2025-04-01,28.3,22.9,57.2
+Madurai,Tamil Nadu,2025-04-16,31.2,16.7,60.3
+Madurai,Tamil Nadu,2025-05-01,32.5,12.4,62.6
+Madurai,Tamil Nadu,2025-05-16,31.4,23.8,66.8
+Madurai,Tamil Nadu,2025-05-31,32.2,27.6,53.6
+Madurai,Tamil Nadu,2025-06-15,33.2,39.2,71.9
+Madurai,Tamil Nadu,2025-06-30,30.0,11.7,71.2
+Madurai,Tamil Nadu,2025-07-15,32.1,91.1,74.6
+Madurai,Tamil Nadu,2025-07-30,30.2,43.5,66.1
+Madurai,Tamil Nadu,2025-08-14,29.1,20.8,79.9
+Madurai,Tamil Nadu,2025-08-29,30.0,33.0,68.3
+Madurai,Tamil Nadu,2025-09-13,29.6,14.0,67.0
+Madurai,Tamil Nadu,2025-09-28,27.6,25.8,54.1
+Madurai,Tamil Nadu,2025-10-13,25.2,43.8,89.7
+Madurai,Tamil Nadu,2025-10-28,24.2,84.3,90.4
+Madurai,Tamil Nadu,2025-11-12,26.5,64.0,91.9
+Madurai,Tamil Nadu,2025-11-27,23.0,159.1,86.9
+Madurai,Tamil Nadu,2025-12-12,22.2,134.2,82.6
+Salem,Tamil Nadu,2025-01-01,24.9,12.8,56.0
+Salem,Tamil Nadu,2025-01-16,25.6,16.5,54.8
+Salem,Tamil Nadu,2025-01-31,25.7,17.8,55.4
+Salem,Tamil Nadu,2025-02-15,27.2,24.7,56.1
+Salem,Tamil Nadu,2025-03-02,29.8,23.8,58.2
+Salem,Tamil Nadu,2025-03-17,28.6,9.3,64.9
+Salem,Tamil Nadu,2025-04-01,29.7,19.4,64.4
+Salem,Tamil Nadu,2025-04-16,30.9,16.4,56.0
+Salem,Tamil Nadu,2025-05-01,29.8,12.2,59.5
+Salem,Tamil Nadu,2025-05-16,30.8,11.0,57.2
+Salem,Tamil Nadu,2025-05-31,33.3,17.0,65.9
+Salem,Tamil Nadu,2025-06-15,31.7,41.7,79.2
+Salem,Tamil Nadu,2025-06-30,31.6,85.2,66.5
+Salem,Tamil Nadu,2025-07-15,31.4,44.9,77.9
+Salem,Tamil Nadu,2025-07-30,32.0,79.9,78.4
+Salem,Tamil Nadu,2025-08-14,31.7,64.8,70.5
+Salem,Tamil Nadu,2025-08-29,29.0,26.3,79.1
+Salem,Tamil Nadu,2025-09-13,27.7,8.5,59.8
+Salem,Tamil Nadu,2025-09-28,29.8,29.1,54.0
+Salem,Tamil Nadu,2025-10-13,24.4,45.9,83.1
+Salem,Tamil Nadu,2025-10-28,26.6,67.6,93.1
+Salem,Tamil Nadu,2025-11-12,24.8,168.3,91.8
+Salem,Tamil Nadu,2025-11-27,23.3,58.7,93.6
+Salem,Tamil Nadu,2025-12-12,22.1,75.9,85.6
+Kochi,Kerala,2025-01-01,22.6,28.4,58.0
+Kochi,Kerala,2025-01-16,25.3,27.2,55.1
+Kochi,Kerala,2025-01-31,24.6,26.0,55.9
+Kochi,Kerala,2025-02-15,26.4,30.7,58.4
+Kochi,Kerala,2025-03-02,26.9,27.3,59.2
+Kochi,Kerala,2025-03-17,27.2,25.7,58.0
+Kochi,Kerala,2025-04-01,30.8,16.1,55.8
+Kochi,Kerala,2025-04-16,31.2,9.0,62.6
+Kochi,Kerala,2025-05-01,32.5,24.4,62.0
+Kochi,Kerala,2025-05-16,32.4,6.2,61.7
+Kochi,Kerala,2025-05-31,30.6,13.4,55.9
+Kochi,Kerala,2025-06-15,32.8,47.0,70.3
+Kochi,Kerala,2025-06-30,30.6,30.5,78.5
+Kochi,Kerala,2025-07-15,33.1,21.3,65.3
+Kochi,Kerala,2025-07-30,30.7,71.3,66.9
+Kochi,Kerala,2025-08-14,31.1,71.2,66.6
+Kochi,Kerala,2025-08-29,28.8,84.9,70.3
+Kochi,Kerala,2025-09-13,26.3,26.6,60.9
+Kochi,Kerala,2025-09-28,27.9,15.9,63.1
+Kochi,Kerala,2025-10-13,24.4,53.2,90.6
+Kochi,Kerala,2025-10-28,25.6,184.0,92.9
+Kochi,Kerala,2025-11-12,25.2,35.8,86.0
+Kochi,Kerala,2025-11-27,25.9,88.2,86.4
+Kochi,Kerala,2025-12-12,24.4,92.0,84.2
+Thiruvananthapuram,Kerala,2025-01-01,25.2,23.3,63.2
+Thiruvananthapuram,Kerala,2025-01-16,25.2,13.8,58.2
+Thiruvananthapuram,Kerala,2025-01-31,25.9,9.6,55.7
+Thiruvananthapuram,Kerala,2025-02-15,26.3,18.2,61.1
+Thiruvananthapuram,Kerala,2025-03-02,27.3,3.1,65.6
+Thiruvananthapuram,Kerala,2025-03-17,27.4,16.3,62.7
+Thiruvananthapuram,Kerala,2025-04-01,30.6,16.5,59.3
+Thiruvananthapuram,Kerala,2025-04-16,30.8,12.7,65.2
+Thiruvananthapuram,Kerala,2025-05-01,30.6,17.7,59.0
+Thiruvananthapuram,Kerala,2025-05-16,31.2,8.7,65.4
+Thiruvananthapuram,Kerala,2025-05-31,33.0,19.8,55.8
+Thiruvananthapuram,Kerala,2025-06-15,30.8,50.6,76.2
+Thiruvananthapuram,Kerala,2025-06-30,30.6,68.5,68.6
+Thiruvananthapuram,Kerala,2025-07-15,30.6,24.2,69.2
+Thiruvananthapuram,Kerala,2025-07-30,30.7,29.4,78.5
+Thiruvananthapuram,Kerala,2025-08-14,31.3,99.9,68.8
+Thiruvananthapuram,Kerala,2025-08-29,28.6,38.6,71.6
+Thiruvananthapuram,Kerala,2025-09-13,27.0,18.2,55.2
+Thiruvananthapuram,Kerala,2025-09-28,28.2,21.3,58.4
+Thiruvananthapuram,Kerala,2025-10-13,24.4,155.2,83.2
+Thiruvananthapuram,Kerala,2025-10-28,26.9,173.2,86.3
+Thiruvananthapuram,Kerala,2025-11-12,22.6,38.0,89.5
+Thiruvananthapuram,Kerala,2025-11-27,25.4,152.6,82.0
+Thiruvananthapuram,Kerala,2025-12-12,22.3,84.7,85.7
+Visakhapatnam,Andhra Pradesh,2025-01-01,23.6,16.4,62.3
+Visakhapatnam,Andhra Pradesh,2025-01-16,24.5,8.6,67.2
+Visakhapatnam,Andhra Pradesh,2025-01-31,25.2,14.8,55.2
+Visakhapatnam,Andhra Pradesh,2025-02-15,25.9,30.6,59.0
+Visakhapatnam,Andhra Pradesh,2025-03-02,27.9,16.8,63.1
+Visakhapatnam,Andhra Pradesh,2025-03-17,29.9,19.7,56.9
+Visakhapatnam,Andhra Pradesh,2025-04-01,29.3,25.1,67.6
+Visakhapatnam,Andhra Pradesh,2025-04-16,29.7,15.7,60.4
+Visakhapatnam,Andhra Pradesh,2025-05-01,29.6,16.8,59.5
+Visakhapatnam,Andhra Pradesh,2025-05-16,32.9,5.4,66.0
+Visakhapatnam,Andhra Pradesh,2025-05-31,30.2,20.4,60.5
+Visakhapatnam,Andhra Pradesh,2025-06-15,30.1,57.4,72.2
+Visakhapatnam,Andhra Pradesh,2025-06-30,33.2,44.6,76.2
+Visakhapatnam,Andhra Pradesh,2025-07-15,32.9,34.7,69.3
+Visakhapatnam,Andhra Pradesh,2025-07-30,32.1,84.3,72.3
+Visakhapatnam,Andhra Pradesh,2025-08-14,28.2,44.3,68.4
+Visakhapatnam,Andhra Pradesh,2025-08-29,29.2,99.0,69.5
+Visakhapatnam,Andhra Pradesh,2025-09-13,28.6,14.9,56.8
+Visakhapatnam,Andhra Pradesh,2025-09-28,27.7,18.0,63.9
+Visakhapatnam,Andhra Pradesh,2025-10-13,27.0,129.7,81.6
+Visakhapatnam,Andhra Pradesh,2025-10-28,27.3,129.0,94.4
+Visakhapatnam,Andhra Pradesh,2025-11-12,24.5,46.9,92.6
+Visakhapatnam,Andhra Pradesh,2025-11-27,25.5,98.5,80.3
+Visakhapatnam,Andhra Pradesh,2025-12-12,24.9,123.6,84.4
+Kolkata,West Bengal,2025-01-01,24.2,8.0,66.4
+Kolkata,West Bengal,2025-01-16,25.4,16.1,60.6
+Kolkata,West Bengal,2025-01-31,25.9,23.8,64.9
+Kolkata,West Bengal,2025-02-15,24.6,21.8,67.1
+Kolkata,West Bengal,2025-03-02,26.1,9.5,62.3
+Kolkata,West Bengal,2025-03-17,29.5,13.2,53.8
+Kolkata,West Bengal,2025-04-01,30.0,6.4,56.1
+Kolkata,West Bengal,2025-04-16,31.3,7.0,67.5
+Kolkata,West Bengal,2025-05-01,32.5,17.7,55.3
+Kolkata,West Bengal,2025-05-16,30.9,4.7,53.1
+Kolkata,West Bengal,2025-05-31,32.1,25.8,53.9
+Kolkata,West Bengal,2025-06-15,30.0,40.3,78.8
+Kolkata,West Bengal,2025-06-30,33.5,24.8,70.8
+Kolkata,West Bengal,2025-07-15,32.5,23.2,76.9
+Kolkata,West Bengal,2025-07-30,32.0,39.1,74.8
+Kolkata,West Bengal,2025-08-14,29.1,83.5,75.1
+Kolkata,West Bengal,2025-08-29,29.7,44.3,71.4
+Kolkata,West Bengal,2025-09-13,28.0,15.4,67.0
+Kolkata,West Bengal,2025-09-28,26.5,12.5,64.2
+Kolkata,West Bengal,2025-10-13,24.6,94.3,84.5
+Kolkata,West Bengal,2025-10-28,26.0,44.8,93.1
+Kolkata,West Bengal,2025-11-12,25.1,151.9,82.2
+Kolkata,West Bengal,2025-11-27,23.6,36.6,80.4
+Kolkata,West Bengal,2025-12-12,25.0,100.7,89.9
+Patna,Bihar,2025-01-01,23.8,18.8,67.0
+Patna,Bihar,2025-01-16,23.7,16.4,55.3
+Patna,Bihar,2025-01-31,23.8,13.5,58.6
+Patna,Bihar,2025-02-15,24.2,15.5,60.3
+Patna,Bihar,2025-03-02,29.1,13.0,54.3
+Patna,Bihar,2025-03-17,26.2,29.4,62.3
+Patna,Bihar,2025-04-01,28.9,19.7,55.4
+Patna,Bihar,2025-04-16,30.4,22.1,63.2
+Patna,Bihar,2025-05-01,33.3,21.0,55.0
+Patna,Bihar,2025-05-16,29.8,25.8,61.1
+Patna,Bihar,2025-05-31,32.8,29.7,54.9
+Patna,Bihar,2025-06-15,33.3,72.1,68.3
+Patna,Bihar,2025-06-30,32.3,57.8,74.9
+Patna,Bihar,2025-07-15,32.6,35.5,79.9
+Patna,Bihar,2025-07-30,32.8,44.4,72.8
+Patna,Bihar,2025-08-14,29.6,50.0,77.1
+Patna,Bihar,2025-08-29,30.5,24.9,77.1
+Patna,Bihar,2025-09-13,28.1,6.9,62.0
+Patna,Bihar,2025-09-28,26.3,17.8,59.6
+Patna,Bihar,2025-10-13,26.5,98.7,91.8
+Patna,Bihar,2025-10-28,25.3,52.3,88.9
+Patna,Bihar,2025-11-12,23.1,29.0,88.8
+Patna,Bihar,2025-11-27,23.9,79.1,88.8
+Patna,Bihar,2025-12-12,23.4,137.3,94.7
+Bhubaneswar,Odisha,2025-01-01,23.4,5.4,56.5
+Bhubaneswar,Odisha,2025-01-16,25.8,2.3,58.4
+Bhubaneswar,Odisha,2025-01-31,23.7,9.4,55.6
+Bhubaneswar,Odisha,2025-02-15,27.1,17.8,57.6
+Bhubaneswar,Odisha,2025-03-02,26.6,28.7,55.9
+Bhubaneswar,Odisha,2025-03-17,29.2,8.0,64.9
+Bhubaneswar,Odisha,2025-04-01,30.0,23.7,60.6
+Bhubaneswar,Odisha,2025-04-16,30.3,24.1,62.7
+Bhubaneswar,Odisha,2025-05-01,30.5,14.6,57.4
+Bhubaneswar,Odisha,2025-05-16,32.7,12.8,55.7
+Bhubaneswar,Odisha,2025-05-31,29.9,3.7,56.0
+Bhubaneswar,Odisha,2025-06-15,30.0,46.3,76.7
+Bhubaneswar,Odisha,2025-06-30,30.9,77.0,72.7
+Bhubaneswar,Odisha,2025-07-15,31.3,60.3,73.7
+Bhubaneswar,Odisha,2025-07-30,30.8,23.6,78.8
+Bhubaneswar,Odisha,2025-08-14,31.8,20.9,72.1
+Bhubaneswar,Odisha,2025-08-29,30.4,15.1,78.7
+Bhubaneswar,Odisha,2025-09-13,29.4,10.9,54.7
+Bhubaneswar,Odisha,2025-09-28,29.3,15.0,61.6
+Bhubaneswar,Odisha,2025-10-13,26.4,64.4,88.5
+Bhubaneswar,Odisha,2025-10-28,27.3,162.2,82.7
+Bhubaneswar,Odisha,2025-11-12,23.6,124.9,93.7
+Bhubaneswar,Odisha,2025-11-27,25.6,78.9,83.8
+Bhubaneswar,Odisha,2025-12-12,22.0,52.1,84.9
+Ranchi,Jharkhand,2025-01-01,25.9,14.4,54.9
+Ranchi,Jharkhand,2025-01-16,22.7,16.0,63.5
+Ranchi,Jharkhand,2025-01-31,24.9,8.4,56.0
+Ranchi,Jharkhand,2025-02-15,27.8,16.1,63.0
+Ranchi,Jharkhand,2025-03-02,29.8,7.1,58.3
+Ranchi,Jharkhand,2025-03-17,26.3,10.0,62.0
+Ranchi,Jharkhand,2025-04-01,30.8,27.4,63.4
+Ranchi,Jharkhand,2025-04-16,31.6,16.8,64.1
+Ranchi,Jharkhand,2025-05-01,31.9,8.6,57.4
+Ranchi,Jharkhand,2025-05-16,30.7,15.2,64.9
+Ranchi,Jharkhand,2025-05-31,33.1,16.4,63.3
+Ranchi,Jharkhand,2025-06-15,30.2,103.4,66.9
+Ranchi,Jharkhand,2025-06-30,31.7,63.0,73.6
+Ranchi,Jharkhand,2025-07-15,31.5,80.2,77.3
+Ranchi,Jharkhand,2025-07-30,30.2,45.0,69.2
+Ranchi,Jharkhand,2025-08-14,30.9,46.0,71.2
+Ranchi,Jharkhand,2025-08-29,31.7,34.4,79.4
+Ranchi,Jharkhand,2025-09-13,28.9,6.4,65.2
+Ranchi,Jharkhand,2025-09-28,28.4,29.9,53.2
+Ranchi,Jharkhand,2025-10-13,27.3,65.0,94.5
+Ranchi,Jharkhand,2025-10-28,27.0,174.8,84.6
+Ranchi,Jharkhand,2025-11-12,24.0,135.6,82.7
+Ranchi,Jharkhand,2025-11-27,25.0,132.9,82.5
+Ranchi,Jharkhand,2025-12-12,23.1,182.8,91.8
+Bhopal,Madhya Pradesh,2025-01-01,25.0,17.6,58.1
+Bhopal,Madhya Pradesh,2025-01-16,24.4,24.1,66.3
+Bhopal,Madhya Pradesh,2025-01-31,25.3,23.6,62.9
+Bhopal,Madhya Pradesh,2025-02-15,26.4,17.6,54.2
+Bhopal,Madhya Pradesh,2025-03-02,26.8,12.1,61.6
+Bhopal,Madhya Pradesh,2025-03-17,29.8,17.8,56.7
+Bhopal,Madhya Pradesh,2025-04-01,28.9,13.3,66.5
+Bhopal,Madhya Pradesh,2025-04-16,29.4,27.7,63.9
+Bhopal,Madhya Pradesh,2025-05-01,29.8,27.9,64.2
+Bhopal,Madhya Pradesh,2025-05-16,32.9,22.5,58.5
+Bhopal,Madhya Pradesh,2025-05-31,32.7,10.0,63.2
+Bhopal,Madhya Pradesh,2025-06-15,34.0,34.8,75.6
+Bhopal,Madhya Pradesh,2025-06-30,30.8,80.8,75.5
+Bhopal,Madhya Pradesh,2025-07-15,31.0,50.9,70.2
+Bhopal,Madhya Pradesh,2025-07-30,32.5,68.5,77.7
+Bhopal,Madhya Pradesh,2025-08-14,30.6,51.8,66.5
+Bhopal,Madhya Pradesh,2025-08-29,31.8,27.1,70.1
+Bhopal,Madhya Pradesh,2025-09-13,29.0,29.3,63.1
+Bhopal,Madhya Pradesh,2025-09-28,26.3,19.9,60.6
+Bhopal,Madhya Pradesh,2025-10-13,28.0,136.9,81.9
+Bhopal,Madhya Pradesh,2025-10-28,27.3,118.5,89.8
+Bhopal,Madhya Pradesh,2025-11-12,22.7,121.8,81.3
+Bhopal,Madhya Pradesh,2025-11-27,22.7,184.9,84.4
+Bhopal,Madhya Pradesh,2025-12-12,25.3,60.8,84.5
+Indore,Madhya Pradesh,2025-01-01,23.6,14.8,59.8
+Indore,Madhya Pradesh,2025-01-16,24.0,24.8,62.1
+Indore,Madhya Pradesh,2025-01-31,24.7,19.0,57.9
+Indore,Madhya Pradesh,2025-02-15,25.5,17.6,55.6
+Indore,Madhya Pradesh,2025-03-02,28.4,18.9,67.2
+Indore,Madhya Pradesh,2025-03-17,26.5,9.9,55.3
+Indore,Madhya Pradesh,2025-04-01,29.8,14.3,60.0
+Indore,Madhya Pradesh,2025-04-16,31.1,25.0,54.2
+Indore,Madhya Pradesh,2025-05-01,31.5,20.9,60.7
+Indore,Madhya Pradesh,2025-05-16,31.6,22.4,62.9
+Indore,Madhya Pradesh,2025-05-31,30.2,9.9,58.3
+Indore,Madhya Pradesh,2025-06-15,31.9,31.2,74.5
+Indore,Madhya Pradesh,2025-06-30,31.4,64.2,70.3
+Indore,Madhya Pradesh,2025-07-15,33.1,22.1,68.8
+Indore,Madhya Pradesh,2025-07-30,30.0,69.9,78.3
+Indore,Madhya Pradesh,2025-08-14,31.9,26.8,72.4
+Indore,Madhya Pradesh,2025-08-29,31.8,75.3,70.2
+Indore,Madhya Pradesh,2025-09-13,27.9,17.9,55.3
+Indore,Madhya Pradesh,2025-09-28,28.8,25.5,60.5
+Indore,Madhya Pradesh,2025-10-13,27.7,97.5,81.4
+Indore,Madhya Pradesh,2025-10-28,24.4,92.3,90.7
+Indore,Madhya Pradesh,2025-11-12,23.3,177.2,84.6
+Indore,Madhya Pradesh,2025-11-27,23.6,114.8,81.6
+Indore,Madhya Pradesh,2025-12-12,25.8,123.6,87.1
+Raipur,Chhattisgarh,2025-01-01,25.1,10.4,60.2
+Raipur,Chhattisgarh,2025-01-16,22.8,20.4,65.2
+Raipur,Chhattisgarh,2025-01-31,23.6,7.3,56.3
+Raipur,Chhattisgarh,2025-02-15,26.8,13.4,53.7
+Raipur,Chhattisgarh,2025-03-02,28.1,7.2,62.1
+Raipur,Chhattisgarh,2025-03-17,28.5,7.5,64.0
+Raipur,Chhattisgarh,2025-04-01,29.0,21.1,56.1
+Raipur,Chhattisgarh,2025-04-16,30.9,21.4,54.4
+Raipur,Chhattisgarh,2025-05-01,30.1,10.8,62.1
+Raipur,Chhattisgarh,2025-05-16,29.9,9.8,53.2
+Raipur,Chhattisgarh,2025-05-31,31.6,27.9,54.3
+Raipur,Chhattisgarh,2025-06-15,32.8,62.0,77.4
+Raipur,Chhattisgarh,2025-06-30,31.4,46.8,75.3
+Raipur,Chhattisgarh,2025-07-15,31.9,33.3,78.8
+Raipur,Chhattisgarh,2025-07-30,32.7,39.4,78.7
+Raipur,Chhattisgarh,2025-08-14,28.6,57.7,79.6
+Raipur,Chhattisgarh,2025-08-29,30.0,63.1,74.0
+Raipur,Chhattisgarh,2025-09-13,29.3,16.9,59.3
+Raipur,Chhattisgarh,2025-09-28,27.9,5.8,66.7
+Raipur,Chhattisgarh,2025-10-13,27.3,31.0,94.4
+Raipur,Chhattisgarh,2025-10-28,27.5,30.3,81.2
+Raipur,Chhattisgarh,2025-11-12,25.4,100.7,80.2
+Raipur,Chhattisgarh,2025-11-27,25.4,69.9,84.6
+Raipur,Chhattisgarh,2025-12-12,23.6,166.2,89.1
+Guwahati,Assam,2025-01-01,23.6,9.1,64.7
+Guwahati,Assam,2025-01-16,23.3,20.5,54.3
+Guwahati,Assam,2025-01-31,25.5,24.8,57.7
+Guwahati,Assam,2025-02-15,24.1,21.9,66.0
+Guwahati,Assam,2025-03-02,28.6,16.7,67.5
+Guwahati,Assam,2025-03-17,28.5,17.6,63.7
+Guwahati,Assam,2025-04-01,28.6,24.1,67.5
+Guwahati,Assam,2025-04-16,28.4,16.4,56.9
+Guwahati,Assam,2025-05-01,32.9,21.3,66.8
+Guwahati,Assam,2025-05-16,29.6,18.5,64.9
+Guwahati,Assam,2025-05-31,33.0,17.9,60.0
+Guwahati,Assam,2025-06-15,31.6,20.3,74.1
+Guwahati,Assam,2025-06-30,32.3,100.6,65.9
+Guwahati,Assam,2025-07-15,32.0,17.7,71.1
+Guwahati,Assam,2025-07-30,30.8,72.7,70.2
+Guwahati,Assam,2025-08-14,31.1,58.9,75.0
+Guwahati,Assam,2025-08-29,30.0,47.2,75.1
+Guwahati,Assam,2025-09-13,29.0,15.4,64.6
+Guwahati,Assam,2025-09-28,27.2,19.2,54.9
+Guwahati,Assam,2025-10-13,25.8,88.0,82.4
+Guwahati,Assam,2025-10-28,24.4,36.6,81.6
+Guwahati,Assam,2025-11-12,23.4,98.5,82.9
+Guwahati,Assam,2025-11-27,25.7,105.2,89.9
+Guwahati,Assam,2025-12-12,25.4,114.2,84.8
+Shillong,Meghalaya,2025-01-01,26.3,19.2,59.0
+Shillong,Meghalaya,2025-01-16,23.2,8.6,53.4
+Shillong,Meghalaya,2025-01-31,25.5,27.3,64.7
+Shillong,Meghalaya,2025-02-15,24.2,5.5,53.3
+Shillong,Meghalaya,2025-03-02,26.3,29.2,56.1
+Shillong,Meghalaya,2025-03-17,28.5,11.6,57.5
+Shillong,Meghalaya,2025-04-01,30.4,9.9,56.8
+Shillong,Meghalaya,2025-04-16,28.1,5.5,63.4
+Shillong,Meghalaya,2025-05-01,31.5,11.3,55.6
+Shillong,Meghalaya,2025-05-16,33.3,23.0,59.4
+Shillong,Meghalaya,2025-05-31,30.1,10.2,61.8
+Shillong,Meghalaya,2025-06-15,33.2,39.7,74.9
+Shillong,Meghalaya,2025-06-30,32.2,49.9,72.9
+Shillong,Meghalaya,2025-07-15,32.7,26.6,72.4
+Shillong,Meghalaya,2025-07-30,29.5,81.3,65.1
+Shillong,Meghalaya,2025-08-14,28.4,85.0,69.1
+Shillong,Meghalaya,2025-08-29,31.9,25.3,74.3
+Shillong,Meghalaya,2025-09-13,26.4,25.8,65.2
+Shillong,Meghalaya,2025-09-28,27.1,24.9,58.7
+Shillong,Meghalaya,2025-10-13,24.5,113.1,89.9
+Shillong,Meghalaya,2025-10-28,24.3,176.4,80.2
+Shillong,Meghalaya,2025-11-12,24.4,52.2,93.7
+Shillong,Meghalaya,2025-11-27,25.3,180.9,81.5
+Shillong,Meghalaya,2025-12-12,22.5,113.4,83.2

@@ -6,16 +6,48 @@ from datetime import datetime, timedelta
 random.seed(42)
 
 districts = [
+    # Northern India
+    {"district": "Delhi", "state": "Delhi", "pop": 16787941, "density": 11320, "sanitation": 93.0, "lat": 28.6139, "lon": 77.2090},
+    {"district": "Chandigarh", "state": "Chandigarh", "pop": 1055450, "density": 9258, "sanitation": 97.0, "lat": 30.7333, "lon": 76.7794},
+    {"district": "Jaipur", "state": "Rajasthan", "pop": 3046163, "density": 6500, "sanitation": 85.0, "lat": 26.9124, "lon": 75.7873},
+    {"district": "Lucknow", "state": "Uttar Pradesh", "pop": 2817105, "density": 1816, "sanitation": 83.0, "lat": 26.8467, "lon": 80.9462},
+    {"district": "Varanasi", "state": "Uttar Pradesh", "pop": 1201815, "density": 2395, "sanitation": 78.0, "lat": 25.3176, "lon": 82.9739},
+    {"district": "Amritsar", "state": "Punjab", "pop": 1132383, "density": 928, "sanitation": 88.0, "lat": 31.6340, "lon": 74.8723},
+    {"district": "Srinagar", "state": "Jammu & Kashmir", "pop": 1269751, "density": 703, "sanitation": 84.0, "lat": 34.0837, "lon": 74.7973},
+    {"district": "Dehradun", "state": "Uttarakhand", "pop": 578420, "density": 549, "sanitation": 91.0, "lat": 30.3165, "lon": 78.0322},
+
+    # Western India
+    {"district": "Mumbai", "state": "Maharashtra", "pop": 12442373, "density": 19652, "sanitation": 90.0, "lat": 19.0760, "lon": 72.8777},
+    {"district": "Pune", "state": "Maharashtra", "pop": 3124458, "density": 9400, "sanitation": 92.0, "lat": 18.5204, "lon": 73.8567},
+    {"district": "Ahmedabad", "state": "Gujarat", "pop": 5577940, "density": 11885, "sanitation": 91.0, "lat": 23.0225, "lon": 72.5714},
+    {"district": "Surat", "state": "Gujarat", "pop": 4467797, "density": 13680, "sanitation": 93.0, "lat": 21.1702, "lon": 72.8311},
+    {"district": "Panaji", "state": "Goa", "pop": 114759, "density": 394, "sanitation": 96.0, "lat": 15.4909, "lon": 73.8278},
+
+    # Southern India
+    {"district": "Bengaluru", "state": "Karnataka", "pop": 8443675, "density": 4381, "sanitation": 95.0, "lat": 12.9716, "lon": 77.5946},
+    {"district": "Hyderabad", "state": "Telangana", "pop": 6809970, "density": 18172, "sanitation": 93.5, "lat": 17.3850, "lon": 78.4867},
     {"district": "Chennai", "state": "Tamil Nadu", "pop": 7100000, "density": 26900, "sanitation": 92.5, "lat": 13.0827, "lon": 80.2707},
-    {"district": "Madurai", "state": "Tamil Nadu", "pop": 3038000, "density": 820, "sanitation": 81.0, "lat": 9.9252, "lon": 78.1198},
     {"district": "Coimbatore", "state": "Tamil Nadu", "pop": 3458000, "density": 748, "sanitation": 88.5, "lat": 11.0168, "lon": 76.9558},
-    {"district": "Tiruchirappalli", "state": "Tamil Nadu", "pop": 2722000, "density": 602, "sanitation": 79.0, "lat": 10.7905, "lon": 78.7047},
+    {"district": "Madurai", "state": "Tamil Nadu", "pop": 3038000, "density": 820, "sanitation": 81.0, "lat": 9.9252, "lon": 78.1198},
     {"district": "Salem", "state": "Tamil Nadu", "pop": 3482000, "density": 665, "sanitation": 75.5, "lat": 11.6643, "lon": 78.1460},
-    {"district": "Tirunelveli", "state": "Tamil Nadu", "pop": 1665000, "density": 433, "sanitation": 78.2, "lat": 8.7139, "lon": 77.7567},
-    {"district": "Thanjavur", "state": "Tamil Nadu", "pop": 2406000, "density": 705, "sanitation": 72.0, "lat": 10.7870, "lon": 79.1378},
-    {"district": "Vellore", "state": "Tamil Nadu", "pop": 1614000, "density": 646, "sanitation": 76.8, "lat": 12.9165, "lon": 79.1325},
-    {"district": "Erode", "state": "Tamil Nadu", "pop": 2251000, "density": 392, "sanitation": 84.0, "lat": 11.3410, "lon": 77.7172},
-    {"district": "Kanyakumari", "state": "Tamil Nadu", "pop": 1870000, "density": 1119, "sanitation": 91.0, "lat": 8.0883, "lon": 77.5385}
+    {"district": "Kochi", "state": "Kerala", "pop": 677381, "density": 6340, "sanitation": 98.0, "lat": 9.9312, "lon": 76.2673},
+    {"district": "Thiruvananthapuram", "state": "Kerala", "pop": 957730, "density": 1508, "sanitation": 98.0, "lat": 8.5241, "lon": 76.9366},
+    {"district": "Visakhapatnam", "state": "Andhra Pradesh", "pop": 1728128, "density": 384, "sanitation": 87.0, "lat": 17.6868, "lon": 83.2185},
+
+    # Eastern India
+    {"district": "Kolkata", "state": "West Bengal", "pop": 4496694, "density": 24306, "sanitation": 89.0, "lat": 22.5726, "lon": 88.3639},
+    {"district": "Patna", "state": "Bihar", "pop": 1684222, "density": 1823, "sanitation": 74.0, "lat": 25.5941, "lon": 85.1376},
+    {"district": "Bhubaneswar", "state": "Odisha", "pop": 843402, "density": 2134, "sanitation": 84.0, "lat": 20.2961, "lon": 85.8245},
+    {"district": "Ranchi", "state": "Jharkhand", "pop": 1073427, "density": 572, "sanitation": 76.0, "lat": 23.3441, "lon": 85.3096},
+
+    # Central India
+    {"district": "Bhopal", "state": "Madhya Pradesh", "pop": 1798218, "density": 855, "sanitation": 82.0, "lat": 23.2599, "lon": 77.4126},
+    {"district": "Indore", "state": "Madhya Pradesh", "pop": 1964086, "density": 9700, "sanitation": 96.0, "lat": 22.7196, "lon": 75.8577},
+    {"district": "Raipur", "state": "Chhattisgarh", "pop": 1010433, "density": 750, "sanitation": 80.0, "lat": 21.2514, "lon": 81.6296},
+
+    # North-Eastern India
+    {"district": "Guwahati", "state": "Assam", "pop": 957352, "density": 4400, "sanitation": 86.0, "lat": 26.1445, "lon": 91.7362},
+    {"district": "Shillong", "state": "Meghalaya", "pop": 143229, "density": 2200, "sanitation": 90.0, "lat": 25.5788, "lon": 91.8933}
 ]
 
 # 1. Population CSV
@@ -138,7 +170,8 @@ with open("ml/training/training_dataset.csv", "w", newline="", encoding="utf-8")
 # Create Weka ARFF
 with open("ml/training/training_dataset.arff", "w", encoding="utf-8") as f:
     f.write("@relation aquasafe_disease_risk\n\n")
-    f.write("@attribute district {Chennai,Madurai,Coimbatore,Tiruchirappalli,Salem,Tirunelveli,Thanjavur,Vellore,Erode,Kanyakumari}\n")
+    district_names = ",".join(d["district"] for d in districts)
+    f.write(f"@attribute district {{{district_names}}}\n")
     f.write("@attribute ph numeric\n")
     f.write("@attribute turbidity numeric\n")
     f.write("@attribute tds numeric\n")

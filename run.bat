@@ -29,7 +29,14 @@ set "JAR_PATH=backend\target\aquasafe-backend-1.0.0-SNAPSHOT.jar"
 if not exist "%JAR_PATH%" (
     echo [*] Compiled JAR not found. Building AquaSafe backend with Maven...
     cd backend
-    call mvn clean package -DskipTests
+    where mvn >nul 2>&1
+    if !errorlevel! equ 0 (
+        call mvn clean package -DskipTests
+    ) else if exist "%USERPROFILE%\tools\apache-maven-3.9.9\bin\mvn.cmd" (
+        call "%USERPROFILE%\tools\apache-maven-3.9.9\bin\mvn.cmd" clean package -DskipTests
+    ) else (
+        call mvn clean package -DskipTests
+    )
     cd ..
     if not exist "%JAR_PATH%" (
         echo [ERROR] Build failed. Please inspect Maven build output above.

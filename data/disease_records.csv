@@ -1,241 +1,745 @@
 district,state,date,cholera_cases,typhoid_cases,diarrhea_cases,hepatitis_cases
-Chennai,Tamil Nadu,2025-01-01,0,2,11,3
-Chennai,Tamil Nadu,2025-01-16,0,4,14,2
-Chennai,Tamil Nadu,2025-01-31,1,5,13,3
-Chennai,Tamil Nadu,2025-02-15,1,3,21,3
-Chennai,Tamil Nadu,2025-03-02,1,3,14,2
-Chennai,Tamil Nadu,2025-03-17,1,5,16,2
-Chennai,Tamil Nadu,2025-04-01,1,4,20,4
-Chennai,Tamil Nadu,2025-04-16,0,2,17,2
-Chennai,Tamil Nadu,2025-05-01,1,6,21,4
-Chennai,Tamil Nadu,2025-05-16,0,3,13,2
-Chennai,Tamil Nadu,2025-05-31,1,5,18,2
-Chennai,Tamil Nadu,2025-06-15,1,5,17,4
-Chennai,Tamil Nadu,2025-06-30,3,7,33,4
-Chennai,Tamil Nadu,2025-07-15,4,11,39,6
-Chennai,Tamil Nadu,2025-07-30,0,4,13,1
-Chennai,Tamil Nadu,2025-08-14,1,2,20,1
-Chennai,Tamil Nadu,2025-08-29,4,10,36,6
-Chennai,Tamil Nadu,2025-09-13,0,3,8,1
-Chennai,Tamil Nadu,2025-09-28,1,3,18,4
-Chennai,Tamil Nadu,2025-10-13,4,10,43,6
-Chennai,Tamil Nadu,2025-10-28,4,8,40,6
-Chennai,Tamil Nadu,2025-11-12,4,9,42,6
-Chennai,Tamil Nadu,2025-11-27,4,7,33,7
-Chennai,Tamil Nadu,2025-12-12,3,5,31,3
-Madurai,Tamil Nadu,2025-01-01,0,1,3,1
-Madurai,Tamil Nadu,2025-01-16,0,1,8,2
-Madurai,Tamil Nadu,2025-01-31,0,3,6,0
-Madurai,Tamil Nadu,2025-02-15,0,3,11,2
-Madurai,Tamil Nadu,2025-03-02,0,3,7,2
-Madurai,Tamil Nadu,2025-03-17,0,3,16,2
-Madurai,Tamil Nadu,2025-04-01,0,3,16,1
-Madurai,Tamil Nadu,2025-04-16,0,2,9,1
-Madurai,Tamil Nadu,2025-05-01,0,2,10,0
-Madurai,Tamil Nadu,2025-05-16,0,3,12,1
-Madurai,Tamil Nadu,2025-05-31,0,1,16,1
-Madurai,Tamil Nadu,2025-06-15,0,5,19,2
-Madurai,Tamil Nadu,2025-06-30,0,3,12,2
-Madurai,Tamil Nadu,2025-07-15,1,7,27,5
-Madurai,Tamil Nadu,2025-07-30,0,3,18,1
-Madurai,Tamil Nadu,2025-08-14,1,3,18,4
-Madurai,Tamil Nadu,2025-08-29,1,3,25,2
-Madurai,Tamil Nadu,2025-09-13,0,2,9,0
-Madurai,Tamil Nadu,2025-09-28,0,1,9,0
-Madurai,Tamil Nadu,2025-10-13,2,7,28,6
-Madurai,Tamil Nadu,2025-10-28,1,7,23,4
-Madurai,Tamil Nadu,2025-11-12,1,3,21,3
-Madurai,Tamil Nadu,2025-11-27,2,6,31,3
-Madurai,Tamil Nadu,2025-12-12,0,4,9,1
-Coimbatore,Tamil Nadu,2025-01-01,0,2,11,0
-Coimbatore,Tamil Nadu,2025-01-16,1,3,16,1
-Coimbatore,Tamil Nadu,2025-01-31,0,0,5,2
-Coimbatore,Tamil Nadu,2025-02-15,0,0,5,0
-Coimbatore,Tamil Nadu,2025-03-02,0,3,6,2
-Coimbatore,Tamil Nadu,2025-03-17,0,1,13,0
-Coimbatore,Tamil Nadu,2025-04-01,0,2,5,1
-Coimbatore,Tamil Nadu,2025-04-16,0,4,7,1
-Coimbatore,Tamil Nadu,2025-05-01,0,1,9,2
-Coimbatore,Tamil Nadu,2025-05-16,0,3,11,3
-Coimbatore,Tamil Nadu,2025-05-31,0,3,10,0
-Coimbatore,Tamil Nadu,2025-06-15,0,2,16,2
-Coimbatore,Tamil Nadu,2025-06-30,1,3,16,3
-Coimbatore,Tamil Nadu,2025-07-15,1,4,20,3
-Coimbatore,Tamil Nadu,2025-07-30,0,5,16,3
-Coimbatore,Tamil Nadu,2025-08-14,0,4,13,1
-Coimbatore,Tamil Nadu,2025-08-29,2,6,31,3
-Coimbatore,Tamil Nadu,2025-09-13,0,3,12,2
-Coimbatore,Tamil Nadu,2025-09-28,0,3,11,0
-Coimbatore,Tamil Nadu,2025-10-13,1,4,14,2
-Coimbatore,Tamil Nadu,2025-10-28,0,3,6,1
-Coimbatore,Tamil Nadu,2025-11-12,0,3,10,2
-Coimbatore,Tamil Nadu,2025-11-27,2,6,23,5
-Coimbatore,Tamil Nadu,2025-12-12,0,3,16,1
-Tiruchirappalli,Tamil Nadu,2025-01-01,1,5,12,3
-Tiruchirappalli,Tamil Nadu,2025-01-16,0,3,10,2
-Tiruchirappalli,Tamil Nadu,2025-01-31,0,5,19,2
-Tiruchirappalli,Tamil Nadu,2025-02-15,0,2,13,0
-Tiruchirappalli,Tamil Nadu,2025-03-02,0,2,11,2
-Tiruchirappalli,Tamil Nadu,2025-03-17,0,2,15,3
-Tiruchirappalli,Tamil Nadu,2025-04-01,0,2,13,2
-Tiruchirappalli,Tamil Nadu,2025-04-16,0,3,12,1
-Tiruchirappalli,Tamil Nadu,2025-05-01,1,5,17,2
-Tiruchirappalli,Tamil Nadu,2025-05-16,0,2,12,2
-Tiruchirappalli,Tamil Nadu,2025-05-31,1,4,19,3
-Tiruchirappalli,Tamil Nadu,2025-06-15,1,3,17,3
-Tiruchirappalli,Tamil Nadu,2025-06-30,2,6,32,5
-Tiruchirappalli,Tamil Nadu,2025-07-15,1,4,21,3
-Tiruchirappalli,Tamil Nadu,2025-07-30,2,7,23,4
-Tiruchirappalli,Tamil Nadu,2025-08-14,1,4,23,4
-Tiruchirappalli,Tamil Nadu,2025-08-29,2,6,28,3
-Tiruchirappalli,Tamil Nadu,2025-09-13,1,3,19,3
-Tiruchirappalli,Tamil Nadu,2025-09-28,0,4,16,2
-Tiruchirappalli,Tamil Nadu,2025-10-13,4,7,35,6
-Tiruchirappalli,Tamil Nadu,2025-10-28,4,9,33,6
-Tiruchirappalli,Tamil Nadu,2025-11-12,0,2,16,1
-Tiruchirappalli,Tamil Nadu,2025-11-27,2,6,26,4
-Tiruchirappalli,Tamil Nadu,2025-12-12,0,2,13,2
-Salem,Tamil Nadu,2025-01-01,0,3,13,1
-Salem,Tamil Nadu,2025-01-16,1,4,13,3
-Salem,Tamil Nadu,2025-01-31,1,4,22,4
-Salem,Tamil Nadu,2025-02-15,0,5,18,3
-Salem,Tamil Nadu,2025-03-02,0,0,13,2
-Salem,Tamil Nadu,2025-03-17,1,5,14,3
-Salem,Tamil Nadu,2025-04-01,1,2,18,3
-Salem,Tamil Nadu,2025-04-16,1,3,25,4
-Salem,Tamil Nadu,2025-05-01,1,4,24,2
-Salem,Tamil Nadu,2025-05-16,0,5,14,2
-Salem,Tamil Nadu,2025-05-31,1,5,15,4
-Salem,Tamil Nadu,2025-06-15,1,3,20,3
-Salem,Tamil Nadu,2025-06-30,4,9,35,5
-Salem,Tamil Nadu,2025-07-15,3,8,28,5
-Salem,Tamil Nadu,2025-07-30,1,4,17,3
-Salem,Tamil Nadu,2025-08-14,4,7,39,6
-Salem,Tamil Nadu,2025-08-29,1,4,16,2
-Salem,Tamil Nadu,2025-09-13,1,6,15,3
-Salem,Tamil Nadu,2025-09-28,1,5,20,2
-Salem,Tamil Nadu,2025-10-13,2,7,25,5
-Salem,Tamil Nadu,2025-10-28,3,8,31,5
-Salem,Tamil Nadu,2025-11-12,2,6,27,4
-Salem,Tamil Nadu,2025-11-27,3,8,35,5
-Salem,Tamil Nadu,2025-12-12,4,9,36,7
-Tirunelveli,Tamil Nadu,2025-01-01,1,2,19,4
-Tirunelveli,Tamil Nadu,2025-01-16,1,2,17,2
-Tirunelveli,Tamil Nadu,2025-01-31,0,4,16,2
-Tirunelveli,Tamil Nadu,2025-02-15,1,4,19,3
-Tirunelveli,Tamil Nadu,2025-03-02,1,4,15,3
-Tirunelveli,Tamil Nadu,2025-03-17,0,4,11,1
-Tirunelveli,Tamil Nadu,2025-04-01,0,3,16,1
-Tirunelveli,Tamil Nadu,2025-04-16,0,3,11,1
-Tirunelveli,Tamil Nadu,2025-05-01,0,4,11,1
-Tirunelveli,Tamil Nadu,2025-05-16,0,3,13,1
-Tirunelveli,Tamil Nadu,2025-05-31,0,5,13,2
-Tirunelveli,Tamil Nadu,2025-06-15,4,7,34,5
-Tirunelveli,Tamil Nadu,2025-06-30,4,10,41,6
-Tirunelveli,Tamil Nadu,2025-07-15,2,8,30,5
-Tirunelveli,Tamil Nadu,2025-07-30,1,4,17,4
-Tirunelveli,Tamil Nadu,2025-08-14,1,6,20,3
-Tirunelveli,Tamil Nadu,2025-08-29,2,8,31,4
-Tirunelveli,Tamil Nadu,2025-09-13,1,5,26,3
-Tirunelveli,Tamil Nadu,2025-09-28,0,4,15,1
-Tirunelveli,Tamil Nadu,2025-10-13,2,8,36,4
-Tirunelveli,Tamil Nadu,2025-10-28,2,5,27,5
-Tirunelveli,Tamil Nadu,2025-11-12,2,7,31,5
-Tirunelveli,Tamil Nadu,2025-11-27,3,5,33,5
-Tirunelveli,Tamil Nadu,2025-12-12,2,8,28,6
-Thanjavur,Tamil Nadu,2025-01-01,1,3,14,3
-Thanjavur,Tamil Nadu,2025-01-16,0,3,15,1
-Thanjavur,Tamil Nadu,2025-01-31,1,4,23,4
-Thanjavur,Tamil Nadu,2025-02-15,0,2,16,3
-Thanjavur,Tamil Nadu,2025-03-02,1,3,26,3
-Thanjavur,Tamil Nadu,2025-03-17,1,7,22,5
-Thanjavur,Tamil Nadu,2025-04-01,1,5,17,3
-Thanjavur,Tamil Nadu,2025-04-16,1,6,17,3
-Thanjavur,Tamil Nadu,2025-05-01,1,7,22,5
-Thanjavur,Tamil Nadu,2025-05-16,1,3,19,3
-Thanjavur,Tamil Nadu,2025-05-31,0,4,8,1
-Thanjavur,Tamil Nadu,2025-06-15,1,3,17,4
-Thanjavur,Tamil Nadu,2025-06-30,2,6,33,5
-Thanjavur,Tamil Nadu,2025-07-15,2,6,29,4
-Thanjavur,Tamil Nadu,2025-07-30,2,6,33,4
-Thanjavur,Tamil Nadu,2025-08-14,1,3,19,2
-Thanjavur,Tamil Nadu,2025-08-29,2,8,29,6
-Thanjavur,Tamil Nadu,2025-09-13,1,6,25,2
-Thanjavur,Tamil Nadu,2025-09-28,0,4,12,1
-Thanjavur,Tamil Nadu,2025-10-13,3,9,32,6
-Thanjavur,Tamil Nadu,2025-10-28,4,7,33,6
-Thanjavur,Tamil Nadu,2025-11-12,3,6,30,6
-Thanjavur,Tamil Nadu,2025-11-27,1,4,22,5
-Thanjavur,Tamil Nadu,2025-12-12,1,3,15,2
-Vellore,Tamil Nadu,2025-01-01,1,3,26,2
-Vellore,Tamil Nadu,2025-01-16,0,2,14,1
-Vellore,Tamil Nadu,2025-01-31,1,4,18,3
-Vellore,Tamil Nadu,2025-02-15,1,6,22,2
-Vellore,Tamil Nadu,2025-03-02,1,5,20,4
-Vellore,Tamil Nadu,2025-03-17,0,3,9,1
-Vellore,Tamil Nadu,2025-04-01,0,2,15,2
-Vellore,Tamil Nadu,2025-04-16,1,5,14,1
-Vellore,Tamil Nadu,2025-05-01,0,2,12,1
-Vellore,Tamil Nadu,2025-05-16,0,2,8,1
-Vellore,Tamil Nadu,2025-05-31,1,6,22,2
-Vellore,Tamil Nadu,2025-06-15,1,3,23,4
-Vellore,Tamil Nadu,2025-06-30,3,9,38,4
-Vellore,Tamil Nadu,2025-07-15,1,5,19,3
-Vellore,Tamil Nadu,2025-07-30,1,4,20,2
-Vellore,Tamil Nadu,2025-08-14,1,6,27,3
-Vellore,Tamil Nadu,2025-08-29,4,8,41,5
-Vellore,Tamil Nadu,2025-09-13,1,4,22,4
-Vellore,Tamil Nadu,2025-09-28,0,2,13,0
-Vellore,Tamil Nadu,2025-10-13,4,9,34,7
-Vellore,Tamil Nadu,2025-10-28,0,3,19,1
-Vellore,Tamil Nadu,2025-11-12,1,6,24,4
-Vellore,Tamil Nadu,2025-11-27,4,10,41,7
-Vellore,Tamil Nadu,2025-12-12,1,3,21,3
-Erode,Tamil Nadu,2025-01-01,0,2,11,0
-Erode,Tamil Nadu,2025-01-16,0,3,14,2
-Erode,Tamil Nadu,2025-01-31,0,2,5,2
-Erode,Tamil Nadu,2025-02-15,0,2,12,1
-Erode,Tamil Nadu,2025-03-02,0,2,14,1
-Erode,Tamil Nadu,2025-03-17,0,3,2,0
-Erode,Tamil Nadu,2025-04-01,0,3,7,2
-Erode,Tamil Nadu,2025-04-16,0,0,2,0
-Erode,Tamil Nadu,2025-05-01,0,0,5,1
-Erode,Tamil Nadu,2025-05-16,0,0,13,2
-Erode,Tamil Nadu,2025-05-31,0,0,7,0
-Erode,Tamil Nadu,2025-06-15,0,2,15,1
-Erode,Tamil Nadu,2025-06-30,1,3,20,3
-Erode,Tamil Nadu,2025-07-15,2,4,23,4
-Erode,Tamil Nadu,2025-07-30,3,7,31,6
-Erode,Tamil Nadu,2025-08-14,2,4,30,5
-Erode,Tamil Nadu,2025-08-29,0,3,10,2
-Erode,Tamil Nadu,2025-09-13,0,2,18,2
-Erode,Tamil Nadu,2025-09-28,0,0,5,0
-Erode,Tamil Nadu,2025-10-13,1,6,23,3
-Erode,Tamil Nadu,2025-10-28,2,6,28,3
-Erode,Tamil Nadu,2025-11-12,0,1,13,0
-Erode,Tamil Nadu,2025-11-27,2,7,28,4
-Erode,Tamil Nadu,2025-12-12,1,6,28,5
-Kanyakumari,Tamil Nadu,2025-01-01,0,2,11,2
-Kanyakumari,Tamil Nadu,2025-01-16,0,4,17,1
-Kanyakumari,Tamil Nadu,2025-01-31,0,1,11,2
-Kanyakumari,Tamil Nadu,2025-02-15,0,2,10,2
-Kanyakumari,Tamil Nadu,2025-03-02,1,3,19,2
-Kanyakumari,Tamil Nadu,2025-03-17,0,2,12,2
-Kanyakumari,Tamil Nadu,2025-04-01,0,2,12,2
-Kanyakumari,Tamil Nadu,2025-04-16,0,1,15,3
-Kanyakumari,Tamil Nadu,2025-05-01,0,3,9,2
-Kanyakumari,Tamil Nadu,2025-05-16,0,1,8,1
-Kanyakumari,Tamil Nadu,2025-05-31,0,1,8,1
-Kanyakumari,Tamil Nadu,2025-06-15,1,5,17,3
-Kanyakumari,Tamil Nadu,2025-06-30,0,1,13,2
-Kanyakumari,Tamil Nadu,2025-07-15,3,8,33,6
-Kanyakumari,Tamil Nadu,2025-07-30,0,2,13,3
-Kanyakumari,Tamil Nadu,2025-08-14,1,3,23,3
-Kanyakumari,Tamil Nadu,2025-08-29,0,4,16,2
-Kanyakumari,Tamil Nadu,2025-09-13,0,0,7,1
-Kanyakumari,Tamil Nadu,2025-09-28,0,4,8,2
-Kanyakumari,Tamil Nadu,2025-10-13,0,3,13,1
-Kanyakumari,Tamil Nadu,2025-10-28,1,4,20,4
-Kanyakumari,Tamil Nadu,2025-11-12,0,4,14,1
-Kanyakumari,Tamil Nadu,2025-11-27,1,5,29,3
-Kanyakumari,Tamil Nadu,2025-12-12,3,7,31,5
+Delhi,Delhi,2025-01-01,0,2,11,3
+Delhi,Delhi,2025-01-16,0,4,14,2
+Delhi,Delhi,2025-01-31,1,5,13,3
+Delhi,Delhi,2025-02-15,1,3,21,3
+Delhi,Delhi,2025-03-02,1,3,14,2
+Delhi,Delhi,2025-03-17,1,5,16,2
+Delhi,Delhi,2025-04-01,1,4,20,4
+Delhi,Delhi,2025-04-16,0,2,17,2
+Delhi,Delhi,2025-05-01,1,6,21,4
+Delhi,Delhi,2025-05-16,0,3,13,2
+Delhi,Delhi,2025-05-31,1,5,18,2
+Delhi,Delhi,2025-06-15,1,5,17,4
+Delhi,Delhi,2025-06-30,3,7,33,4
+Delhi,Delhi,2025-07-15,4,11,39,6
+Delhi,Delhi,2025-07-30,0,4,13,1
+Delhi,Delhi,2025-08-14,1,2,20,1
+Delhi,Delhi,2025-08-29,4,10,36,6
+Delhi,Delhi,2025-09-13,0,3,8,1
+Delhi,Delhi,2025-09-28,1,3,18,4
+Delhi,Delhi,2025-10-13,4,10,43,6
+Delhi,Delhi,2025-10-28,4,8,40,6
+Delhi,Delhi,2025-11-12,4,9,42,6
+Delhi,Delhi,2025-11-27,4,7,33,7
+Delhi,Delhi,2025-12-12,3,5,31,3
+Chandigarh,Chandigarh,2025-01-01,0,1,4,1
+Chandigarh,Chandigarh,2025-01-16,0,1,11,3
+Chandigarh,Chandigarh,2025-01-31,0,4,11,1
+Chandigarh,Chandigarh,2025-02-15,0,4,16,3
+Chandigarh,Chandigarh,2025-03-02,0,3,7,2
+Chandigarh,Chandigarh,2025-03-17,1,4,20,3
+Chandigarh,Chandigarh,2025-04-01,0,4,19,1
+Chandigarh,Chandigarh,2025-04-16,0,2,10,1
+Chandigarh,Chandigarh,2025-05-01,0,1,9,0
+Chandigarh,Chandigarh,2025-05-16,0,4,15,2
+Chandigarh,Chandigarh,2025-05-31,0,1,14,0
+Chandigarh,Chandigarh,2025-06-15,0,4,17,2
+Chandigarh,Chandigarh,2025-06-30,1,4,17,3
+Chandigarh,Chandigarh,2025-07-15,1,5,20,4
+Chandigarh,Chandigarh,2025-07-30,0,2,16,1
+Chandigarh,Chandigarh,2025-08-14,1,3,16,4
+Chandigarh,Chandigarh,2025-08-29,1,3,24,2
+Chandigarh,Chandigarh,2025-09-13,0,2,12,1
+Chandigarh,Chandigarh,2025-09-28,0,2,13,1
+Chandigarh,Chandigarh,2025-10-13,3,8,31,6
+Chandigarh,Chandigarh,2025-10-28,2,8,26,4
+Chandigarh,Chandigarh,2025-11-12,1,4,25,4
+Chandigarh,Chandigarh,2025-11-27,2,7,35,4
+Chandigarh,Chandigarh,2025-12-12,0,5,14,2
+Jaipur,Rajasthan,2025-01-01,0,2,14,1
+Jaipur,Rajasthan,2025-01-16,1,4,21,2
+Jaipur,Rajasthan,2025-01-31,0,1,9,3
+Jaipur,Rajasthan,2025-02-15,0,1,8,0
+Jaipur,Rajasthan,2025-03-02,0,3,9,2
+Jaipur,Rajasthan,2025-03-17,0,2,17,1
+Jaipur,Rajasthan,2025-04-01,0,2,6,1
+Jaipur,Rajasthan,2025-04-16,0,5,12,2
+Jaipur,Rajasthan,2025-05-01,0,1,12,3
+Jaipur,Rajasthan,2025-05-16,1,4,16,4
+Jaipur,Rajasthan,2025-05-31,1,5,20,1
+Jaipur,Rajasthan,2025-06-15,0,3,19,2
+Jaipur,Rajasthan,2025-06-30,1,4,19,3
+Jaipur,Rajasthan,2025-07-15,1,5,24,3
+Jaipur,Rajasthan,2025-07-30,1,5,19,4
+Jaipur,Rajasthan,2025-08-14,0,5,18,2
+Jaipur,Rajasthan,2025-08-29,2,6,34,4
+Jaipur,Rajasthan,2025-09-13,1,4,16,3
+Jaipur,Rajasthan,2025-09-28,0,4,16,1
+Jaipur,Rajasthan,2025-10-13,1,5,18,2
+Jaipur,Rajasthan,2025-10-28,0,4,11,2
+Jaipur,Rajasthan,2025-11-12,0,4,14,3
+Jaipur,Rajasthan,2025-11-27,3,7,27,6
+Jaipur,Rajasthan,2025-12-12,1,3,19,2
+Lucknow,Uttar Pradesh,2025-01-01,0,5,11,3
+Lucknow,Uttar Pradesh,2025-01-16,0,3,8,1
+Lucknow,Uttar Pradesh,2025-01-31,0,4,17,2
+Lucknow,Uttar Pradesh,2025-02-15,0,1,12,0
+Lucknow,Uttar Pradesh,2025-03-02,0,1,8,2
+Lucknow,Uttar Pradesh,2025-03-17,0,2,14,3
+Lucknow,Uttar Pradesh,2025-04-01,0,2,11,2
+Lucknow,Uttar Pradesh,2025-04-16,0,3,11,1
+Lucknow,Uttar Pradesh,2025-05-01,1,4,14,1
+Lucknow,Uttar Pradesh,2025-05-16,0,1,11,2
+Lucknow,Uttar Pradesh,2025-05-31,0,3,16,3
+Lucknow,Uttar Pradesh,2025-06-15,1,2,14,2
+Lucknow,Uttar Pradesh,2025-06-30,2,6,30,4
+Lucknow,Uttar Pradesh,2025-07-15,1,3,18,2
+Lucknow,Uttar Pradesh,2025-07-30,1,7,21,4
+Lucknow,Uttar Pradesh,2025-08-14,1,3,20,4
+Lucknow,Uttar Pradesh,2025-08-29,1,6,26,3
+Lucknow,Uttar Pradesh,2025-09-13,0,3,16,2
+Lucknow,Uttar Pradesh,2025-09-28,0,4,15,2
+Lucknow,Uttar Pradesh,2025-10-13,3,6,33,5
+Lucknow,Uttar Pradesh,2025-10-28,3,8,30,5
+Lucknow,Uttar Pradesh,2025-11-12,0,1,13,1
+Lucknow,Uttar Pradesh,2025-11-27,1,6,24,4
+Lucknow,Uttar Pradesh,2025-12-12,0,1,11,2
+Varanasi,Uttar Pradesh,2025-01-01,0,4,16,1
+Varanasi,Uttar Pradesh,2025-01-16,1,5,18,4
+Varanasi,Uttar Pradesh,2025-01-31,1,5,25,5
+Varanasi,Uttar Pradesh,2025-02-15,1,6,22,4
+Varanasi,Uttar Pradesh,2025-03-02,0,1,16,3
+Varanasi,Uttar Pradesh,2025-03-17,1,6,17,4
+Varanasi,Uttar Pradesh,2025-04-01,1,3,21,4
+Varanasi,Uttar Pradesh,2025-04-16,1,4,29,5
+Varanasi,Uttar Pradesh,2025-05-01,1,5,27,3
+Varanasi,Uttar Pradesh,2025-05-16,1,6,18,3
+Varanasi,Uttar Pradesh,2025-05-31,1,5,18,4
+Varanasi,Uttar Pradesh,2025-06-15,1,4,23,4
+Varanasi,Uttar Pradesh,2025-06-30,4,10,38,5
+Varanasi,Uttar Pradesh,2025-07-15,4,10,33,6
+Varanasi,Uttar Pradesh,2025-07-30,1,4,20,3
+Varanasi,Uttar Pradesh,2025-08-14,4,8,42,6
+Varanasi,Uttar Pradesh,2025-08-29,1,5,20,2
+Varanasi,Uttar Pradesh,2025-09-13,1,7,20,4
+Varanasi,Uttar Pradesh,2025-09-28,1,5,23,2
+Varanasi,Uttar Pradesh,2025-10-13,3,8,30,6
+Varanasi,Uttar Pradesh,2025-10-28,3,9,34,5
+Varanasi,Uttar Pradesh,2025-11-12,4,8,32,5
+Varanasi,Uttar Pradesh,2025-11-27,4,9,38,6
+Varanasi,Uttar Pradesh,2025-12-12,3,8,33,6
+Amritsar,Punjab,2025-01-01,0,0,7,2
+Amritsar,Punjab,2025-01-16,0,1,11,1
+Amritsar,Punjab,2025-01-31,0,3,10,1
+Amritsar,Punjab,2025-02-15,0,1,7,1
+Amritsar,Punjab,2025-03-02,0,2,4,1
+Amritsar,Punjab,2025-03-17,0,2,5,0
+Amritsar,Punjab,2025-04-01,0,2,10,0
+Amritsar,Punjab,2025-04-16,0,2,7,1
+Amritsar,Punjab,2025-05-01,0,3,5,0
+Amritsar,Punjab,2025-05-16,0,3,10,1
+Amritsar,Punjab,2025-05-31,0,4,8,1
+Amritsar,Punjab,2025-06-15,3,5,29,4
+Amritsar,Punjab,2025-06-30,3,8,35,5
+Amritsar,Punjab,2025-07-15,1,7,24,4
+Amritsar,Punjab,2025-07-30,1,3,12,3
+Amritsar,Punjab,2025-08-14,1,5,16,3
+Amritsar,Punjab,2025-08-29,1,7,26,3
+Amritsar,Punjab,2025-09-13,1,4,20,2
+Amritsar,Punjab,2025-09-28,0,2,9,0
+Amritsar,Punjab,2025-10-13,2,6,30,3
+Amritsar,Punjab,2025-10-28,1,4,22,4
+Amritsar,Punjab,2025-11-12,1,6,26,4
+Amritsar,Punjab,2025-11-27,2,4,29,4
+Amritsar,Punjab,2025-12-12,1,7,23,5
+Srinagar,Jammu & Kashmir,2025-01-01,0,1,5,2
+Srinagar,Jammu & Kashmir,2025-01-16,0,2,8,0
+Srinagar,Jammu & Kashmir,2025-01-31,0,1,8,2
+Srinagar,Jammu & Kashmir,2025-02-15,0,1,9,2
+Srinagar,Jammu & Kashmir,2025-03-02,0,1,17,2
+Srinagar,Jammu & Kashmir,2025-03-17,0,5,12,3
+Srinagar,Jammu & Kashmir,2025-04-01,0,3,8,2
+Srinagar,Jammu & Kashmir,2025-04-16,0,4,6,1
+Srinagar,Jammu & Kashmir,2025-05-01,1,5,13,3
+Srinagar,Jammu & Kashmir,2025-05-16,0,1,10,1
+Srinagar,Jammu & Kashmir,2025-05-31,0,3,2,0
+Srinagar,Jammu & Kashmir,2025-06-15,0,1,8,2
+Srinagar,Jammu & Kashmir,2025-06-30,1,3,18,2
+Srinagar,Jammu & Kashmir,2025-07-15,1,4,18,2
+Srinagar,Jammu & Kashmir,2025-07-30,1,4,24,2
+Srinagar,Jammu & Kashmir,2025-08-14,0,1,10,1
+Srinagar,Jammu & Kashmir,2025-08-29,1,6,18,4
+Srinagar,Jammu & Kashmir,2025-09-13,0,4,15,1
+Srinagar,Jammu & Kashmir,2025-09-28,0,3,6,0
+Srinagar,Jammu & Kashmir,2025-10-13,1,7,23,5
+Srinagar,Jammu & Kashmir,2025-10-28,1,3,18,3
+Srinagar,Jammu & Kashmir,2025-11-12,1,4,21,5
+Srinagar,Jammu & Kashmir,2025-11-27,1,2,13,3
+Srinagar,Jammu & Kashmir,2025-12-12,0,1,6,0
+Dehradun,Uttarakhand,2025-01-01,0,1,14,0
+Dehradun,Uttarakhand,2025-01-16,0,1,8,0
+Dehradun,Uttarakhand,2025-01-31,0,2,8,2
+Dehradun,Uttarakhand,2025-02-15,0,5,16,1
+Dehradun,Uttarakhand,2025-03-02,0,2,8,2
+Dehradun,Uttarakhand,2025-03-17,0,2,3,0
+Dehradun,Uttarakhand,2025-04-01,0,1,10,1
+Dehradun,Uttarakhand,2025-04-16,0,4,8,0
+Dehradun,Uttarakhand,2025-05-01,0,1,6,0
+Dehradun,Uttarakhand,2025-05-16,0,2,5,1
+Dehradun,Uttarakhand,2025-05-31,0,5,16,1
+Dehradun,Uttarakhand,2025-06-15,0,2,17,3
+Dehradun,Uttarakhand,2025-06-30,1,7,28,3
+Dehradun,Uttarakhand,2025-07-15,0,4,13,2
+Dehradun,Uttarakhand,2025-07-30,0,1,10,0
+Dehradun,Uttarakhand,2025-08-14,0,3,15,1
+Dehradun,Uttarakhand,2025-08-29,2,6,35,4
+Dehradun,Uttarakhand,2025-09-13,0,3,18,3
+Dehradun,Uttarakhand,2025-09-28,0,1,9,0
+Dehradun,Uttarakhand,2025-10-13,2,7,28,6
+Dehradun,Uttarakhand,2025-10-28,0,1,13,0
+Dehradun,Uttarakhand,2025-11-12,0,4,12,2
+Dehradun,Uttarakhand,2025-11-27,2,8,35,6
+Dehradun,Uttarakhand,2025-12-12,1,2,15,2
+Mumbai,Maharashtra,2025-01-01,1,4,20,2
+Mumbai,Maharashtra,2025-01-16,1,5,23,4
+Mumbai,Maharashtra,2025-01-31,0,3,12,3
+Mumbai,Maharashtra,2025-02-15,1,4,21,3
+Mumbai,Maharashtra,2025-03-02,1,3,18,1
+Mumbai,Maharashtra,2025-03-17,0,4,8,1
+Mumbai,Maharashtra,2025-04-01,1,5,16,4
+Mumbai,Maharashtra,2025-04-16,0,1,8,1
+Mumbai,Maharashtra,2025-05-01,0,1,12,2
+Mumbai,Maharashtra,2025-05-16,1,2,22,4
+Mumbai,Maharashtra,2025-05-31,0,1,10,1
+Mumbai,Maharashtra,2025-06-15,1,4,24,3
+Mumbai,Maharashtra,2025-06-30,2,5,29,4
+Mumbai,Maharashtra,2025-07-15,4,7,32,6
+Mumbai,Maharashtra,2025-07-30,4,9,40,8
+Mumbai,Maharashtra,2025-08-14,4,7,40,7
+Mumbai,Maharashtra,2025-08-29,1,4,14,2
+Mumbai,Maharashtra,2025-09-13,1,4,27,4
+Mumbai,Maharashtra,2025-09-28,1,2,14,2
+Mumbai,Maharashtra,2025-10-13,3,8,32,5
+Mumbai,Maharashtra,2025-10-28,4,9,37,5
+Mumbai,Maharashtra,2025-11-12,1,3,22,2
+Mumbai,Maharashtra,2025-11-27,4,10,37,5
+Mumbai,Maharashtra,2025-12-12,3,8,37,6
+Pune,Maharashtra,2025-01-01,0,2,11,2
+Pune,Maharashtra,2025-01-16,0,4,17,1
+Pune,Maharashtra,2025-01-31,0,1,11,2
+Pune,Maharashtra,2025-02-15,0,2,10,2
+Pune,Maharashtra,2025-03-02,1,3,19,2
+Pune,Maharashtra,2025-03-17,0,2,12,2
+Pune,Maharashtra,2025-04-01,0,2,12,2
+Pune,Maharashtra,2025-04-16,0,1,15,3
+Pune,Maharashtra,2025-05-01,0,3,9,2
+Pune,Maharashtra,2025-05-16,0,1,8,1
+Pune,Maharashtra,2025-05-31,0,1,8,1
+Pune,Maharashtra,2025-06-15,1,5,17,3
+Pune,Maharashtra,2025-06-30,0,1,13,2
+Pune,Maharashtra,2025-07-15,3,8,33,6
+Pune,Maharashtra,2025-07-30,0,2,13,3
+Pune,Maharashtra,2025-08-14,1,3,23,3
+Pune,Maharashtra,2025-08-29,0,4,16,2
+Pune,Maharashtra,2025-09-13,0,0,7,1
+Pune,Maharashtra,2025-09-28,0,4,8,2
+Pune,Maharashtra,2025-10-13,0,3,13,1
+Pune,Maharashtra,2025-10-28,1,4,20,4
+Pune,Maharashtra,2025-11-12,0,4,14,1
+Pune,Maharashtra,2025-11-27,1,5,29,3
+Pune,Maharashtra,2025-12-12,3,7,31,5
+Ahmedabad,Gujarat,2025-01-01,1,4,19,4
+Ahmedabad,Gujarat,2025-01-16,1,5,13,2
+Ahmedabad,Gujarat,2025-01-31,1,6,19,3
+Ahmedabad,Gujarat,2025-02-15,1,4,15,4
+Ahmedabad,Gujarat,2025-03-02,1,5,23,4
+Ahmedabad,Gujarat,2025-03-17,1,4,14,4
+Ahmedabad,Gujarat,2025-04-01,1,3,18,2
+Ahmedabad,Gujarat,2025-04-16,1,6,19,3
+Ahmedabad,Gujarat,2025-05-01,1,3,15,3
+Ahmedabad,Gujarat,2025-05-16,1,3,18,3
+Ahmedabad,Gujarat,2025-05-31,0,5,12,1
+Ahmedabad,Gujarat,2025-06-15,4,10,40,7
+Ahmedabad,Gujarat,2025-06-30,4,8,43,6
+Ahmedabad,Gujarat,2025-07-15,1,6,23,4
+Ahmedabad,Gujarat,2025-07-30,1,5,16,2
+Ahmedabad,Gujarat,2025-08-14,2,5,31,3
+Ahmedabad,Gujarat,2025-08-29,2,8,29,5
+Ahmedabad,Gujarat,2025-09-13,1,5,27,3
+Ahmedabad,Gujarat,2025-09-28,1,4,15,4
+Ahmedabad,Gujarat,2025-10-13,5,12,50,8
+Ahmedabad,Gujarat,2025-10-28,3,6,26,3
+Ahmedabad,Gujarat,2025-11-12,4,8,36,5
+Ahmedabad,Gujarat,2025-11-27,4,9,35,6
+Ahmedabad,Gujarat,2025-12-12,1,4,23,4
+Surat,Gujarat,2025-01-01,0,4,10,1
+Surat,Gujarat,2025-01-16,1,3,19,3
+Surat,Gujarat,2025-01-31,1,6,21,4
+Surat,Gujarat,2025-02-15,1,4,19,2
+Surat,Gujarat,2025-03-02,0,4,11,3
+Surat,Gujarat,2025-03-17,0,2,13,3
+Surat,Gujarat,2025-04-01,1,2,12,3
+Surat,Gujarat,2025-04-16,1,5,18,1
+Surat,Gujarat,2025-05-01,0,2,19,3
+Surat,Gujarat,2025-05-16,0,2,14,2
+Surat,Gujarat,2025-05-31,0,4,19,3
+Surat,Gujarat,2025-06-15,1,5,17,3
+Surat,Gujarat,2025-06-30,1,4,22,2
+Surat,Gujarat,2025-07-15,1,3,15,3
+Surat,Gujarat,2025-07-30,3,6,28,5
+Surat,Gujarat,2025-08-14,4,10,38,7
+Surat,Gujarat,2025-08-29,4,9,38,5
+Surat,Gujarat,2025-09-13,1,5,18,4
+Surat,Gujarat,2025-09-28,1,6,20,4
+Surat,Gujarat,2025-10-13,4,11,49,8
+Surat,Gujarat,2025-10-28,4,9,35,5
+Surat,Gujarat,2025-11-12,3,9,37,5
+Surat,Gujarat,2025-11-27,4,9,37,6
+Surat,Gujarat,2025-12-12,4,9,36,7
+Panaji,Goa,2025-01-01,0,3,10,0
+Panaji,Goa,2025-01-16,0,1,8,0
+Panaji,Goa,2025-01-31,0,0,6,0
+Panaji,Goa,2025-02-15,0,0,10,0
+Panaji,Goa,2025-03-02,0,1,10,1
+Panaji,Goa,2025-03-17,0,2,8,0
+Panaji,Goa,2025-04-01,0,3,9,1
+Panaji,Goa,2025-04-16,0,3,10,0
+Panaji,Goa,2025-05-01,0,1,8,1
+Panaji,Goa,2025-05-16,0,1,8,1
+Panaji,Goa,2025-05-31,0,2,5,2
+Panaji,Goa,2025-06-15,1,3,25,3
+Panaji,Goa,2025-06-30,4,10,38,7
+Panaji,Goa,2025-07-15,0,2,16,2
+Panaji,Goa,2025-07-30,1,3,22,2
+Panaji,Goa,2025-08-14,1,5,23,2
+Panaji,Goa,2025-08-29,0,2,11,1
+Panaji,Goa,2025-09-13,0,3,3,0
+Panaji,Goa,2025-09-28,0,1,10,0
+Panaji,Goa,2025-10-13,1,5,25,4
+Panaji,Goa,2025-10-28,0,1,10,2
+Panaji,Goa,2025-11-12,2,8,35,5
+Panaji,Goa,2025-11-27,0,2,17,1
+Panaji,Goa,2025-12-12,1,4,26,5
+Bengaluru,Karnataka,2025-01-01,0,4,11,2
+Bengaluru,Karnataka,2025-01-16,0,0,6,1
+Bengaluru,Karnataka,2025-01-31,0,2,12,1
+Bengaluru,Karnataka,2025-02-15,0,3,8,1
+Bengaluru,Karnataka,2025-03-02,0,1,3,1
+Bengaluru,Karnataka,2025-03-17,0,1,9,3
+Bengaluru,Karnataka,2025-04-01,1,4,14,2
+Bengaluru,Karnataka,2025-04-16,0,3,11,2
+Bengaluru,Karnataka,2025-05-01,0,1,8,1
+Bengaluru,Karnataka,2025-05-16,0,2,13,1
+Bengaluru,Karnataka,2025-05-31,0,2,12,1
+Bengaluru,Karnataka,2025-06-15,4,10,40,7
+Bengaluru,Karnataka,2025-06-30,3,8,31,5
+Bengaluru,Karnataka,2025-07-15,1,3,20,3
+Bengaluru,Karnataka,2025-07-30,1,4,19,3
+Bengaluru,Karnataka,2025-08-14,0,1,7,1
+Bengaluru,Karnataka,2025-08-29,1,2,18,1
+Bengaluru,Karnataka,2025-09-13,0,4,16,1
+Bengaluru,Karnataka,2025-09-28,0,3,12,0
+Bengaluru,Karnataka,2025-10-13,1,3,19,2
+Bengaluru,Karnataka,2025-10-28,2,5,25,3
+Bengaluru,Karnataka,2025-11-12,1,5,22,2
+Bengaluru,Karnataka,2025-11-27,3,5,29,4
+Bengaluru,Karnataka,2025-12-12,3,9,37,6
+Hyderabad,Telangana,2025-01-01,0,2,13,2
+Hyderabad,Telangana,2025-01-16,0,3,11,2
+Hyderabad,Telangana,2025-01-31,1,4,16,3
+Hyderabad,Telangana,2025-02-15,1,3,17,1
+Hyderabad,Telangana,2025-03-02,0,2,13,2
+Hyderabad,Telangana,2025-03-17,1,4,28,4
+Hyderabad,Telangana,2025-04-01,0,1,12,2
+Hyderabad,Telangana,2025-04-16,1,2,18,3
+Hyderabad,Telangana,2025-05-01,0,1,15,1
+Hyderabad,Telangana,2025-05-16,1,2,12,2
+Hyderabad,Telangana,2025-05-31,0,3,11,3
+Hyderabad,Telangana,2025-06-15,3,8,31,6
+Hyderabad,Telangana,2025-06-30,1,3,20,4
+Hyderabad,Telangana,2025-07-15,2,5,25,5
+Hyderabad,Telangana,2025-07-30,0,5,19,3
+Hyderabad,Telangana,2025-08-14,0,1,13,3
+Hyderabad,Telangana,2025-08-29,1,4,22,5
+Hyderabad,Telangana,2025-09-13,1,4,21,4
+Hyderabad,Telangana,2025-09-28,0,4,19,2
+Hyderabad,Telangana,2025-10-13,3,8,34,5
+Hyderabad,Telangana,2025-10-28,0,4,19,3
+Hyderabad,Telangana,2025-11-12,4,10,38,7
+Hyderabad,Telangana,2025-11-27,4,10,33,5
+Hyderabad,Telangana,2025-12-12,4,10,33,6
+Chennai,Tamil Nadu,2025-01-01,1,2,17,3
+Chennai,Tamil Nadu,2025-01-16,1,3,16,3
+Chennai,Tamil Nadu,2025-01-31,0,2,12,3
+Chennai,Tamil Nadu,2025-02-15,1,4,22,2
+Chennai,Tamil Nadu,2025-03-02,0,3,9,2
+Chennai,Tamil Nadu,2025-03-17,1,3,12,2
+Chennai,Tamil Nadu,2025-04-01,0,4,12,3
+Chennai,Tamil Nadu,2025-04-16,1,4,21,4
+Chennai,Tamil Nadu,2025-05-01,1,4,17,3
+Chennai,Tamil Nadu,2025-05-16,1,4,29,4
+Chennai,Tamil Nadu,2025-05-31,0,3,17,2
+Chennai,Tamil Nadu,2025-06-15,1,3,20,2
+Chennai,Tamil Nadu,2025-06-30,1,7,27,4
+Chennai,Tamil Nadu,2025-07-15,3,6,30,4
+Chennai,Tamil Nadu,2025-07-30,1,4,19,2
+Chennai,Tamil Nadu,2025-08-14,3,9,37,6
+Chennai,Tamil Nadu,2025-08-29,1,2,20,1
+Chennai,Tamil Nadu,2025-09-13,1,2,17,3
+Chennai,Tamil Nadu,2025-09-28,1,5,13,3
+Chennai,Tamil Nadu,2025-10-13,1,7,22,4
+Chennai,Tamil Nadu,2025-10-28,4,10,47,8
+Chennai,Tamil Nadu,2025-11-12,4,11,40,7
+Chennai,Tamil Nadu,2025-11-27,4,9,45,7
+Chennai,Tamil Nadu,2025-12-12,1,4,14,2
+Coimbatore,Tamil Nadu,2025-01-01,0,2,16,3
+Coimbatore,Tamil Nadu,2025-01-16,0,1,3,2
+Coimbatore,Tamil Nadu,2025-01-31,0,2,8,2
+Coimbatore,Tamil Nadu,2025-02-15,0,3,15,1
+Coimbatore,Tamil Nadu,2025-03-02,0,2,9,3
+Coimbatore,Tamil Nadu,2025-03-17,0,0,7,0
+Coimbatore,Tamil Nadu,2025-04-01,0,3,15,2
+Coimbatore,Tamil Nadu,2025-04-16,0,3,7,0
+Coimbatore,Tamil Nadu,2025-05-01,0,4,11,2
+Coimbatore,Tamil Nadu,2025-05-16,0,2,18,3
+Coimbatore,Tamil Nadu,2025-05-31,0,3,14,3
+Coimbatore,Tamil Nadu,2025-06-15,0,3,8,3
+Coimbatore,Tamil Nadu,2025-06-30,0,2,14,3
+Coimbatore,Tamil Nadu,2025-07-15,0,2,8,2
+Coimbatore,Tamil Nadu,2025-07-30,0,2,6,1
+Coimbatore,Tamil Nadu,2025-08-14,1,7,24,5
+Coimbatore,Tamil Nadu,2025-08-29,1,4,19,2
+Coimbatore,Tamil Nadu,2025-09-13,0,0,10,2
+Coimbatore,Tamil Nadu,2025-09-28,0,3,8,2
+Coimbatore,Tamil Nadu,2025-10-13,1,7,22,4
+Coimbatore,Tamil Nadu,2025-10-28,0,2,13,3
+Coimbatore,Tamil Nadu,2025-11-12,2,7,28,3
+Coimbatore,Tamil Nadu,2025-11-27,4,7,37,5
+Coimbatore,Tamil Nadu,2025-12-12,1,5,24,2
+Madurai,Tamil Nadu,2025-01-01,0,1,11,1
+Madurai,Tamil Nadu,2025-01-16,0,1,15,3
+Madurai,Tamil Nadu,2025-01-31,0,0,4,2
+Madurai,Tamil Nadu,2025-02-15,0,2,19,3
+Madurai,Tamil Nadu,2025-03-02,0,3,10,0
+Madurai,Tamil Nadu,2025-03-17,1,2,16,2
+Madurai,Tamil Nadu,2025-04-01,0,1,9,1
+Madurai,Tamil Nadu,2025-04-16,1,3,19,2
+Madurai,Tamil Nadu,2025-05-01,0,1,9,1
+Madurai,Tamil Nadu,2025-05-16,0,2,9,1
+Madurai,Tamil Nadu,2025-05-31,0,4,15,2
+Madurai,Tamil Nadu,2025-06-15,0,2,14,3
+Madurai,Tamil Nadu,2025-06-30,0,0,2,2
+Madurai,Tamil Nadu,2025-07-15,3,7,30,6
+Madurai,Tamil Nadu,2025-07-30,0,4,13,1
+Madurai,Tamil Nadu,2025-08-14,0,3,4,2
+Madurai,Tamil Nadu,2025-08-29,0,3,16,1
+Madurai,Tamil Nadu,2025-09-13,0,4,15,2
+Madurai,Tamil Nadu,2025-09-28,0,2,8,2
+Madurai,Tamil Nadu,2025-10-13,0,2,8,2
+Madurai,Tamil Nadu,2025-10-28,1,4,17,4
+Madurai,Tamil Nadu,2025-11-12,1,5,18,3
+Madurai,Tamil Nadu,2025-11-27,1,3,24,4
+Madurai,Tamil Nadu,2025-12-12,2,4,24,4
+Salem,Tamil Nadu,2025-01-01,0,2,14,1
+Salem,Tamil Nadu,2025-01-16,1,2,14,1
+Salem,Tamil Nadu,2025-01-31,1,5,21,4
+Salem,Tamil Nadu,2025-02-15,0,2,16,3
+Salem,Tamil Nadu,2025-03-02,0,2,13,2
+Salem,Tamil Nadu,2025-03-17,0,3,13,1
+Salem,Tamil Nadu,2025-04-01,0,1,9,1
+Salem,Tamil Nadu,2025-04-16,1,4,21,2
+Salem,Tamil Nadu,2025-05-01,0,2,9,0
+Salem,Tamil Nadu,2025-05-16,0,2,8,2
+Salem,Tamil Nadu,2025-05-31,1,4,18,3
+Salem,Tamil Nadu,2025-06-15,2,5,33,6
+Salem,Tamil Nadu,2025-06-30,4,8,34,5
+Salem,Tamil Nadu,2025-07-15,1,4,19,3
+Salem,Tamil Nadu,2025-07-30,4,7,37,7
+Salem,Tamil Nadu,2025-08-14,1,5,23,4
+Salem,Tamil Nadu,2025-08-29,1,4,20,3
+Salem,Tamil Nadu,2025-09-13,1,5,17,3
+Salem,Tamil Nadu,2025-09-28,1,3,20,3
+Salem,Tamil Nadu,2025-10-13,1,7,27,5
+Salem,Tamil Nadu,2025-10-28,1,6,25,3
+Salem,Tamil Nadu,2025-11-12,4,8,43,6
+Salem,Tamil Nadu,2025-11-27,1,4,26,4
+Salem,Tamil Nadu,2025-12-12,1,7,26,3
+Kochi,Kerala,2025-01-01,1,3,19,2
+Kochi,Kerala,2025-01-16,0,0,6,2
+Kochi,Kerala,2025-01-31,0,3,10,2
+Kochi,Kerala,2025-02-15,0,3,13,0
+Kochi,Kerala,2025-03-02,0,0,7,0
+Kochi,Kerala,2025-03-17,0,2,17,2
+Kochi,Kerala,2025-04-01,0,3,8,0
+Kochi,Kerala,2025-04-16,0,2,9,1
+Kochi,Kerala,2025-05-01,0,2,16,3
+Kochi,Kerala,2025-05-16,0,2,5,1
+Kochi,Kerala,2025-05-31,0,2,9,2
+Kochi,Kerala,2025-06-15,0,3,12,1
+Kochi,Kerala,2025-06-30,1,2,20,3
+Kochi,Kerala,2025-07-15,0,3,8,2
+Kochi,Kerala,2025-07-30,2,5,27,4
+Kochi,Kerala,2025-08-14,3,6,31,6
+Kochi,Kerala,2025-08-29,1,4,26,4
+Kochi,Kerala,2025-09-13,1,3,22,4
+Kochi,Kerala,2025-09-28,0,2,6,1
+Kochi,Kerala,2025-10-13,1,5,17,4
+Kochi,Kerala,2025-10-28,3,9,37,6
+Kochi,Kerala,2025-11-12,1,5,20,4
+Kochi,Kerala,2025-11-27,2,7,34,6
+Kochi,Kerala,2025-12-12,3,4,24,4
+Thiruvananthapuram,Kerala,2025-01-01,0,4,12,2
+Thiruvananthapuram,Kerala,2025-01-16,1,6,22,3
+Thiruvananthapuram,Kerala,2025-01-31,0,3,12,0
+Thiruvananthapuram,Kerala,2025-02-15,0,4,13,2
+Thiruvananthapuram,Kerala,2025-03-02,0,2,8,1
+Thiruvananthapuram,Kerala,2025-03-17,0,2,2,1
+Thiruvananthapuram,Kerala,2025-04-01,0,0,12,0
+Thiruvananthapuram,Kerala,2025-04-16,0,1,16,1
+Thiruvananthapuram,Kerala,2025-05-01,0,0,13,1
+Thiruvananthapuram,Kerala,2025-05-16,0,3,13,0
+Thiruvananthapuram,Kerala,2025-05-31,0,4,8,3
+Thiruvananthapuram,Kerala,2025-06-15,1,5,19,4
+Thiruvananthapuram,Kerala,2025-06-30,1,4,24,3
+Thiruvananthapuram,Kerala,2025-07-15,0,0,7,2
+Thiruvananthapuram,Kerala,2025-07-30,0,1,17,3
+Thiruvananthapuram,Kerala,2025-08-14,3,6,33,4
+Thiruvananthapuram,Kerala,2025-08-29,0,3,12,2
+Thiruvananthapuram,Kerala,2025-09-13,0,0,5,1
+Thiruvananthapuram,Kerala,2025-09-28,1,6,19,3
+Thiruvananthapuram,Kerala,2025-10-13,3,5,31,4
+Thiruvananthapuram,Kerala,2025-10-28,4,9,42,7
+Thiruvananthapuram,Kerala,2025-11-12,0,2,11,3
+Thiruvananthapuram,Kerala,2025-11-27,1,6,24,3
+Thiruvananthapuram,Kerala,2025-12-12,1,4,28,3
+Visakhapatnam,Andhra Pradesh,2025-01-01,0,3,9,2
+Visakhapatnam,Andhra Pradesh,2025-01-16,0,1,9,2
+Visakhapatnam,Andhra Pradesh,2025-01-31,0,3,6,0
+Visakhapatnam,Andhra Pradesh,2025-02-15,0,0,8,0
+Visakhapatnam,Andhra Pradesh,2025-03-02,0,4,13,1
+Visakhapatnam,Andhra Pradesh,2025-03-17,0,1,7,0
+Visakhapatnam,Andhra Pradesh,2025-04-01,0,2,13,1
+Visakhapatnam,Andhra Pradesh,2025-04-16,0,0,8,0
+Visakhapatnam,Andhra Pradesh,2025-05-01,0,4,9,3
+Visakhapatnam,Andhra Pradesh,2025-05-16,0,0,11,2
+Visakhapatnam,Andhra Pradesh,2025-05-31,0,0,7,0
+Visakhapatnam,Andhra Pradesh,2025-06-15,0,2,11,1
+Visakhapatnam,Andhra Pradesh,2025-06-30,1,5,15,2
+Visakhapatnam,Andhra Pradesh,2025-07-15,0,4,13,2
+Visakhapatnam,Andhra Pradesh,2025-07-30,2,8,32,4
+Visakhapatnam,Andhra Pradesh,2025-08-14,0,4,7,1
+Visakhapatnam,Andhra Pradesh,2025-08-29,1,7,21,4
+Visakhapatnam,Andhra Pradesh,2025-09-13,0,3,2,0
+Visakhapatnam,Andhra Pradesh,2025-09-28,0,3,13,1
+Visakhapatnam,Andhra Pradesh,2025-10-13,4,10,36,7
+Visakhapatnam,Andhra Pradesh,2025-10-28,2,6,27,4
+Visakhapatnam,Andhra Pradesh,2025-11-12,0,1,10,1
+Visakhapatnam,Andhra Pradesh,2025-11-27,1,6,21,3
+Visakhapatnam,Andhra Pradesh,2025-12-12,1,4,28,3
+Kolkata,West Bengal,2025-01-01,1,2,16,3
+Kolkata,West Bengal,2025-01-16,1,4,18,2
+Kolkata,West Bengal,2025-01-31,1,5,22,3
+Kolkata,West Bengal,2025-02-15,0,2,11,3
+Kolkata,West Bengal,2025-03-02,0,3,10,3
+Kolkata,West Bengal,2025-03-17,1,4,28,3
+Kolkata,West Bengal,2025-04-01,1,4,20,3
+Kolkata,West Bengal,2025-04-16,0,3,14,3
+Kolkata,West Bengal,2025-05-01,1,6,25,4
+Kolkata,West Bengal,2025-05-16,0,1,15,1
+Kolkata,West Bengal,2025-05-31,1,5,22,3
+Kolkata,West Bengal,2025-06-15,1,5,24,2
+Kolkata,West Bengal,2025-06-30,1,5,26,3
+Kolkata,West Bengal,2025-07-15,1,3,23,3
+Kolkata,West Bengal,2025-07-30,1,4,20,3
+Kolkata,West Bengal,2025-08-14,3,5,29,6
+Kolkata,West Bengal,2025-08-29,1,5,16,3
+Kolkata,West Bengal,2025-09-13,1,3,22,4
+Kolkata,West Bengal,2025-09-28,1,4,14,4
+Kolkata,West Bengal,2025-10-13,4,8,34,7
+Kolkata,West Bengal,2025-10-28,1,4,19,4
+Kolkata,West Bengal,2025-11-12,4,8,43,7
+Kolkata,West Bengal,2025-11-27,1,2,22,2
+Kolkata,West Bengal,2025-12-12,3,6,37,6
+Patna,Bihar,2025-01-01,1,2,20,1
+Patna,Bihar,2025-01-16,2,6,29,3
+Patna,Bihar,2025-01-31,1,7,22,4
+Patna,Bihar,2025-02-15,1,4,25,4
+Patna,Bihar,2025-03-02,2,8,32,4
+Patna,Bihar,2025-03-17,1,7,25,5
+Patna,Bihar,2025-04-01,2,6,29,3
+Patna,Bihar,2025-04-16,1,6,23,4
+Patna,Bihar,2025-05-01,3,8,33,6
+Patna,Bihar,2025-05-16,1,6,26,3
+Patna,Bihar,2025-05-31,2,6,26,3
+Patna,Bihar,2025-06-15,4,10,34,6
+Patna,Bihar,2025-06-30,3,7,38,6
+Patna,Bihar,2025-07-15,2,6,34,5
+Patna,Bihar,2025-07-30,2,8,31,4
+Patna,Bihar,2025-08-14,3,7,28,3
+Patna,Bihar,2025-08-29,1,5,18,3
+Patna,Bihar,2025-09-13,1,7,25,5
+Patna,Bihar,2025-09-28,1,5,20,2
+Patna,Bihar,2025-10-13,4,7,40,7
+Patna,Bihar,2025-10-28,1,7,23,3
+Patna,Bihar,2025-11-12,1,6,22,4
+Patna,Bihar,2025-11-27,4,8,36,5
+Patna,Bihar,2025-12-12,3,9,29,5
+Bhubaneswar,Odisha,2025-01-01,0,2,14,1
+Bhubaneswar,Odisha,2025-01-16,0,0,8,0
+Bhubaneswar,Odisha,2025-01-31,0,2,14,3
+Bhubaneswar,Odisha,2025-02-15,0,5,12,1
+Bhubaneswar,Odisha,2025-03-02,0,2,16,2
+Bhubaneswar,Odisha,2025-03-17,0,4,9,1
+Bhubaneswar,Odisha,2025-04-01,1,5,21,3
+Bhubaneswar,Odisha,2025-04-16,0,4,8,1
+Bhubaneswar,Odisha,2025-05-01,0,4,12,1
+Bhubaneswar,Odisha,2025-05-16,0,1,10,0
+Bhubaneswar,Odisha,2025-05-31,0,1,13,1
+Bhubaneswar,Odisha,2025-06-15,1,3,18,1
+Bhubaneswar,Odisha,2025-06-30,1,7,23,4
+Bhubaneswar,Odisha,2025-07-15,1,6,25,3
+Bhubaneswar,Odisha,2025-07-30,0,4,14,1
+Bhubaneswar,Odisha,2025-08-14,0,2,8,3
+Bhubaneswar,Odisha,2025-08-29,0,0,7,1
+Bhubaneswar,Odisha,2025-09-13,0,1,7,1
+Bhubaneswar,Odisha,2025-09-28,0,5,12,2
+Bhubaneswar,Odisha,2025-10-13,1,5,23,4
+Bhubaneswar,Odisha,2025-10-28,3,6,33,4
+Bhubaneswar,Odisha,2025-11-12,2,5,28,6
+Bhubaneswar,Odisha,2025-11-27,2,6,32,4
+Bhubaneswar,Odisha,2025-12-12,0,3,11,1
+Ranchi,Jharkhand,2025-01-01,1,3,17,4
+Ranchi,Jharkhand,2025-01-16,1,4,19,1
+Ranchi,Jharkhand,2025-01-31,0,1,4,0
+Ranchi,Jharkhand,2025-02-15,1,4,23,3
+Ranchi,Jharkhand,2025-03-02,0,2,10,0
+Ranchi,Jharkhand,2025-03-17,0,2,16,3
+Ranchi,Jharkhand,2025-04-01,1,4,14,4
+Ranchi,Jharkhand,2025-04-16,0,3,17,1
+Ranchi,Jharkhand,2025-05-01,1,4,14,2
+Ranchi,Jharkhand,2025-05-16,0,2,14,0
+Ranchi,Jharkhand,2025-05-31,0,4,10,1
+Ranchi,Jharkhand,2025-06-15,2,6,27,3
+Ranchi,Jharkhand,2025-06-30,3,8,34,5
+Ranchi,Jharkhand,2025-07-15,3,7,38,6
+Ranchi,Jharkhand,2025-07-30,1,3,17,4
+Ranchi,Jharkhand,2025-08-14,0,1,10,2
+Ranchi,Jharkhand,2025-08-29,1,2,18,2
+Ranchi,Jharkhand,2025-09-13,0,2,12,1
+Ranchi,Jharkhand,2025-09-28,1,4,23,2
+Ranchi,Jharkhand,2025-10-13,1,6,23,4
+Ranchi,Jharkhand,2025-10-28,4,10,34,5
+Ranchi,Jharkhand,2025-11-12,4,9,39,6
+Ranchi,Jharkhand,2025-11-27,2,5,27,4
+Ranchi,Jharkhand,2025-12-12,4,10,39,6
+Bhopal,Madhya Pradesh,2025-01-01,0,3,7,0
+Bhopal,Madhya Pradesh,2025-01-16,0,2,12,2
+Bhopal,Madhya Pradesh,2025-01-31,0,3,13,0
+Bhopal,Madhya Pradesh,2025-02-15,0,4,10,2
+Bhopal,Madhya Pradesh,2025-03-02,0,4,11,2
+Bhopal,Madhya Pradesh,2025-03-17,0,2,8,1
+Bhopal,Madhya Pradesh,2025-04-01,0,1,6,2
+Bhopal,Madhya Pradesh,2025-04-16,0,3,7,0
+Bhopal,Madhya Pradesh,2025-05-01,0,0,10,0
+Bhopal,Madhya Pradesh,2025-05-16,0,4,13,1
+Bhopal,Madhya Pradesh,2025-05-31,0,2,6,2
+Bhopal,Madhya Pradesh,2025-06-15,1,5,19,4
+Bhopal,Madhya Pradesh,2025-06-30,1,4,15,4
+Bhopal,Madhya Pradesh,2025-07-15,1,2,14,2
+Bhopal,Madhya Pradesh,2025-07-30,1,5,23,5
+Bhopal,Madhya Pradesh,2025-08-14,0,3,16,1
+Bhopal,Madhya Pradesh,2025-08-29,0,3,10,3
+Bhopal,Madhya Pradesh,2025-09-13,0,0,3,0
+Bhopal,Madhya Pradesh,2025-09-28,0,1,11,1
+Bhopal,Madhya Pradesh,2025-10-13,2,8,25,5
+Bhopal,Madhya Pradesh,2025-10-28,1,6,23,2
+Bhopal,Madhya Pradesh,2025-11-12,1,3,20,3
+Bhopal,Madhya Pradesh,2025-11-27,3,7,31,6
+Bhopal,Madhya Pradesh,2025-12-12,1,4,28,4
+Indore,Madhya Pradesh,2025-01-01,1,4,17,4
+Indore,Madhya Pradesh,2025-01-16,0,1,12,1
+Indore,Madhya Pradesh,2025-01-31,0,0,11,0
+Indore,Madhya Pradesh,2025-02-15,0,3,16,2
+Indore,Madhya Pradesh,2025-03-02,0,4,15,3
+Indore,Madhya Pradesh,2025-03-17,0,3,17,3
+Indore,Madhya Pradesh,2025-04-01,0,0,7,1
+Indore,Madhya Pradesh,2025-04-16,0,2,17,3
+Indore,Madhya Pradesh,2025-05-01,1,3,21,4
+Indore,Madhya Pradesh,2025-05-16,0,3,19,1
+Indore,Madhya Pradesh,2025-05-31,0,1,12,2
+Indore,Madhya Pradesh,2025-06-15,0,4,16,1
+Indore,Madhya Pradesh,2025-06-30,1,3,20,2
+Indore,Madhya Pradesh,2025-07-15,0,3,12,0
+Indore,Madhya Pradesh,2025-07-30,3,5,30,5
+Indore,Madhya Pradesh,2025-08-14,1,5,16,2
+Indore,Madhya Pradesh,2025-08-29,1,5,18,3
+Indore,Madhya Pradesh,2025-09-13,0,3,6,1
+Indore,Madhya Pradesh,2025-09-28,0,0,7,0
+Indore,Madhya Pradesh,2025-10-13,1,6,17,3
+Indore,Madhya Pradesh,2025-10-28,1,6,22,4
+Indore,Madhya Pradesh,2025-11-12,4,9,35,7
+Indore,Madhya Pradesh,2025-11-27,1,7,21,3
+Indore,Madhya Pradesh,2025-12-12,4,9,37,6
+Raipur,Chhattisgarh,2025-01-01,0,3,6,2
+Raipur,Chhattisgarh,2025-01-16,0,4,14,3
+Raipur,Chhattisgarh,2025-01-31,0,2,6,1
+Raipur,Chhattisgarh,2025-02-15,0,0,5,0
+Raipur,Chhattisgarh,2025-03-02,0,2,7,0
+Raipur,Chhattisgarh,2025-03-17,0,1,12,2
+Raipur,Chhattisgarh,2025-04-01,0,3,5,2
+Raipur,Chhattisgarh,2025-04-16,0,2,5,1
+Raipur,Chhattisgarh,2025-05-01,0,1,2,2
+Raipur,Chhattisgarh,2025-05-16,1,2,12,1
+Raipur,Chhattisgarh,2025-05-31,0,1,2,2
+Raipur,Chhattisgarh,2025-06-15,1,5,20,2
+Raipur,Chhattisgarh,2025-06-30,0,3,11,0
+Raipur,Chhattisgarh,2025-07-15,0,2,13,3
+Raipur,Chhattisgarh,2025-07-30,0,2,10,2
+Raipur,Chhattisgarh,2025-08-14,1,5,19,3
+Raipur,Chhattisgarh,2025-08-29,2,7,31,5
+Raipur,Chhattisgarh,2025-09-13,0,0,8,2
+Raipur,Chhattisgarh,2025-09-28,0,4,9,0
+Raipur,Chhattisgarh,2025-10-13,0,1,16,3
+Raipur,Chhattisgarh,2025-10-28,0,2,12,1
+Raipur,Chhattisgarh,2025-11-12,2,7,30,5
+Raipur,Chhattisgarh,2025-11-27,1,6,15,2
+Raipur,Chhattisgarh,2025-12-12,1,6,27,3
+Guwahati,Assam,2025-01-01,0,2,5,2
+Guwahati,Assam,2025-01-16,0,3,8,2
+Guwahati,Assam,2025-01-31,0,1,17,1
+Guwahati,Assam,2025-02-15,0,3,14,3
+Guwahati,Assam,2025-03-02,0,3,13,2
+Guwahati,Assam,2025-03-17,1,5,13,1
+Guwahati,Assam,2025-04-01,0,3,14,2
+Guwahati,Assam,2025-04-16,0,3,3,1
+Guwahati,Assam,2025-05-01,0,4,12,3
+Guwahati,Assam,2025-05-16,1,2,15,2
+Guwahati,Assam,2025-05-31,0,5,17,1
+Guwahati,Assam,2025-06-15,0,3,14,2
+Guwahati,Assam,2025-06-30,4,10,36,6
+Guwahati,Assam,2025-07-15,0,0,6,1
+Guwahati,Assam,2025-07-30,2,8,24,5
+Guwahati,Assam,2025-08-14,1,3,21,2
+Guwahati,Assam,2025-08-29,1,2,14,2
+Guwahati,Assam,2025-09-13,0,4,16,1
+Guwahati,Assam,2025-09-28,0,3,7,0
+Guwahati,Assam,2025-10-13,2,5,28,4
+Guwahati,Assam,2025-10-28,1,5,21,2
+Guwahati,Assam,2025-11-12,3,9,29,5
+Guwahati,Assam,2025-11-27,3,5,26,4
+Guwahati,Assam,2025-12-12,2,4,29,3
+Shillong,Meghalaya,2025-01-01,0,3,7,2
+Shillong,Meghalaya,2025-01-16,0,5,11,3
+Shillong,Meghalaya,2025-01-31,0,4,12,3
+Shillong,Meghalaya,2025-02-15,0,3,11,1
+Shillong,Meghalaya,2025-03-02,0,3,9,1
+Shillong,Meghalaya,2025-03-17,0,4,18,3
+Shillong,Meghalaya,2025-04-01,0,2,4,0
+Shillong,Meghalaya,2025-04-16,0,4,15,2
+Shillong,Meghalaya,2025-05-01,0,3,11,1
+Shillong,Meghalaya,2025-05-16,1,4,13,2
+Shillong,Meghalaya,2025-05-31,0,1,7,1
+Shillong,Meghalaya,2025-06-15,0,5,16,1
+Shillong,Meghalaya,2025-06-30,0,4,14,2
+Shillong,Meghalaya,2025-07-15,0,2,8,2
+Shillong,Meghalaya,2025-07-30,3,5,27,5
+Shillong,Meghalaya,2025-08-14,2,8,31,5
+Shillong,Meghalaya,2025-08-29,0,4,11,1
+Shillong,Meghalaya,2025-09-13,0,1,12,1
+Shillong,Meghalaya,2025-09-28,0,4,16,3
+Shillong,Meghalaya,2025-10-13,3,6,27,5
+Shillong,Meghalaya,2025-10-28,3,8,33,6
+Shillong,Meghalaya,2025-11-12,0,3,15,1
+Shillong,Meghalaya,2025-11-27,3,9,34,5
+Shillong,Meghalaya,2025-12-12,2,7,26,4

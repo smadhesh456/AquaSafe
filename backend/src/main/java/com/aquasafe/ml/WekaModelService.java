@@ -35,8 +35,12 @@ public class WekaModelService {
     private boolean modelLoaded = false;
 
     private final List<String> districtList = Arrays.asList(
-        "Chennai", "Madurai", "Coimbatore", "Tiruchirappalli", "Salem",
-        "Tirunelveli", "Thanjavur", "Vellore", "Erode", "Kanyakumari"
+        "Delhi", "Chandigarh", "Jaipur", "Lucknow", "Varanasi", "Amritsar", "Srinagar", "Dehradun",
+        "Mumbai", "Pune", "Ahmedabad", "Surat", "Panaji",
+        "Bengaluru", "Hyderabad", "Chennai", "Coimbatore", "Madurai", "Salem", "Kochi", "Thiruvananthapuram", "Visakhapatnam",
+        "Kolkata", "Patna", "Bhubaneswar", "Ranchi",
+        "Bhopal", "Indore", "Raipur",
+        "Guwahati", "Shillong"
     );
 
     @PostConstruct

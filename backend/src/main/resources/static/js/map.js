@@ -15,12 +15,12 @@ function initRiskMap() {
     const mapContainer = document.getElementById('riskMap');
     if (!mapContainer) return;
 
-    // Centered on Tamil Nadu, India (Coordinates: 11.0, 78.5)
+    // Centered on India (Coordinates: 22.0, 79.0)
     mapInstance = L.map('riskMap', {
-        center: [11.1271, 78.6569],
-        zoom: 7,
-        minZoom: 6,
-        maxZoom: 12
+        center: [22.0, 79.0],
+        zoom: 5,
+        minZoom: 4,
+        maxZoom: 13
     });
 
     // Clean OpenStreetMap Tile Layer
@@ -75,6 +75,18 @@ function renderDistrictMarkers(districts, predMap) {
 
     // Fallback baseline risk if prediction not yet in history
     const baselineRisks = {
+        'delhi': { riskLevel: 'HIGH', probability: 0.95 },
+        'mumbai': { riskLevel: 'MEDIUM', probability: 0.82 },
+        'bengaluru': { riskLevel: 'LOW', probability: 0.88 },
+        'kolkata': { riskLevel: 'HIGH', probability: 0.91 },
+        'hyderabad': { riskLevel: 'MEDIUM', probability: 0.78 },
+        'ahmedabad': { riskLevel: 'MEDIUM', probability: 0.76 },
+        'pune': { riskLevel: 'LOW', probability: 0.85 },
+        'jaipur': { riskLevel: 'MEDIUM', probability: 0.84 },
+        'lucknow': { riskLevel: 'HIGH', probability: 0.93 },
+        'varanasi': { riskLevel: 'HIGH', probability: 0.96 },
+        'chandigarh': { riskLevel: 'LOW', probability: 0.92 },
+        'shillong': { riskLevel: 'LOW', probability: 0.95 },
         'salem': { riskLevel: 'HIGH', probability: 0.842 },
         'thanjavur': { riskLevel: 'HIGH', probability: 0.793 },
         'chennai': { riskLevel: 'MEDIUM', probability: 0.684 },

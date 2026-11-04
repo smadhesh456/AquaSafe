@@ -64,17 +64,23 @@
                         <span class="text-muted small">Auto-populates indicator thresholds</span>
                     </div>
                     <div class="d-flex gap-2 flex-wrap mt-2">
-                        <button type="button" class="btn btn-sm btn-outline-danger preset-btn" data-district="Salem">
-                            <i class="fa-solid fa-triangle-exclamation me-1"></i> Salem (High Runoff & Elevated Turbidity)
+                        <button type="button" class="btn btn-sm btn-outline-danger preset-btn" data-district="Delhi">
+                            <i class="fa-solid fa-triangle-exclamation me-1"></i> Delhi (Yamuna Catchment Turbidity)
                         </button>
-                        <button type="button" class="btn btn-sm btn-outline-warning preset-btn" data-district="Chennai">
-                            <i class="fa-solid fa-cloud-showers-heavy me-1"></i> Chennai (Monsoon Precipitation Surge)
+                        <button type="button" class="btn btn-sm btn-outline-warning preset-btn" data-district="Mumbai">
+                            <i class="fa-solid fa-cloud-showers-heavy me-1"></i> Mumbai (Coastal Monsoon Inundation)
                         </button>
-                        <button type="button" class="btn btn-sm btn-outline-success preset-btn" data-district="Coimbatore">
-                            <i class="fa-solid fa-shield-halved me-1"></i> Coimbatore (Nominal Treated Baseline)
+                        <button type="button" class="btn btn-sm btn-outline-primary preset-btn" data-district="Bengaluru">
+                            <i class="fa-solid fa-building me-1"></i> Bengaluru (Cauvery Supply Stage-IV)
                         </button>
-                        <button type="button" class="btn btn-sm btn-outline-success preset-btn" data-district="Kanyakumari">
-                            <i class="fa-solid fa-check me-1"></i> Kanyakumari (High Sanitation Safe Zone)
+                        <button type="button" class="btn btn-sm btn-outline-danger preset-btn" data-district="Varanasi">
+                            <i class="fa-solid fa-water me-1"></i> Varanasi (Ganges Plain Runoff)
+                        </button>
+                        <button type="button" class="btn btn-sm btn-outline-success preset-btn" data-district="Chandigarh">
+                            <i class="fa-solid fa-shield-halved me-1"></i> Chandigarh (Treated Kajauli Clean Zone)
+                        </button>
+                        <button type="button" class="btn btn-sm btn-outline-success preset-btn" data-district="Shillong">
+                            <i class="fa-solid fa-mountain me-1"></i> Shillong (Himalayan Spring Pure Baseline)
                         </button>
                     </div>
                 </div>
@@ -89,19 +95,61 @@
                                 <div class="row g-3">
                                     <!-- District Selection -->
                                     <div class="col-md-12">
-                                        <label class="form-label fw-semibold small">Region / District (Tamil Nadu)</label>
+                                        <div class="d-flex justify-content-between align-items-center mb-1 flex-wrap gap-2">
+                                            <label class="form-label fw-semibold small mb-0">City / District (All-India Coverage)</label>
+                                            <button type="button" class="btn btn-sm btn-primary py-1 px-3 shadow-sm" id="btnFetchLiveData">
+                                                <i class="fa-solid fa-cloud-arrow-down me-1"></i> <strong>Fetch Live Internet Data</strong> (Open-Meteo & CPCB)
+                                            </button>
+                                        </div>
                                         <select class="form-select" id="predDistrict" required>
-                                            <option value="Chennai" selected>Chennai</option>
-                                            <option value="Madurai">Madurai</option>
-                                            <option value="Coimbatore">Coimbatore</option>
-                                            <option value="Tiruchirappalli">Tiruchirappalli</option>
-                                            <option value="Salem">Salem</option>
-                                            <option value="Tirunelveli">Tirunelveli</option>
-                                            <option value="Thanjavur">Thanjavur</option>
-                                            <option value="Vellore">Vellore</option>
-                                            <option value="Erode">Erode</option>
-                                            <option value="Kanyakumari">Kanyakumari</option>
+                                            <optgroup label="Northern India">
+                                                <option value="Delhi">Delhi (NCR)</option>
+                                                <option value="Chandigarh">Chandigarh</option>
+                                                <option value="Jaipur">Jaipur (Rajasthan)</option>
+                                                <option value="Lucknow">Lucknow (Uttar Pradesh)</option>
+                                                <option value="Varanasi">Varanasi (Uttar Pradesh)</option>
+                                                <option value="Amritsar">Amritsar (Punjab)</option>
+                                                <option value="Srinagar">Srinagar (Jammu & Kashmir)</option>
+                                                <option value="Dehradun">Dehradun (Uttarakhand)</option>
+                                            </optgroup>
+                                            <optgroup label="Western India">
+                                                <option value="Mumbai">Mumbai (Maharashtra)</option>
+                                                <option value="Pune">Pune (Maharashtra)</option>
+                                                <option value="Ahmedabad">Ahmedabad (Gujarat)</option>
+                                                <option value="Surat">Surat (Gujarat)</option>
+                                                <option value="Panaji">Panaji (Goa)</option>
+                                            </optgroup>
+                                            <optgroup label="Southern India">
+                                                <option value="Bengaluru">Bengaluru (Karnataka)</option>
+                                                <option value="Hyderabad">Hyderabad (Telangana)</option>
+                                                <option value="Chennai" selected>Chennai (Tamil Nadu)</option>
+                                                <option value="Coimbatore">Coimbatore (Tamil Nadu)</option>
+                                                <option value="Madurai">Madurai (Tamil Nadu)</option>
+                                                <option value="Salem">Salem (Tamil Nadu)</option>
+                                                <option value="Kochi">Kochi (Kerala)</option>
+                                                <option value="Thiruvananthapuram">Thiruvananthapuram (Kerala)</option>
+                                                <option value="Visakhapatnam">Visakhapatnam (Andhra Pradesh)</option>
+                                            </optgroup>
+                                            <optgroup label="Eastern India">
+                                                <option value="Kolkata">Kolkata (West Bengal)</option>
+                                                <option value="Patna">Patna (Bihar)</option>
+                                                <option value="Bhubaneswar">Bhubaneswar (Odisha)</option>
+                                                <option value="Ranchi">Ranchi (Jharkhand)</option>
+                                            </optgroup>
+                                            <optgroup label="Central India">
+                                                <option value="Bhopal">Bhopal (Madhya Pradesh)</option>
+                                                <option value="Indore">Indore (Madhya Pradesh)</option>
+                                                <option value="Raipur">Raipur (Chhattisgarh)</option>
+                                            </optgroup>
+                                            <optgroup label="North-Eastern India">
+                                                <option value="Guwahati">Guwahati (Assam)</option>
+                                                <option value="Shillong">Shillong (Meghalaya)</option>
+                                            </optgroup>
                                         </select>
+                                        <div id="liveDataBanner" class="mt-2 p-2 rounded small bg-light border d-none">
+                                            <span class="badge bg-success me-1"><i class="fa-solid fa-satellite-dish me-1"></i> Live Internet Feed</span>
+                                            <span id="liveDataDetails" class="text-muted"></span>
+                                        </div>
                                     </div>
 
                                     <!-- Water Quality Section -->

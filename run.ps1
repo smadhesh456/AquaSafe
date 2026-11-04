@@ -25,6 +25,10 @@ try {
 $JarPath = Join-Path $ScriptDir "backend\target\aquasafe-backend-1.0.0-SNAPSHOT.jar"
 if (-not (Test-Path $JarPath)) {
     Write-Host "[*] Compiled JAR not found. Building with Maven..." -ForegroundColor Yellow
+    $mvnCmd = Get-Command mvn -ErrorAction SilentlyContinue
+    if (-not $mvnCmd -and (Test-Path "$env:USERPROFILE\tools\apache-maven-3.9.9\bin\mvn.cmd")) {
+        $env:Path += ";$env:USERPROFILE\tools\apache-maven-3.9.9\bin"
+    }
     Push-Location (Join-Path $ScriptDir "backend")
     & mvn clean package -DskipTests
     Pop-Location

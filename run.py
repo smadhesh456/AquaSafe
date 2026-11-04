@@ -46,7 +46,12 @@ def check_java():
 
 def build_jar():
     print("[*] Building AquaSafe backend with Maven...")
+    import shutil
     mvn_cmd = "mvn.cmd" if sys.platform == "win32" else "mvn"
+    if not shutil.which(mvn_cmd):
+        candidate = os.path.expanduser(r"~\tools\apache-maven-3.9.9\bin\mvn.cmd")
+        if os.path.exists(candidate):
+            mvn_cmd = candidate
     backend_dir = os.path.join(ROOT_DIR, "backend")
     ret = subprocess.run([mvn_cmd, "clean", "package", "-DskipTests"], cwd=backend_dir)
     if ret.returncode != 0:

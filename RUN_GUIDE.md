@@ -33,6 +33,27 @@ make run
 
 ---
 
+## 🌐 Live Internet Data Prediction (Real-Time Surveillance)
+
+AquaSafe can gather live, real-time meteorological observations from the internet (Open-Meteo API) combined with official **Central Pollution Control Board (CPCB)** water quality parameters, **Census 2011** demographics, and **NFHS-5** sanitation indicators to predict disease risk:
+
+### Option A: Command-Line Live Internet Prediction
+```bash
+# Gather live internet data and predict for all 10 Tamil Nadu districts:
+python fetch_and_predict.py --all
+
+# Gather live internet data for a specific district (e.g. Chennai, Salem, Madurai):
+python fetch_and_predict.py --district Chennai
+```
+
+### Option B: Interactive Web UI Live Prediction
+1. Start the server (`.\run.bat` or `python run.py`).
+2. Go to **Predictions** (`http://localhost:8080/prediction.html`).
+3. Select your district and click the **"Fetch Live Internet Data (Open-Meteo & CPCB)"** button.
+4. The system queries live internet feeds in real time, auto-fills all 10 features, and allows you to click **"Predict Water-Borne Disease Risk"**.
+
+---
+
 ## ⚡ What That Single Command Automatically Does
 
 You do **not** need to set up MySQL, configure Apache Tomcat, start a Python backend, or configure node servers. The single command automatically:
