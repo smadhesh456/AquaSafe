@@ -47,40 +47,40 @@
             <header class="top-navbar">
                 <div class="page-title">
                     <h3>Risk Prediction Engine</h3>
-                    <p>Machine Learning Multi-Indicator Evaluation (Weka Random Forest)</p>
+                    <p>Machine Learning Multi-Indicator Evaluation (Weka Random Forest — 38 Tamil Nadu Districts)</p>
                 </div>
                 <div class="nav-indicators">
                     <span class="badge bg-primary-subtle text-primary border border-primary-subtle px-3 py-2">
-                        <i class="fa-solid fa-microchip me-1"></i> Active Model: RandomForest-v1.0
+                        <i class="fa-solid fa-microchip me-1"></i> Active Model: RandomForest-100Trees
                     </span>
                 </div>
             </header>
 
             <main class="content-body">
-                <!-- Preset Quick Buttons for Fast Testing -->
+                <!-- Preset Quick Buttons for Fast Regional Testing -->
                 <div class="dashboard-card mb-4">
                     <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap gap-2">
-                        <h6 class="fw-bold mb-0 text-dark"><i class="fa-solid fa-bolt text-warning me-1"></i> Quick Regional Presets (Evaluator Demo Test Scenarios):</h6>
-                        <span class="text-muted small">Auto-populates indicator thresholds</span>
+                        <h6 class="fw-bold mb-0 text-dark"><i class="fa-solid fa-bolt text-warning me-1"></i> Quick Tamil Nadu Regional Presets:</h6>
+                        <span class="text-muted small">Auto-populates verified district indicator thresholds</span>
                     </div>
                     <div class="d-flex gap-2 flex-wrap mt-2">
-                        <button type="button" class="btn btn-sm btn-outline-danger preset-btn" data-district="Delhi">
-                            <i class="fa-solid fa-triangle-exclamation me-1"></i> Delhi (Yamuna Catchment Turbidity)
+                        <button type="button" class="btn btn-sm btn-outline-danger preset-btn" data-district="Chennai">
+                            <i class="fa-solid fa-city me-1"></i> Chennai (High Density / Coastal Monsoonal)
                         </button>
-                        <button type="button" class="btn btn-sm btn-outline-warning preset-btn" data-district="Mumbai">
-                            <i class="fa-solid fa-cloud-showers-heavy me-1"></i> Mumbai (Coastal Monsoon Inundation)
+                        <button type="button" class="btn btn-sm btn-outline-danger preset-btn" data-district="Salem">
+                            <i class="fa-solid fa-industry me-1"></i> Salem (Mettur Industrial Catchment)
                         </button>
-                        <button type="button" class="btn btn-sm btn-outline-primary preset-btn" data-district="Bengaluru">
-                            <i class="fa-solid fa-building me-1"></i> Bengaluru (Cauvery Supply Stage-IV)
+                        <button type="button" class="btn btn-sm btn-outline-warning preset-btn" data-district="Cuddalore">
+                            <i class="fa-solid fa-cloud-showers-heavy me-1"></i> Cuddalore (Flood-Prone / Gadilam Basin)
                         </button>
-                        <button type="button" class="btn btn-sm btn-outline-danger preset-btn" data-district="Varanasi">
-                            <i class="fa-solid fa-water me-1"></i> Varanasi (Ganges Plain Runoff)
+                        <button type="button" class="btn btn-sm btn-outline-warning preset-btn" data-district="Madurai">
+                            <i class="fa-solid fa-water me-1"></i> Madurai (Vaigai Basin / High TDS)
                         </button>
-                        <button type="button" class="btn btn-sm btn-outline-success preset-btn" data-district="Chandigarh">
-                            <i class="fa-solid fa-shield-halved me-1"></i> Chandigarh (Treated Kajauli Clean Zone)
+                        <button type="button" class="btn btn-sm btn-outline-success preset-btn" data-district="Coimbatore">
+                            <i class="fa-solid fa-shield-halved me-1"></i> Coimbatore (Siruvani Clean Baseline)
                         </button>
-                        <button type="button" class="btn btn-sm btn-outline-success preset-btn" data-district="Shillong">
-                            <i class="fa-solid fa-mountain me-1"></i> Shillong (Himalayan Spring Pure Baseline)
+                        <button type="button" class="btn btn-sm btn-outline-success preset-btn" data-district="Nilgiris">
+                            <i class="fa-solid fa-mountain me-1"></i> Nilgiris (Western Ghats Pure Mountain Springs)
                         </button>
                     </div>
                 </div>
@@ -89,125 +89,143 @@
                     <!-- Form Input Column -->
                     <div class="col-lg-7">
                         <div class="dashboard-card">
-                            <h5 class="fw-bold mb-3 border-bottom pb-2">Multi-Factor Feature Parameters</h5>
+                            <div class="d-flex justify-content-between align-items-center mb-3 border-bottom pb-2">
+                                <h5 class="fw-bold mb-0">Multi-Factor Feature Parameters (13 Features)</h5>
+                                <span class="badge bg-secondary-subtle text-secondary small">Weka Compatible</span>
+                            </div>
                             
                             <form id="predictionForm">
                                 <div class="row g-3">
                                     <!-- District Selection -->
                                     <div class="col-md-12">
                                         <div class="d-flex justify-content-between align-items-center mb-1 flex-wrap gap-2">
-                                            <label class="form-label fw-semibold small mb-0">City / District (All-India Coverage)</label>
+                                            <label class="form-label fw-semibold small mb-0">Tamil Nadu District (38 Districts)</label>
                                             <button type="button" class="btn btn-sm btn-primary py-1 px-3 shadow-sm" id="btnFetchLiveData">
-                                                <i class="fa-solid fa-cloud-arrow-down me-1"></i> <strong>Fetch Live Internet Data</strong> (Open-Meteo & CPCB)
+                                                <i class="fa-solid fa-cloud-arrow-down me-1"></i> <strong>Fetch Live Weather & Indicators</strong> (Open-Meteo & CPCB)
                                             </button>
                                         </div>
                                         <select class="form-select" id="predDistrict" required>
-                                            <optgroup label="Northern India">
-                                                <option value="Delhi">Delhi (NCR)</option>
-                                                <option value="Chandigarh">Chandigarh</option>
-                                                <option value="Jaipur">Jaipur (Rajasthan)</option>
-                                                <option value="Lucknow">Lucknow (Uttar Pradesh)</option>
-                                                <option value="Varanasi">Varanasi (Uttar Pradesh)</option>
-                                                <option value="Amritsar">Amritsar (Punjab)</option>
-                                                <option value="Srinagar">Srinagar (Jammu & Kashmir)</option>
-                                                <option value="Dehradun">Dehradun (Uttarakhand)</option>
+                                            <optgroup label="North Tamil Nadu">
+                                                <option value="Chennai" selected>Chennai</option>
+                                                <option value="Chengalpattu">Chengalpattu</option>
+                                                <option value="Kanchipuram">Kanchipuram</option>
+                                                <option value="Tiruvallur">Tiruvallur</option>
+                                                <option value="Vellore">Vellore</option>
+                                                <option value="Ranipet">Ranipet</option>
+                                                <option value="Tirupathur">Tirupathur</option>
+                                                <option value="Tiruvannamalai">Tiruvannamalai</option>
+                                                <option value="Viluppuram">Viluppuram</option>
+                                                <option value="Cuddalore">Cuddalore</option>
+                                                <option value="Kallakurichi">Kallakurichi</option>
                                             </optgroup>
-                                            <optgroup label="Western India">
-                                                <option value="Mumbai">Mumbai (Maharashtra)</option>
-                                                <option value="Pune">Pune (Maharashtra)</option>
-                                                <option value="Ahmedabad">Ahmedabad (Gujarat)</option>
-                                                <option value="Surat">Surat (Gujarat)</option>
-                                                <option value="Panaji">Panaji (Goa)</option>
+                                            <optgroup label="Central Tamil Nadu">
+                                                <option value="Tiruchirappalli">Tiruchirappalli</option>
+                                                <option value="Thanjavur">Thanjavur</option>
+                                                <option value="Tiruvarur">Tiruvarur</option>
+                                                <option value="Nagapattinam">Nagapattinam</option>
+                                                <option value="Mayiladuthurai">Mayiladuthurai</option>
+                                                <option value="Pudukkottai">Pudukkottai</option>
+                                                <option value="Ariyalur">Ariyalur</option>
+                                                <option value="Perambalur">Perambalur</option>
+                                                <option value="Karur">Karur</option>
                                             </optgroup>
-                                            <optgroup label="Southern India">
-                                                <option value="Bengaluru">Bengaluru (Karnataka)</option>
-                                                <option value="Hyderabad">Hyderabad (Telangana)</option>
-                                                <option value="Chennai" selected>Chennai (Tamil Nadu)</option>
-                                                <option value="Coimbatore">Coimbatore (Tamil Nadu)</option>
-                                                <option value="Madurai">Madurai (Tamil Nadu)</option>
-                                                <option value="Salem">Salem (Tamil Nadu)</option>
-                                                <option value="Kochi">Kochi (Kerala)</option>
-                                                <option value="Thiruvananthapuram">Thiruvananthapuram (Kerala)</option>
-                                                <option value="Visakhapatnam">Visakhapatnam (Andhra Pradesh)</option>
+                                            <optgroup label="West Tamil Nadu">
+                                                <option value="Coimbatore">Coimbatore</option>
+                                                <option value="Tiruppur">Tiruppur</option>
+                                                <option value="Erode">Erode</option>
+                                                <option value="Salem">Salem</option>
+                                                <option value="Namakkal">Namakkal</option>
+                                                <option value="Dharmapuri">Dharmapuri</option>
+                                                <option value="Krishnagiri">Krishnagiri</option>
+                                                <option value="Nilgiris">Nilgiris</option>
                                             </optgroup>
-                                            <optgroup label="Eastern India">
-                                                <option value="Kolkata">Kolkata (West Bengal)</option>
-                                                <option value="Patna">Patna (Bihar)</option>
-                                                <option value="Bhubaneswar">Bhubaneswar (Odisha)</option>
-                                                <option value="Ranchi">Ranchi (Jharkhand)</option>
-                                            </optgroup>
-                                            <optgroup label="Central India">
-                                                <option value="Bhopal">Bhopal (Madhya Pradesh)</option>
-                                                <option value="Indore">Indore (Madhya Pradesh)</option>
-                                                <option value="Raipur">Raipur (Chhattisgarh)</option>
-                                            </optgroup>
-                                            <optgroup label="North-Eastern India">
-                                                <option value="Guwahati">Guwahati (Assam)</option>
-                                                <option value="Shillong">Shillong (Meghalaya)</option>
+                                            <optgroup label="South Tamil Nadu">
+                                                <option value="Madurai">Madurai</option>
+                                                <option value="Dindigul">Dindigul</option>
+                                                <option value="Theni">Theni</option>
+                                                <option value="Virudhunagar">Virudhunagar</option>
+                                                <option value="Sivaganga">Sivaganga</option>
+                                                <option value="Ramanathapuram">Ramanathapuram</option>
+                                                <option value="Thoothukudi">Thoothukudi</option>
+                                                <option value="Tirunelveli">Tirunelveli</option>
+                                                <option value="Tenkasi">Tenkasi</option>
+                                                <option value="Kanyakumari">Kanyakumari</option>
                                             </optgroup>
                                         </select>
                                         <div id="liveDataBanner" class="mt-2 p-2 rounded small bg-light border d-none">
-                                            <span class="badge bg-success me-1"><i class="fa-solid fa-satellite-dish me-1"></i> Live Internet Feed</span>
+                                            <span class="badge bg-success me-1" id="liveDataStatusBadge"><i class="fa-solid fa-satellite-dish me-1"></i> LIVE</span>
                                             <span id="liveDataDetails" class="text-muted"></span>
                                         </div>
                                     </div>
 
                                     <!-- Water Quality Section -->
                                     <div class="col-12 mt-3">
-                                        <h6 class="text-primary fw-bold small text-uppercase letter-spacing-1">1. Water Quality Indicators</h6>
+                                        <h6 class="text-primary fw-bold small text-uppercase letter-spacing-1">1. Water Quality Indicators (CPCB / TNPCB)</h6>
                                     </div>
 
-                                    <div class="col-md-6 col-xl-3">
-                                        <label class="form-label small">pH Level (0 - 14)</label>
-                                        <input type="number" step="0.01" class="form-control form-control-sm" id="predPh" value="7.2" required>
+                                    <div class="col-md-4 col-xl-2">
+                                        <label class="form-label small">pH Level (0-14)</label>
+                                        <input type="number" step="0.01" class="form-control form-control-sm" id="predPh" value="7.35" required>
                                     </div>
-                                    <div class="col-md-6 col-xl-3">
+                                    <div class="col-md-4 col-xl-2">
                                         <label class="form-label small">Turbidity (NTU)</label>
-                                        <input type="number" step="0.1" class="form-control form-control-sm" id="predTurbidity" value="3.5" required>
+                                        <input type="number" step="0.1" class="form-control form-control-sm" id="predTurbidity" value="4.2" required>
                                     </div>
-                                    <div class="col-md-6 col-xl-3">
+                                    <div class="col-md-4 col-xl-3">
                                         <label class="form-label small">TDS (mg/L)</label>
-                                        <input type="number" step="1" class="form-control form-control-sm" id="predTds" value="320" required>
+                                        <input type="number" step="1" class="form-control form-control-sm" id="predTds" value="460" required>
+                                    </div>
+                                    <div class="col-md-6 col-xl-2">
+                                        <label class="form-label small">DO (mg/L)</label>
+                                        <input type="number" step="0.1" class="form-control form-control-sm" id="predDo" value="5.8" required>
                                     </div>
                                     <div class="col-md-6 col-xl-3">
-                                        <label class="form-label small">Dissolved Oxygen (mg/L)</label>
-                                        <input type="number" step="0.1" class="form-control form-control-sm" id="predDo" value="6.8" required>
+                                        <label class="form-label small">Water Temp (°C)</label>
+                                        <input type="number" step="0.1" class="form-control form-control-sm" id="predWaterTemp" value="28.4" required>
                                     </div>
 
                                     <!-- Meteorological Section -->
                                     <div class="col-12 mt-3">
-                                        <h6 class="text-primary fw-bold small text-uppercase letter-spacing-1">2. Meteorological Conditions</h6>
+                                        <h6 class="text-primary fw-bold small text-uppercase letter-spacing-1">2. Meteorological Conditions (Open-Meteo REST API)</h6>
                                     </div>
 
-                                    <div class="col-md-4">
-                                        <label class="form-label small">Temperature (°C)</label>
-                                        <input type="number" step="0.1" class="form-control form-control-sm" id="predTemp" value="29.0" required>
+                                    <div class="col-md-3">
+                                        <label class="form-label small">Air Temp (°C)</label>
+                                        <input type="number" step="0.1" class="form-control form-control-sm" id="predTemp" value="29.5" required>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <label class="form-label small">Rainfall (mm)</label>
-                                        <input type="number" step="0.1" class="form-control form-control-sm" id="predRainfall" value="15.0" required>
+                                        <input type="number" step="0.1" class="form-control form-control-sm" id="predRainfall" value="18.5" required>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
+                                        <label class="form-label small">Precipitation (mm)</label>
+                                        <input type="number" step="0.1" class="form-control form-control-sm" id="predPrecipitation" value="18.5" required>
+                                    </div>
+                                    <div class="col-md-3">
                                         <label class="form-label small">Humidity (%)</label>
-                                        <input type="number" step="0.1" class="form-control form-control-sm" id="predHumidity" value="68.0" required>
+                                        <input type="number" step="0.1" class="form-control form-control-sm" id="predHumidity" value="78.0" required>
                                     </div>
 
                                     <!-- Historical and Sanitary Factors -->
                                     <div class="col-12 mt-3">
-                                        <h6 class="text-primary fw-bold small text-uppercase letter-spacing-1">3. Epidemiological & Sanitary Demographics</h6>
+                                        <h6 class="text-primary fw-bold small text-uppercase letter-spacing-1">3. Epidemiological & Sanitary Demographics (IDSP & NFHS-5)</h6>
                                     </div>
 
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <label class="form-label small">Prior Disease Cases</label>
-                                        <input type="number" class="form-control form-control-sm" id="predCases" value="6" required>
+                                        <input type="number" class="form-control form-control-sm" id="predCases" value="18" required>
                                     </div>
-                                    <div class="col-md-4">
-                                        <label class="form-label small">Pop. Density (people/km²)</label>
-                                        <input type="number" class="form-control form-control-sm" id="predDensity" value="26900" required>
+                                    <div class="col-md-3">
+                                        <label class="form-label small">Pop. Density (/km²)</label>
+                                        <input type="number" class="form-control form-control-sm" id="predDensity" value="26553" required>
                                     </div>
-                                    <div class="col-md-4">
-                                        <label class="form-label small">Sanitation Coverage (%)</label>
+                                    <div class="col-md-3">
+                                        <label class="form-label small">Sanitation Cov. (%)</label>
                                         <input type="number" step="0.1" class="form-control form-control-sm" id="predSanitation" value="92.5" required>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label class="form-label small">Clean Water Cov. (%)</label>
+                                        <input type="number" step="0.1" class="form-control form-control-sm" id="predCleanWater" value="95.2" required>
                                     </div>
 
                                     <div class="col-12 mt-4">
@@ -230,7 +248,7 @@
                                 </div>
                                 <h5 class="fw-bold text-dark">Awaiting Prediction Input</h5>
                                 <p class="small px-4 text-muted mb-0">
-                                    Select a district and parameters or use one of the quick regional presets above, then click <strong>Predict Estimated Risk</strong> to run Weka Random Forest classification.
+                                    Select any of the <strong>38 Tamil Nadu districts</strong> or click <strong>Fetch Live Weather & Indicators</strong>, then execute Weka Random Forest classification to analyze risk and feature contributions.
                                 </p>
                             </div>
                         </div>
@@ -247,6 +265,7 @@
                                     <th>District</th>
                                     <th>Predicted Risk</th>
                                     <th>Calculated Probability</th>
+                                    <th>Data Status</th>
                                     <th>Model Version</th>
                                     <th>Timestamp</th>
                                     <th>Indicator Snapshot</th>
@@ -254,7 +273,7 @@
                             </thead>
                             <tbody id="predictionHistoryBody">
                                 <tr>
-                                    <td colspan="6" class="text-center text-muted py-3">Loading historical predictions...</td>
+                                    <td colspan="7" class="text-center text-muted py-3">Loading historical predictions...</td>
                                 </tr>
                             </tbody>
                         </table>

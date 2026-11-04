@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/weather")
@@ -34,5 +35,10 @@ public class WeatherController {
     @GetMapping("/current/all")
     public ResponseEntity<List<WeatherData>> getAllCurrentWeather() {
         return ResponseEntity.ok(weatherService.getAllLatestDistrictsWeather());
+    }
+
+    @PostMapping("/sync-all")
+    public ResponseEntity<Map<String, Object>> syncAllDistricts() {
+        return ResponseEntity.ok(weatherService.syncAllDistrictsLive());
     }
 }

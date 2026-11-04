@@ -1,32 +1,39 @@
-district,state,population,population_density,sanitation_coverage,latitude,longitude
-Delhi,Delhi,16787941,11320,93.0,28.6139,77.209
-Chandigarh,Chandigarh,1055450,9258,97.0,30.7333,76.7794
-Jaipur,Rajasthan,3046163,6500,85.0,26.9124,75.7873
-Lucknow,Uttar Pradesh,2817105,1816,83.0,26.8467,80.9462
-Varanasi,Uttar Pradesh,1201815,2395,78.0,25.3176,82.9739
-Amritsar,Punjab,1132383,928,88.0,31.634,74.8723
-Srinagar,Jammu & Kashmir,1269751,703,84.0,34.0837,74.7973
-Dehradun,Uttarakhand,578420,549,91.0,30.3165,78.0322
-Mumbai,Maharashtra,12442373,19652,90.0,19.076,72.8777
-Pune,Maharashtra,3124458,9400,92.0,18.5204,73.8567
-Ahmedabad,Gujarat,5577940,11885,91.0,23.0225,72.5714
-Surat,Gujarat,4467797,13680,93.0,21.1702,72.8311
-Panaji,Goa,114759,394,96.0,15.4909,73.8278
-Bengaluru,Karnataka,8443675,4381,95.0,12.9716,77.5946
-Hyderabad,Telangana,6809970,18172,93.5,17.385,78.4867
-Chennai,Tamil Nadu,7100000,26900,92.5,13.0827,80.2707
-Coimbatore,Tamil Nadu,3458000,748,88.5,11.0168,76.9558
-Madurai,Tamil Nadu,3038000,820,81.0,9.9252,78.1198
-Salem,Tamil Nadu,3482000,665,75.5,11.6643,78.146
-Kochi,Kerala,677381,6340,98.0,9.9312,76.2673
-Thiruvananthapuram,Kerala,957730,1508,98.0,8.5241,76.9366
-Visakhapatnam,Andhra Pradesh,1728128,384,87.0,17.6868,83.2185
-Kolkata,West Bengal,4496694,24306,89.0,22.5726,88.3639
-Patna,Bihar,1684222,1823,74.0,25.5941,85.1376
-Bhubaneswar,Odisha,843402,2134,84.0,20.2961,85.8245
-Ranchi,Jharkhand,1073427,572,76.0,23.3441,85.3096
-Bhopal,Madhya Pradesh,1798218,855,82.0,23.2599,77.4126
-Indore,Madhya Pradesh,1964086,9700,96.0,22.7196,75.8577
-Raipur,Chhattisgarh,1010433,750,80.0,21.2514,81.6296
-Guwahati,Assam,957352,4400,86.0,26.1445,91.7362
-Shillong,Meghalaya,143229,2200,90.0,25.5788,91.8933
+district,state,population,population_density,sanitation_coverage,clean_water_coverage,reference_year,source_name,data_status,latitude,longitude
+Ariyalur,Tamil Nadu,754894,387,68.4,88.2,Census 2011 & NFHS-5 2019-21,Census of India & MoHFW NFHS-5,STORED,11.1401,79.0786
+Chengalpattu,Tamil Nadu,2556244,868,88.6,94.1,Census 2011 & NFHS-5 2019-21,Census of India & MoHFW NFHS-5,STORED,12.6841,79.9836
+Chennai,Tamil Nadu,7088000,16638,96.2,96.8,Census 2011 & NFHS-5 2019-21,Census of India & MoHFW NFHS-5,STORED,13.0827,80.2707
+Coimbatore,Tamil Nadu,3458045,732,91.4,95.5,Census 2011 & NFHS-5 2019-21,Census of India & MoHFW NFHS-5,STORED,11.0168,76.9558
+Cuddalore,Tamil Nadu,2605914,704,74.2,91.0,Census 2011 & NFHS-5 2019-21,Census of India & MoHFW NFHS-5,STORED,11.748,79.7714
+Dharmapuri,Tamil Nadu,1506843,335,67.5,86.4,Census 2011 & NFHS-5 2019-21,Census of India & MoHFW NFHS-5,STORED,12.1211,78.1582
+Dindigul,Tamil Nadu,2159775,345,76.8,89.2,Census 2011 & NFHS-5 2019-21,Census of India & MoHFW NFHS-5,STORED,10.3673,77.9803
+Erode,Tamil Nadu,2251744,394,86.9,93.8,Census 2011 & NFHS-5 2019-21,Census of India & MoHFW NFHS-5,STORED,11.341,77.7172
+Kallakurichi,Tamil Nadu,1370281,389,69.8,87.5,Census 2011 & NFHS-5 2019-21,Census of India & MoHFW NFHS-5,STORED,11.7383,78.9639
+Kanchipuram,Tamil Nadu,1657000,972,87.5,93.2,Census 2011 & NFHS-5 2019-21,Census of India & MoHFW NFHS-5,STORED,12.8342,79.7036
+Kanyakumari,Tamil Nadu,1870374,1119,98.4,97.2,Census 2011 & NFHS-5 2019-21,Census of India & MoHFW NFHS-5,STORED,8.0883,77.5385
+Karur,Tamil Nadu,1064493,368,82.1,92.4,Census 2011 & NFHS-5 2019-21,Census of India & MoHFW NFHS-5,STORED,10.9601,78.0766
+Krishnagiri,Tamil Nadu,1879809,366,71.3,88.0,Census 2011 & NFHS-5 2019-21,Census of India & MoHFW NFHS-5,STORED,12.5186,78.2137
+Madurai,Tamil Nadu,3038252,812,83.5,92.0,Census 2011 & NFHS-5 2019-21,Census of India & MoHFW NFHS-5,STORED,9.9252,78.1198
+Mayiladuthurai,Tamil Nadu,918356,784,76.5,90.6,Census 2011 & NFHS-5 2019-21,Census of India & MoHFW NFHS-5,STORED,11.1075,79.6524
+Nagapattinam,Tamil Nadu,697069,499,75.8,89.8,Census 2011 & NFHS-5 2019-21,Census of India & MoHFW NFHS-5,STORED,10.7672,79.8449
+Namakkal,Tamil Nadu,1726601,513,84.6,93.1,Census 2011 & NFHS-5 2019-21,Census of India & MoHFW NFHS-5,STORED,11.2189,78.1674
+Nilgiris,Tamil Nadu,735394,287,96.8,96.5,Census 2011 & NFHS-5 2019-21,Census of India & MoHFW NFHS-5,STORED,11.4102,76.695
+Perambalur,Tamil Nadu,565223,322,70.2,87.9,Census 2011 & NFHS-5 2019-21,Census of India & MoHFW NFHS-5,STORED,11.2342,78.8804
+Pudukkottai,Tamil Nadu,1618345,347,73.4,89.5,Census 2011 & NFHS-5 2019-21,Census of India & MoHFW NFHS-5,STORED,10.3833,78.8001
+Ramanathapuram,Tamil Nadu,1353445,330,72.1,86.8,Census 2011 & NFHS-5 2019-21,Census of India & MoHFW NFHS-5,STORED,9.3639,78.8395
+Ranipet,Tamil Nadu,1210277,542,85.0,91.8,Census 2011 & NFHS-5 2019-21,Census of India & MoHFW NFHS-5,STORED,12.9279,79.333
+Salem,Tamil Nadu,3482056,664,78.2,90.5,Census 2011 & NFHS-5 2019-21,Census of India & MoHFW NFHS-5,STORED,11.6643,78.146
+Sivaganga,Tamil Nadu,1339101,320,74.8,88.7,Census 2011 & NFHS-5 2019-21,Census of India & MoHFW NFHS-5,STORED,9.8433,78.4809
+Tenkasi,Tamil Nadu,1407627,483,88.2,94.6,Census 2011 & NFHS-5 2019-21,Census of India & MoHFW NFHS-5,STORED,8.9594,77.3152
+Thanjavur,Tamil Nadu,2405890,708,81.6,92.5,Census 2011 & NFHS-5 2019-21,Census of India & MoHFW NFHS-5,STORED,10.787,79.1378
+Theni,Tamil Nadu,1245899,431,84.1,93.0,Census 2011 & NFHS-5 2019-21,Census of India & MoHFW NFHS-5,STORED,10.0104,77.4768
+Thoothukudi,Tamil Nadu,1750176,372,86.3,92.8,Census 2011 & NFHS-5 2019-21,Census of India & MoHFW NFHS-5,STORED,8.7642,78.1348
+Tiruchirappalli,Tamil Nadu,2722290,618,87.2,94.2,Census 2011 & NFHS-5 2019-21,Census of India & MoHFW NFHS-5,STORED,10.7905,78.7047
+Tirunelveli,Tamil Nadu,1665253,433,87.8,94.5,Census 2011 & NFHS-5 2019-21,Census of India & MoHFW NFHS-5,STORED,8.7139,77.7567
+Tirupathur,Tamil Nadu,1111812,618,75.3,89.1,Census 2011 & NFHS-5 2019-21,Census of India & MoHFW NFHS-5,STORED,12.4925,78.5678
+Tiruppur,Tamil Nadu,2479052,478,88.0,93.5,Census 2011 & NFHS-5 2019-21,Census of India & MoHFW NFHS-5,STORED,11.1085,77.3411
+Tiruvallur,Tamil Nadu,3728104,1089,86.4,93.0,Census 2011 & NFHS-5 2019-21,Census of India & MoHFW NFHS-5,STORED,13.1432,79.9083
+Tiruvannamalai,Tamil Nadu,2464875,398,72.8,88.6,Census 2011 & NFHS-5 2019-21,Census of India & MoHFW NFHS-5,STORED,12.2253,79.0747
+Tiruvarur,Tamil Nadu,1264277,585,79.2,91.2,Census 2011 & NFHS-5 2019-21,Census of India & MoHFW NFHS-5,STORED,10.7725,79.6365
+Vellore,Tamil Nadu,1614242,449,83.2,91.5,Census 2011 & NFHS-5 2019-21,Census of India & MoHFW NFHS-5,STORED,12.9165,79.1325
+Viluppuram,Tamil Nadu,2093003,562,71.5,88.4,Census 2011 & NFHS-5 2019-21,Census of India & MoHFW NFHS-5,STORED,11.9401,79.4861
+Virudhunagar,Tamil Nadu,1942288,458,80.5,91.0,Census 2011 & NFHS-5 2019-21,Census of India & MoHFW NFHS-5,STORED,9.568,77.9624

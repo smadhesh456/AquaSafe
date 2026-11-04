@@ -8,7 +8,8 @@ import java.time.LocalDateTime;
 @Table(name = "weather_data", indexes = {
     @Index(name = "idx_weather_district", columnList = "district"),
     @Index(name = "idx_weather_date", columnList = "date"),
-    @Index(name = "idx_weather_district_date", columnList = "district, date")
+    @Index(name = "idx_weather_district_date", columnList = "district, date"),
+    @Index(name = "idx_weather_status", columnList = "data_status")
 })
 public class WeatherData {
 
@@ -34,8 +35,20 @@ public class WeatherData {
     @Column(nullable = false)
     private Double humidity;
 
+    @Column(name = "precipitation")
+    private Double precipitation = 0.0;
+
+    @Column(name = "weather_condition", length = 100)
+    private String weatherCondition = "Partly Cloudy";
+
     @Column(length = 50)
-    private String source = "STORED_DATA";
+    private String source = "Open-Meteo Weather API";
+
+    @Column(name = "source_url", length = 500)
+    private String sourceUrl = "https://api.open-meteo.com/v1/forecast";
+
+    @Column(name = "data_status", length = 20)
+    private String dataStatus = "STORED"; // LIVE, STORED, DEMO
 
     @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt = LocalDateTime.now();
@@ -43,13 +56,21 @@ public class WeatherData {
     public WeatherData() {}
 
     public WeatherData(String district, String state, LocalDate date, Double temperature, Double rainfall, Double humidity, String source) {
+        this(district, state, date, temperature, rainfall, humidity, rainfall, "Standard", source, "https://api.open-meteo.com/v1/forecast", source != null && source.contains("LIVE") ? "LIVE" : "STORED");
+    }
+
+    public WeatherData(String district, String state, LocalDate date, Double temperature, Double rainfall, Double humidity, Double precipitation, String weatherCondition, String source, String sourceUrl, String dataStatus) {
         this.district = district;
-        this.state = state;
+        this.state = state != null ? state : "Tamil Nadu";
         this.date = date;
         this.temperature = temperature;
         this.rainfall = rainfall;
         this.humidity = humidity;
-        this.source = source != null ? source : "STORED_DATA";
+        this.precipitation = precipitation != null ? precipitation : rainfall;
+        this.weatherCondition = weatherCondition != null ? weatherCondition : "Partly Cloudy";
+        this.source = source != null ? source : "Open-Meteo Weather API";
+        this.sourceUrl = sourceUrl != null ? sourceUrl : "https://api.open-meteo.com/v1/forecast";
+        this.dataStatus = dataStatus != null ? dataStatus : (source != null && source.contains("LIVE") ? "LIVE" : "STORED");
         this.createdAt = LocalDateTime.now();
     }
 
@@ -74,8 +95,20 @@ public class WeatherData {
     public Double getHumidity() { return humidity; }
     public void setHumidity(Double humidity) { this.humidity = humidity; }
 
+    public Double getPrecipitation() { return precipitation != null ? precipitation : rainfall; }
+    public void setPrecipitation(Double precipitation) { this.precipitation = precipitation; }
+
+    public String getWeatherCondition() { return weatherCondition; }
+    public void setWeatherCondition(String weatherCondition) { this.weatherCondition = weatherCondition; }
+
     public String getSource() { return source; }
     public void setSource(String source) { this.source = source; }
+
+    public String getSourceUrl() { return sourceUrl; }
+    public void setSourceUrl(String sourceUrl) { this.sourceUrl = sourceUrl; }
+
+    public String getDataStatus() { return dataStatus; }
+    public void setDataStatus(String dataStatus) { this.dataStatus = dataStatus; }
 
     public LocalDateTime getCreatedAt() { return createdAt; }
     public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }

@@ -27,12 +27,16 @@ public class PredictionRequestDTO {
     @DecimalMin(value = "0.0", message = "Dissolved oxygen cannot be negative")
     private Double dissolvedOxygen;
 
+    private Double waterTemperature = 28.0;
+
     @NotNull(message = "Temperature is required")
     private Double temperature;
 
     @NotNull(message = "Rainfall is required")
     @DecimalMin(value = "0.0", message = "Rainfall cannot be negative")
     private Double rainfall;
+
+    private Double precipitation;
 
     @NotNull(message = "Humidity is required")
     @DecimalMin(value = "0.0", message = "Humidity cannot be negative")
@@ -49,6 +53,10 @@ public class PredictionRequestDTO {
     @DecimalMin(value = "0.0", message = "Sanitation coverage cannot be negative")
     @DecimalMax(value = "100.0", message = "Sanitation coverage cannot exceed 100%")
     private Double sanitationCoverage;
+
+    private Double cleanWaterCoverage = 92.0;
+
+    private String dataStatus = "STORED"; // LIVE, STORED, DEMO
 
     public PredictionRequestDTO() {}
 
@@ -67,11 +75,17 @@ public class PredictionRequestDTO {
     public Double getDissolvedOxygen() { return dissolvedOxygen; }
     public void setDissolvedOxygen(Double dissolvedOxygen) { this.dissolvedOxygen = dissolvedOxygen; }
 
+    public Double getWaterTemperature() { return waterTemperature != null ? waterTemperature : 28.0; }
+    public void setWaterTemperature(Double waterTemperature) { this.waterTemperature = waterTemperature; }
+
     public Double getTemperature() { return temperature; }
     public void setTemperature(Double temperature) { this.temperature = temperature; }
 
     public Double getRainfall() { return rainfall; }
     public void setRainfall(Double rainfall) { this.rainfall = rainfall; }
+
+    public Double getPrecipitation() { return precipitation != null ? precipitation : rainfall; }
+    public void setPrecipitation(Double precipitation) { this.precipitation = precipitation; }
 
     public Double getHumidity() { return humidity; }
     public void setHumidity(Double humidity) { this.humidity = humidity; }
@@ -84,4 +98,10 @@ public class PredictionRequestDTO {
 
     public Double getSanitationCoverage() { return sanitationCoverage; }
     public void setSanitationCoverage(Double sanitationCoverage) { this.sanitationCoverage = sanitationCoverage; }
+
+    public Double getCleanWaterCoverage() { return cleanWaterCoverage != null ? cleanWaterCoverage : 92.0; }
+    public void setCleanWaterCoverage(Double cleanWaterCoverage) { this.cleanWaterCoverage = cleanWaterCoverage; }
+
+    public String getDataStatus() { return dataStatus != null ? dataStatus : "STORED"; }
+    public void setDataStatus(String dataStatus) { this.dataStatus = dataStatus; }
 }

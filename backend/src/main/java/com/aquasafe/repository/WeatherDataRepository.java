@@ -22,6 +22,10 @@ public interface WeatherDataRepository extends JpaRepository<WeatherData, Long> 
 
     Optional<WeatherData> findTopByDistrictOrderByDateDesc(String district);
 
+    Optional<WeatherData> findByDistrictIgnoreCaseAndDate(String district, LocalDate date);
+
+    boolean existsByDistrictIgnoreCaseAndDate(String district, LocalDate date);
+
     @Query("SELECT DISTINCT w.district FROM WeatherData w ORDER BY w.district ASC")
     List<String> findDistinctDistricts();
 

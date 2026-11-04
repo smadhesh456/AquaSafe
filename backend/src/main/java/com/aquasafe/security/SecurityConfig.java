@@ -12,6 +12,11 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+
+import java.util.Arrays;
 
 @Configuration
 @EnableWebSecurity
@@ -43,10 +48,24 @@ public class SecurityConfig {
     }
 
     @Bean
+    public CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration configuration = new CorsConfiguration();
+        configuration.addAllowedOriginPattern("*");
+        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"));
+        configuration.setAllowedHeaders(Arrays.asList("*"));
+        configuration.setAllowCredentials(false);
+        configuration.setMaxAge(3600L);
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", configuration);
+        return source;
+    }
+
+    @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
             .csrf(csrf -> csrf.disable())
-            .headers(headers -> headers.frameOptions(frame -> frame.disable())) // allow H2 console / iframes
+            .cors(cors -> cors.configurationSource(corsConfigurationSource()))
+            .headers(headers -> headers.frameOptions(frame -> frame.disable()))
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED))
             .authenticationProvider(authenticationProvider())
             .authorizeHttpRequests(auth -> auth
@@ -56,21 +75,8 @@ public class SecurityConfig {
                     "/map.html", "/model.html", "/alerts.html", "/reports.html", "/login.html",
                     "/css/**", "/js/**", "/favicon.ico", "/h2-console/**"
                 ).permitAll()
-                // Allow authentication and public endpoints
-                .requestMatchers("/api/auth/**").permitAll()
-                .requestMatchers("/api/dashboard/**").permitAll()
-                .requestMatchers("/api/water-quality/**").permitAll()
-                .requestMatchers("/api/weather/**").permitAll()
-                .requestMatchers("/api/diseases/**").permitAll()
-                .requestMatchers("/api/population/**").permitAll()
-                .requestMatchers("/api/predictions/**").permitAll()
-                .requestMatchers("/api/alerts/**").permitAll()
-                .requestMatchers("/api/reports/**").permitAll()
-                .requestMatchers("/api/system/**").permitAll()
-                .requestMatchers("/api/model/evaluation").permitAll()
-                .requestMatchers("/api/datasets").permitAll()
-                // Admin or authorized operations
-                .requestMatchers("/api/datasets/upload", "/api/preprocessing/run", "/api/model/train").permitAll() // permit with controller role check or open for seamless evaluation
+                // Allow all API endpoints
+                .requestMatchers("/api/**").permitAll()
                 .anyRequest().permitAll()
             );
 

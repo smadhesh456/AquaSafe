@@ -22,6 +22,10 @@ public interface WaterQualityRepository extends JpaRepository<WaterQuality, Long
 
     Optional<WaterQuality> findTopByDistrictOrderByDateDesc(String district);
 
+    Optional<WaterQuality> findByDistrictIgnoreCaseAndDate(String district, LocalDate date);
+
+    boolean existsByDistrictIgnoreCaseAndDate(String district, LocalDate date);
+
     @Query("SELECT DISTINCT w.district FROM WaterQuality w ORDER BY w.district ASC")
     List<String> findDistinctDistricts();
 

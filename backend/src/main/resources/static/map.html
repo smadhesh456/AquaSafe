@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AquaSafe - Geospatial Water Risk Map</title>
+    <title>AquaSafe - Tamil Nadu Geospatial Water Risk Map</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -37,7 +37,7 @@
                 <li class="menu-category">Surveillance Data</li>
                 <li><a href="data.html"><i class="fa-solid fa-database"></i> Data Management</a></li>
                 <li><a href="model.html"><i class="fa-solid fa-brain"></i> Model Performance</a></li>
-                <li><a href="alerts.html"><i class="fa-solid fa-triangle-exclamation"></i> Alerts</a></li>
+                <li><a href="alerts.html"><i class="fa-solid fa-triangle-exclamation"></i> Alerts <span id="sidebarAlertBadge" class="badge bg-danger ms-1" style="display:none;">0</span></a></li>
                 <li><a href="reports.html"><i class="fa-solid fa-file-waveform"></i> Reports</a></li>
 
                 <li class="menu-category">System</li>
@@ -49,51 +49,189 @@
         <div class="main-wrapper">
             <header class="top-navbar">
                 <div class="page-title">
-                    <h3>Geospatial Risk Map</h3>
-                    <p>All-India Regional Water-Borne Public Health Surveillance & Risk Mapping</p>
+                    <h3>Tamil Nadu Geospatial Risk Map</h3>
+                    <p>Live Epidemiological Water-Borne Disease Surveillance Across All 38 Districts</p>
                 </div>
-                <div class="nav-indicators">
-                    <span class="badge bg-light text-dark border px-3 py-2">
-                        <i class="fa-solid fa-location-crosshairs text-primary me-1"></i> All-India Active Coverage
+                <div class="nav-indicators d-flex align-items-center gap-2">
+                    <span class="badge bg-primary-subtle text-primary border border-primary-subtle px-3 py-2">
+                        <i class="fa-solid fa-location-dot me-1"></i> 38 Tamil Nadu Districts
+                    </span>
+                    <span id="navLiveBadge" class="badge bg-success-subtle text-success border border-success-subtle px-3 py-2">
+                        <i class="fa-solid fa-cloud-sun me-1"></i> Open-Meteo Connected
                     </span>
                 </div>
             </header>
 
             <main class="content-body">
-                <div class="dashboard-card mb-4">
-                    <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
-                        <div>
-                            <h5 class="fw-bold mb-0">Regional Water-Borne Risk Distribution</h5>
-                            <small class="text-muted">Interactive map highlighting high-risk zones, moderate surveillance, and nominal drinking baselines.</small>
-                        </div>
-                        <div class="btn-group btn-group-sm" role="group">
-                            <button type="button" class="btn btn-outline-secondary active">All Zones</button>
-                            <button type="button" class="btn btn-outline-danger">High Risk Only</button>
-                            <button type="button" class="btn btn-outline-success">Low Risk</button>
+                <div class="row g-4 mb-4">
+                    <!-- Map Column -->
+                    <div class="col-lg-8">
+                        <div class="dashboard-card h-100">
+                            <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
+                                <div>
+                                    <h5 class="fw-bold mb-0">Tamil Nadu District Risk Map</h5>
+                                    <small class="text-muted">Click any district marker to inspect environmental metrics, live weather, and risk factors.</small>
+                                </div>
+                                <div class="d-flex gap-2">
+                                    <div class="btn-group btn-group-sm" role="group">
+                                        <button type="button" class="btn btn-outline-secondary active" id="filterAll">All</button>
+                                        <button type="button" class="btn btn-outline-danger" id="filterHigh">High Risk</button>
+                                        <button type="button" class="btn btn-outline-warning" id="filterMed">Moderate</button>
+                                        <button type="button" class="btn btn-outline-success" id="filterLow">Low Risk</button>
+                                    </div>
+                                    <select id="zoneFilter" class="form-select form-select-sm" style="width: auto;">
+                                        <option value="ALL">All Zones</option>
+                                        <option value="North">North Zone</option>
+                                        <option value="Central">Central Zone</option>
+                                        <option value="South">South Zone</option>
+                                        <option value="West">West Zone</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Leaflet Container -->
+                            <div id="riskMap" style="height: 580px; border-radius: 12px; z-index: 1;"></div>
                         </div>
                     </div>
 
-                    <!-- Leaflet Container -->
-                    <div id="riskMap"></div>
+                    <!-- District Inspector Column -->
+                    <div class="col-lg-4">
+                        <div class="dashboard-card h-100" id="districtInspectorCard">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <div>
+                                    <h5 class="fw-bold mb-0" id="inspDistrictName">Select a District</h5>
+                                    <small class="text-muted" id="inspZoneState">Tamil Nadu, India</small>
+                                </div>
+                                <span class="badge bg-secondary px-3 py-2 fs-6" id="inspRiskBadge">Select on Map</span>
+                            </div>
+
+                            <div id="inspEmptyState" class="text-center py-5 text-muted">
+                                <i class="fa-solid fa-hand-pointer fa-3x mb-3 text-secondary opacity-50"></i>
+                                <p class="mb-0">Click any district circle on the Tamil Nadu map to view live environmental telemetry, demographics, and disease surveillance details.</p>
+                            </div>
+
+                            <div id="inspDataContent" style="display: none;">
+                                <!-- Live Weather -->
+                                <div class="border rounded p-3 mb-3 bg-light-subtle">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <span class="fw-bold small text-uppercase text-muted"><i class="fa-solid fa-cloud-sun text-primary me-1"></i> Meteorological Telemetry</span>
+                                        <span class="badge bg-success" id="inspWeatherStatus">LIVE</span>
+                                    </div>
+                                    <div class="row g-2 text-center">
+                                        <div class="col-4">
+                                            <div class="bg-white p-2 rounded border">
+                                                <small class="text-muted d-block">Air Temp</small>
+                                                <strong class="fs-6" id="inspTemp">--</strong>
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="bg-white p-2 rounded border">
+                                                <small class="text-muted d-block">Rainfall</small>
+                                                <strong class="fs-6" id="inspRain">--</strong>
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="bg-white p-2 rounded border">
+                                                <small class="text-muted d-block">Humidity</small>
+                                                <strong class="fs-6" id="inspHumidity">--</strong>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <small class="text-muted d-block mt-2" id="inspWeatherCondition">Condition: Partly Cloudy</small>
+                                </div>
+
+                                <!-- Water Quality Baseline -->
+                                <div class="border rounded p-3 mb-3 bg-light-subtle">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <span class="fw-bold small text-uppercase text-muted"><i class="fa-solid fa-vial text-info me-1"></i> Water Quality (CPCB/TNPCB)</span>
+                                        <span class="badge bg-info-subtle text-info border">STORED</span>
+                                    </div>
+                                    <div class="row g-2 text-center">
+                                        <div class="col-6">
+                                            <div class="bg-white p-2 rounded border">
+                                                <small class="text-muted d-block">pH Level</small>
+                                                <strong class="fs-6" id="inspPh">--</strong>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="bg-white p-2 rounded border">
+                                                <small class="text-muted d-block">Turbidity (NTU)</small>
+                                                <strong class="fs-6" id="inspTurbidity">--</strong>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="bg-white p-2 rounded border">
+                                                <small class="text-muted d-block">TDS (mg/L)</small>
+                                                <strong class="fs-6" id="inspTds">--</strong>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="bg-white p-2 rounded border">
+                                                <small class="text-muted d-block">Dissolved O₂</small>
+                                                <strong class="fs-6" id="inspDO">--</strong>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <small class="text-muted d-block mt-2" id="inspWaterFacility">Water Source: River Basin</small>
+                                </div>
+
+                                <!-- Demographics & Sanitation -->
+                                <div class="border rounded p-3 mb-3 bg-light-subtle">
+                                    <span class="fw-bold small text-uppercase text-muted d-block mb-2"><i class="fa-solid fa-users text-warning me-1"></i> Census 2011 & NFHS-5 Indicators</span>
+                                    <ul class="list-unstyled small mb-0">
+                                        <li class="d-flex justify-content-between py-1 border-bottom">
+                                            <span class="text-muted">Population:</span>
+                                            <strong id="inspPopulation">--</strong>
+                                        </li>
+                                        <li class="d-flex justify-content-between py-1 border-bottom">
+                                            <span class="text-muted">Population Density:</span>
+                                            <strong id="inspDensity">-- /km²</strong>
+                                        </li>
+                                        <li class="d-flex justify-content-between py-1 border-bottom">
+                                            <span class="text-muted">Sanitation Coverage:</span>
+                                            <strong id="inspSanitation">--%</strong>
+                                        </li>
+                                        <li class="d-flex justify-content-between py-1">
+                                            <span class="text-muted">Clean Drinking Water:</span>
+                                            <strong id="inspWaterAccess">--%</strong>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <!-- Risk Factors Breakdown -->
+                                <div class="border rounded p-3 mb-3 bg-light-subtle">
+                                    <span class="fw-bold small text-uppercase text-muted d-block mb-2"><i class="fa-solid fa-magnifying-glass-chart text-danger me-1"></i> Key Risk Factors & Contributions</span>
+                                    <div id="inspContributions" class="small text-muted">
+                                        No elevated hazards detected.
+                                    </div>
+                                </div>
+
+                                <!-- Action Buttons -->
+                                <button class="btn btn-primary btn-sm w-100" id="btnLiveSyncDistrict">
+                                    <i class="fa-solid fa-arrows-rotate me-1"></i> Sync Live Weather & Re-Predict
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="row g-4">
                     <div class="col-md-4">
                         <div class="dashboard-card border-start border-danger border-4">
                             <h6 class="fw-bold text-danger"><i class="fa-solid fa-triangle-exclamation me-1"></i> High-Risk Zones</h6>
-                            <p class="small text-muted mb-0">Elevated turbidity or severe precipitation runoff detected. Recommended immediate municipal chlorine dosage validation.</p>
+                            <p class="small text-muted mb-0">Elevated turbidity (> 5 NTU) or severe rainfall runoff detected. Recommended immediate chlorine dosage verification and active surveillance.</p>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="dashboard-card border-start border-warning border-4">
                             <h6 class="fw-bold text-warning"><i class="fa-solid fa-circle-exclamation me-1"></i> Moderate Risk Surveillance</h6>
-                            <p class="small text-muted mb-0">Marginal environmental fluctuations. Bi-weekly microbiological and pH sampling recommended.</p>
+                            <p class="small text-muted mb-0">Marginal environmental fluctuations. Periodic microbiological sampling and chlorine residual monitoring advised.</p>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="dashboard-card border-start border-success border-4">
                             <h6 class="fw-bold text-success"><i class="fa-solid fa-circle-check me-1"></i> Low-Risk Baseline</h6>
-                            <p class="small text-muted mb-0">Safe drinking water parameters, adequate sanitation coverage, and nominal epidemiological indices.</p>
+                            <p class="small text-muted mb-0">Safe drinking water parameters, adequate household sanitation coverage, and nominal epidemiological indices.</p>
                         </div>
                     </div>
                 </div>
@@ -101,7 +239,7 @@
                 <div class="disclaimer-box mt-3">
                     <i class="fa-solid fa-circle-info text-primary mt-1"></i>
                     <div>
-                        <strong>Notice:</strong> District coordinates and risk levels are derived from the project's analytical surveillance database. This map represents predictive public-health risk estimation and is not a medical diagnosis or confirmed disease outbreak record.
+                        <strong>Notice & Disclaimer:</strong> AquaSafe predicts potential epidemiological risk from environmental indicators (turbidity, pH, rainfall, sanitation, population density). It clearly distinguishes actual historical reports from predicted risk, and does <strong>NOT</strong> diagnose individual patients or confirm disease outbreaks.
                     </div>
                 </div>
             </main>

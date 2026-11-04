@@ -29,6 +29,21 @@ public class DashboardController {
         return ResponseEntity.ok(dashboardService.getDiseaseTrends());
     }
 
+    @GetMapping("/rainfall-vs-disease")
+    public ResponseEntity<Map<String, Object>> getRainfallVsDisease() {
+        return ResponseEntity.ok(dashboardService.getRainfallVsDiseaseTrends());
+    }
+
+    @GetMapping("/monthly-disease")
+    public ResponseEntity<Map<String, Object>> getMonthlyDisease() {
+        return ResponseEntity.ok(dashboardService.getMonthlyDiseaseCases());
+    }
+
+    @GetMapping("/weather-trends")
+    public ResponseEntity<Map<String, Object>> getWeatherTrends() {
+        return ResponseEntity.ok(dashboardService.getTemperatureHumidityTrends());
+    }
+
     @GetMapping("/water-quality")
     public ResponseEntity<Map<String, Object>> getWaterQuality() {
         return ResponseEntity.ok(dashboardService.getDistrictRiskBreakdown());
@@ -42,6 +57,11 @@ public class DashboardController {
     @GetMapping("/district-risk")
     public ResponseEntity<Map<String, Object>> getDistrictRisk() {
         return ResponseEntity.ok(dashboardService.getDistrictRiskBreakdown());
+    }
+
+    @GetMapping("/monitoring")
+    public ResponseEntity<Map<String, Object>> getMonitoringPanel() {
+        return ResponseEntity.ok(dashboardService.getMonitoringPanelData());
     }
 
     @GetMapping(value = "/live-stream", produces = MediaType.TEXT_EVENT_STREAM_VALUE)

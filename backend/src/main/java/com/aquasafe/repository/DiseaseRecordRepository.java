@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface DiseaseRecordRepository extends JpaRepository<DiseaseRecord, Long> {
@@ -18,6 +19,12 @@ public interface DiseaseRecordRepository extends JpaRepository<DiseaseRecord, Lo
     List<DiseaseRecord> findByDateBetweenOrderByDateAsc(LocalDate startDate, LocalDate endDate);
 
     Page<DiseaseRecord> findByDistrictContainingIgnoreCase(String district, Pageable pageable);
+
+    Optional<DiseaseRecord> findTopByDistrictOrderByDateDesc(String district);
+
+    Optional<DiseaseRecord> findByDistrictIgnoreCaseAndDate(String district, LocalDate date);
+
+    boolean existsByDistrictIgnoreCaseAndDate(String district, LocalDate date);
 
     @Query("SELECT DISTINCT d.district FROM DiseaseRecord d ORDER BY d.district ASC")
     List<String> findDistinctDistricts();

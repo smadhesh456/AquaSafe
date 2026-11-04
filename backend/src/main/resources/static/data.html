@@ -47,7 +47,7 @@
             <header class="top-navbar">
                 <div class="page-title">
                     <h3>Data Collection & Preprocessing</h3>
-                    <p>Multi-Source CSV Ingestion, Validation & Cleaning Pipeline</p>
+                    <p>Multi-Source Tamil Nadu Ingestion, Validation & Cleaning Pipeline</p>
                 </div>
                 <div class="nav-indicators">
                     <button class="btn btn-sm btn-outline-primary" id="btnRunBigData">
@@ -62,7 +62,7 @@
                     <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
                         <div>
                             <h5 class="fw-bold text-dark mb-1"><i class="fa-solid fa-wand-magic-sparkles text-primary me-2"></i>Automated Data Preprocessing Engine</h5>
-                            <p class="small text-muted mb-0">Executes missing value handling, duplicate record removal, invalid value filtration, and deterministic risk label integration.</p>
+                            <p class="small text-muted mb-0">Executes missing value handling, duplicate record removal, invalid value filtration, and deterministic risk label integration across all 38 Tamil Nadu districts.</p>
                         </div>
                         <button class="btn btn-primary px-4 fw-bold" id="btnRunPreprocessing">
                             <span class="spinner-border spinner-border-sm me-2 d-none" id="preprocessSpinner"></span>
@@ -99,6 +99,118 @@
                     </div>
                 </div>
 
+                <!-- Data Validation & Quality Report -->
+                <div class="dashboard-card mb-4">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div>
+                            <h5 class="fw-bold mb-1"><i class="fa-solid fa-clipboard-check text-success me-2"></i>Data Validation & Quality Report</h5>
+                            <p class="small text-muted mb-0">Automated integrity checks, physical bounds enforcement, and missing value detection.</p>
+                        </div>
+                        <button class="btn btn-sm btn-outline-success" id="btnRefreshValidation">
+                            <i class="fa-solid fa-rotate me-1"></i> Refresh Report
+                        </button>
+                    </div>
+
+                    <div class="row g-3 mb-3">
+                        <div class="col-sm-6 col-md-3">
+                            <div class="p-3 bg-light rounded-3 border">
+                                <div class="small text-muted">Total Evaluated Records</div>
+                                <h4 class="fw-bold text-dark mb-0" id="valTotalRecords">0</h4>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-3">
+                            <div class="p-3 bg-success-subtle rounded-3 border border-success-subtle">
+                                <div class="small text-success fw-semibold">Passing Rate</div>
+                                <h4 class="fw-bold text-success mb-0" id="valPassingRate">100.0%</h4>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-3">
+                            <div class="p-3 bg-warning-subtle rounded-3 border border-warning-subtle">
+                                <div class="small text-warning-emphasis fw-semibold">Duplicates Resolved</div>
+                                <h4 class="fw-bold text-warning-emphasis mb-0" id="valDuplicates">0</h4>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-3">
+                            <div class="p-3 bg-info-subtle rounded-3 border border-info-subtle">
+                                <div class="small text-info-emphasis fw-semibold">Validation Status</div>
+                                <h4 class="fw-bold text-info-emphasis mb-0" id="valStatus">HEALTHY</h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table table-sm table-bordered custom-table mb-0">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Indicator / Feature</th>
+                                    <th>Permissible Physical Range</th>
+                                    <th>Normal / Safe Benchmark</th>
+                                    <th>Unit of Measure</th>
+                                    <th>Rule Enforcement Method</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>pH Level</strong></td>
+                                    <td>0.0 &ndash; 14.0</td>
+                                    <td>6.5 &ndash; 8.5 (BIS 10500)</td>
+                                    <td>pH Units</td>
+                                    <td>Clamped to boundary & median imputation</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Turbidity</strong></td>
+                                    <td>0.0 &ndash; 100.0</td>
+                                    <td>&lt; 5.0 (Desirable: &lt; 1.0)</td>
+                                    <td>NTU</td>
+                                    <td>Capped at physical sensor ceiling</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Total Dissolved Solids (TDS)</strong></td>
+                                    <td>10.0 &ndash; 2000.0</td>
+                                    <td>&lt; 500.0 (Permissible: 2000)</td>
+                                    <td>mg/L</td>
+                                    <td>Outlier detection & verified baseline check</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Dissolved Oxygen (DO)</strong></td>
+                                    <td>0.0 &ndash; 15.0</td>
+                                    <td>&gt; 4.0 (Aquatic safety threshold)</td>
+                                    <td>mg/L</td>
+                                    <td>Boundary validation & river basin median</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Water Temperature</strong></td>
+                                    <td>10.0 &ndash; 45.0</td>
+                                    <td>Ambient Tropical (20 &ndash; 35)</td>
+                                    <td>&deg;C</td>
+                                    <td>Seasonal climatological bounds check</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Air Temperature & Humidity</strong></td>
+                                    <td>-10 to 50 &deg;C | 0 to 100%</td>
+                                    <td>Tamil Nadu Climate Normals</td>
+                                    <td>&deg;C / %</td>
+                                    <td>Open-Meteo REST API cross-verification</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Rainfall & Precipitation</strong></td>
+                                    <td>0.0 &ndash; 500.0</td>
+                                    <td>Monsoon Norms (0 &ndash; 150)</td>
+                                    <td>mm / day</td>
+                                    <td>Rain gauge physical maximum filter</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Sanitation & Clean Water</strong></td>
+                                    <td>0.0 &ndash; 100.0%</td>
+                                    <td>NFHS-5 District Indicator</td>
+                                    <td>% Population</td>
+                                    <td>Census 2011 & NFHS-5 official audit bounds</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
                 <!-- CSV Upload Section -->
                 <div class="row g-4 mb-4">
                     <div class="col-lg-6">
@@ -108,17 +220,20 @@
                                 <div class="mb-3">
                                     <label class="form-label small fw-semibold">Dataset Type</label>
                                     <select class="form-select" id="datasetTypeSelect" required>
-                                        <option value="water_quality">Water Quality (pH, Turbidity, TDS, DO, Temp)</option>
-                                        <option value="weather_data">Weather Records (Temp, Rainfall, Humidity)</option>
+                                        <option value="water_quality">Water Quality (pH, Turbidity, TDS, DO, Water Temp)</option>
+                                        <option value="weather_data">Weather Records (Temp, Rainfall, Precipitation, Humidity)</option>
                                         <option value="disease_records">Disease Surveillance (Cholera, Typhoid, Diarrhea, Hepatitis)</option>
-                                        <option value="population_data">Population & Sanitation (Demographics & Coordinates)</option>
+                                        <option value="population_data">Population Demographics (Census 2011 & Clean Water)</option>
+                                        <option value="sanitation_data">Sanitation Coverage (Rural/Urban Sanitation & JJM)</option>
+                                        <option value="districts">Tamil Nadu District Directory (38 Districts, Coordinates, Zones)</option>
+                                        <option value="data_sources">Official Data Sources Registry</option>
                                     </select>
                                 </div>
 
                                 <div class="mb-3">
                                     <label class="form-label small fw-semibold">Select CSV File</label>
                                     <input type="file" class="form-control" id="csvFileInput" accept=".csv" required>
-                                    <small class="text-muted">Standard UTF-8 comma-delimited CSV formats supported.</small>
+                                    <small class="text-muted">Standard UTF-8 comma-delimited CSV formats supported with header row.</small>
                                 </div>
 
                                 <button type="submit" class="btn btn-primary w-100 fw-bold" id="btnUploadSubmit">
@@ -164,6 +279,31 @@
                     </div>
                 </div>
 
+                <!-- Official Data Sources & Provenance Registry Table -->
+                <div class="dashboard-card mb-4">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h5 class="fw-bold mb-0"><i class="fa-solid fa-building-columns text-primary me-2"></i>Official Data Sources & Provenance Registry</h5>
+                        <span class="badge bg-light text-dark border">Government & Meteorological Portals</span>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table custom-table mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Source Name</th>
+                                    <th>Category</th>
+                                    <th>Verified Portal URL</th>
+                                    <th>Update Cadence</th>
+                                    <th>Reference Year</th>
+                                    <th>Provenance Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="dataSourcesBody">
+                                <tr><td colspan="6" class="text-center text-muted py-3">Loading registered data sources...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
                 <!-- Import History Table -->
                 <div class="dashboard-card">
                     <h5 class="fw-bold mb-3">Dataset Import Audit Log</h5>
@@ -196,8 +336,17 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             loadImportHistory();
+            loadValidationReport();
+            loadDataSources();
             setupUploadForm();
             setupPreprocessing();
+
+            const btnRefreshVal = document.getElementById('btnRefreshValidation');
+            if (btnRefreshVal) {
+                btnRefreshVal.addEventListener('click', () => {
+                    loadValidationReport();
+                });
+            }
 
             document.getElementById('btnRunBigData').addEventListener('click', async () => {
                 try {
@@ -208,6 +357,52 @@
                 }
             });
         });
+
+        async function loadValidationReport() {
+            try {
+                const rep = await api.getValidationReport();
+                if (!rep) return;
+
+                document.getElementById('valTotalRecords').textContent = (rep.totalRecordsEvaluated || 0).toLocaleString();
+                document.getElementById('valPassingRate').textContent = ((rep.overallPassingRate || 1.0) * 100).toFixed(1) + '%';
+                document.getElementById('valDuplicates').textContent = (rep.duplicateRecordsDetected || 0).toLocaleString();
+                document.getElementById('valStatus').textContent = rep.status || 'HEALTHY';
+            } catch (err) {
+                console.warn('Could not load validation report:', err);
+            }
+        }
+
+        async function loadDataSources() {
+            const tbody = document.getElementById('dataSourcesBody');
+            if (!tbody) return;
+
+            try {
+                const sources = await api.getDataSources();
+                if (!sources || sources.length === 0) {
+                    tbody.innerHTML = `<tr><td colspan="6" class="text-center text-muted py-3">No data source records found.</td></tr>`;
+                    return;
+                }
+
+                tbody.innerHTML = sources.map(s => {
+                    let badge = 'bg-secondary';
+                    if (s.dataStatus === 'LIVE') badge = 'bg-success';
+                    else if (s.dataStatus === 'STORED') badge = 'bg-primary';
+
+                    return `
+                        <tr>
+                            <td><strong>${escapeHtml(s.sourceName)}</strong></td>
+                            <td><span class="badge bg-light text-dark">${escapeHtml(s.category)}</span></td>
+                            <td><a href="${escapeHtml(s.sourceUrl)}" target="_blank" rel="noopener noreferrer" class="text-decoration-none small text-truncate d-inline-block" style="max-width: 280px;">${escapeHtml(s.sourceUrl)} <i class="fa-solid fa-arrow-up-right-from-square ms-1"></i></a></td>
+                            <td>${escapeHtml(s.updateFrequency || 'Periodic')}</td>
+                            <td>${escapeHtml(s.referenceYear || '2023-24')}</td>
+                            <td><span class="badge ${badge}">${escapeHtml(s.dataStatus)}</span></td>
+                        </tr>
+                    `;
+                }).join('');
+            } catch (err) {
+                console.warn('Could not load data sources:', err);
+            }
+        }
 
         function setupPreprocessing() {
             const btn = document.getElementById('btnRunPreprocessing');
@@ -220,11 +415,12 @@
 
                 try {
                     const stats = await api.runPreprocessing();
-                    document.getElementById('statBefore').textContent = stats.recordsBefore.toLocaleString();
-                    document.getElementById('statAfter').textContent = stats.recordsAfterCleaning.toLocaleString();
-                    document.getElementById('statDuplicates').textContent = stats.duplicatesRemoved.toLocaleString();
-                    document.getElementById('statMissing').textContent = (stats.missingValuesHandled + stats.invalidValuesFiltered).toLocaleString();
+                    document.getElementById('statBefore').textContent = (stats.recordsBefore || 0).toLocaleString();
+                    document.getElementById('statAfter').textContent = (stats.recordsAfterCleaning || 0).toLocaleString();
+                    document.getElementById('statDuplicates').textContent = (stats.duplicatesRemoved || 0).toLocaleString();
+                    document.getElementById('statMissing').textContent = ((stats.missingValuesHandled || 0) + (stats.invalidValuesFiltered || 0)).toLocaleString();
                     statsRow.classList.remove('d-none');
+                    await loadValidationReport();
                     alert('Data Preprocessing and Ground Truth Integration complete!');
                 } catch (err) {
                     alert('Preprocessing failed: ' + err.message);
@@ -257,6 +453,7 @@
                     const res = await api.uploadDataset(formData);
                     renderUploadResult(res);
                     await loadImportHistory();
+                    await loadValidationReport();
                     form.reset();
                 } catch (err) {
                     alert('Upload failed: ' + err.message);
@@ -276,12 +473,11 @@
             document.getElementById('upValid').textContent = res.validRecords;
             document.getElementById('upInvalid').textContent = res.invalidRecords + res.duplicateRecords;
 
-            // Render Preview Rows
             if (res.previewRows && res.previewRows.length > 0) {
                 const cols = Object.keys(res.previewRows[0]);
-                document.getElementById('previewTableHead').innerHTML = cols.map(c => `<th>${c}</th>`).join('');
+                document.getElementById('previewTableHead').innerHTML = cols.map(c => `<th>${escapeHtml(c)}</th>`).join('');
                 document.getElementById('previewTableBody').innerHTML = res.previewRows.slice(0, 5).map(row => `
-                    <tr>${cols.map(c => `<td>${row[c] || ''}</td>`).join('')}</tr>
+                    <tr>${cols.map(c => `<td>${escapeHtml(row[c] || '')}</td>`).join('')}</tr>
                 `).join('');
             }
         }
@@ -303,8 +499,8 @@
                         <td class="text-success fw-bold">${h.validRecords}</td>
                         <td>${h.duplicateRecords}</td>
                         <td>${h.missingValues}</td>
-                        <td><span class="badge bg-success">${h.status}</span></td>
-                        <td>${new Date(h.importTime).toLocaleString()}</td>
+                        <td><span class="badge bg-success">${escapeHtml(h.status)}</span></td>
+                        <td>${h.importTime ? new Date(h.importTime).toLocaleString() : '-'}</td>
                     </tr>
                 `).join('');
             } catch (err) {
@@ -314,7 +510,7 @@
 
         function escapeHtml(str) {
             if (!str) return '';
-            return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+            return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
         }
     </script>
 </body>

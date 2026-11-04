@@ -34,12 +34,15 @@ class AquaSafeApplicationTests {
         req.setTurbidity(3.5);
         req.setTds(320.0);
         req.setDissolvedOxygen(6.8);
+        req.setWaterTemperature(28.0);
         req.setTemperature(29.0);
         req.setRainfall(15.0);
+        req.setPrecipitation(15.0);
         req.setHumidity(65.0);
         req.setPreviousDiseaseCases(5);
         req.setPopulationDensity(26900);
         req.setSanitationCoverage(92.5);
+        req.setCleanWaterCoverage(95.0);
 
         PredictionResponseDTO response = predictionService.predictRisk(req);
         assertNotNull(response);
@@ -52,10 +55,10 @@ class AquaSafeApplicationTests {
 
     @Test
     void testPreprocessingAndLabeling() {
-        String highRisk = preprocessingService.determineRiskLabel(6.0, 9.5, 4.0, 85.0, 30, 15000, 68.0);
+        String highRisk = preprocessingService.determineRiskLabel(6.0, 9.5, 4.0, 85.0, 30, 15000, 68.0, 72.0);
         assertEquals("HIGH", highRisk, "Extreme indicators should evaluate to HIGH risk");
 
-        String lowRisk = preprocessingService.determineRiskLabel(7.4, 2.0, 7.5, 5.0, 2, 400, 92.0);
+        String lowRisk = preprocessingService.determineRiskLabel(7.4, 2.0, 7.5, 5.0, 2, 400, 92.0, 96.0);
         assertEquals("LOW", lowRisk, "Safe indicators should evaluate to LOW risk");
 
         PreprocessingStatsDTO stats = preprocessingService.cleanAndIntegrateData();

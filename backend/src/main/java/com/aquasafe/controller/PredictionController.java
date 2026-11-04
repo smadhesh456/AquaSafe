@@ -27,9 +27,25 @@ public class PredictionController {
         return ResponseEntity.ok(response);
     }
 
+    @GetMapping("/auto/{district}")
+    public ResponseEntity<PredictionResponseDTO> predictRiskAuto(@PathVariable String district) throws Exception {
+        PredictionResponseDTO response = predictionService.predictForDistrictAuto(district);
+        return ResponseEntity.ok(response);
+    }
+
+    @PostMapping("/predict-all")
+    public ResponseEntity<List<PredictionResponseDTO>> predictAllDistricts() {
+        return ResponseEntity.ok(predictionService.predictAllDistricts());
+    }
+
     @GetMapping("/history")
     public ResponseEntity<List<PredictionResult>> getRecentPredictions() {
         return ResponseEntity.ok(predictionService.getRecentPredictions());
+    }
+
+    @GetMapping("/district-summary")
+    public ResponseEntity<List<Object[]>> getDistrictSummary() {
+        return ResponseEntity.ok(predictionService.getLatestPredictionPerDistrict());
     }
 
     @GetMapping("/all")

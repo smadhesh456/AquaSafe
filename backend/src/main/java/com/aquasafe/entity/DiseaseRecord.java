@@ -8,7 +8,8 @@ import java.time.LocalDateTime;
 @Table(name = "disease_records", indexes = {
     @Index(name = "idx_disease_district", columnList = "district"),
     @Index(name = "idx_disease_date", columnList = "date"),
-    @Index(name = "idx_disease_district_date", columnList = "district, date")
+    @Index(name = "idx_disease_district_date", columnList = "district, date"),
+    @Index(name = "idx_disease_status", columnList = "data_status")
 })
 public class DiseaseRecord {
 
@@ -37,19 +38,43 @@ public class DiseaseRecord {
     @Column(name = "hepatitis_cases", nullable = false)
     private Integer hepatitisCases = 0;
 
+    @Column(name = "reporting_period", length = 50)
+    private String reportingPeriod = "MONTHLY";
+
+    @Column(name = "outbreak_status", length = 50)
+    private String outbreakStatus = "REPORTED_CASES"; // REPORTED_CASES, CONFIRMED_OUTBREAK, NONE
+
+    @Column(name = "source_name", length = 150)
+    private String sourceName = "IDSP Tamil Nadu & MoHFW";
+
+    @Column(name = "source_url", length = 500)
+    private String sourceUrl = "https://idsp.mohfw.gov.in/";
+
+    @Column(name = "data_status", length = 20)
+    private String dataStatus = "STORED"; // STORED, DEMO
+
     @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt = LocalDateTime.now();
 
     public DiseaseRecord() {}
 
     public DiseaseRecord(String district, String state, LocalDate date, Integer choleraCases, Integer typhoidCases, Integer diarrheaCases, Integer hepatitisCases) {
+        this(district, state, date, choleraCases, typhoidCases, diarrheaCases, hepatitisCases, "MONTHLY", "REPORTED_CASES", "IDSP Tamil Nadu & MoHFW", "https://idsp.mohfw.gov.in/", "STORED");
+    }
+
+    public DiseaseRecord(String district, String state, LocalDate date, Integer choleraCases, Integer typhoidCases, Integer diarrheaCases, Integer hepatitisCases, String reportingPeriod, String outbreakStatus, String sourceName, String sourceUrl, String dataStatus) {
         this.district = district;
-        this.state = state;
+        this.state = state != null ? state : "Tamil Nadu";
         this.date = date;
         this.choleraCases = choleraCases != null ? choleraCases : 0;
         this.typhoidCases = typhoidCases != null ? typhoidCases : 0;
         this.diarrheaCases = diarrheaCases != null ? diarrheaCases : 0;
         this.hepatitisCases = hepatitisCases != null ? hepatitisCases : 0;
+        this.reportingPeriod = reportingPeriod != null ? reportingPeriod : "MONTHLY";
+        this.outbreakStatus = outbreakStatus != null ? outbreakStatus : "REPORTED_CASES";
+        this.sourceName = sourceName != null ? sourceName : "IDSP Tamil Nadu & MoHFW";
+        this.sourceUrl = sourceUrl != null ? sourceUrl : "https://idsp.mohfw.gov.in/";
+        this.dataStatus = dataStatus != null ? dataStatus : "STORED";
         this.createdAt = LocalDateTime.now();
     }
 
@@ -83,6 +108,21 @@ public class DiseaseRecord {
 
     public Integer getHepatitisCases() { return hepatitisCases; }
     public void setHepatitisCases(Integer hepatitisCases) { this.hepatitisCases = hepatitisCases; }
+
+    public String getReportingPeriod() { return reportingPeriod; }
+    public void setReportingPeriod(String reportingPeriod) { this.reportingPeriod = reportingPeriod; }
+
+    public String getOutbreakStatus() { return outbreakStatus; }
+    public void setOutbreakStatus(String outbreakStatus) { this.outbreakStatus = outbreakStatus; }
+
+    public String getSourceName() { return sourceName; }
+    public void setSourceName(String sourceName) { this.sourceName = sourceName; }
+
+    public String getSourceUrl() { return sourceUrl; }
+    public void setSourceUrl(String sourceUrl) { this.sourceUrl = sourceUrl; }
+
+    public String getDataStatus() { return dataStatus; }
+    public void setDataStatus(String dataStatus) { this.dataStatus = dataStatus; }
 
     public LocalDateTime getCreatedAt() { return createdAt; }
     public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }

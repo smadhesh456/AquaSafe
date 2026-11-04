@@ -82,6 +82,18 @@ const api = {
         return this.request('/dashboard/disease-trends');
     },
 
+    async getRainfallVsDisease() {
+        return this.request('/dashboard/rainfall-vs-disease');
+    },
+
+    async getMonthlyDisease() {
+        return this.request('/dashboard/monthly-disease');
+    },
+
+    async getWeatherTrends() {
+        return this.request('/dashboard/weather-trends');
+    },
+
     async getWaterQualityTrends() {
         return this.request('/dashboard/water-quality');
     },
@@ -94,13 +106,26 @@ const api = {
         return this.request('/dashboard/district-risk');
     },
 
-    // 2. Water Quality
+    async getMonitoringPanel() {
+        return this.request('/dashboard/monitoring');
+    },
+
+    // 2. Districts Registry (All 38 Districts)
+    async getDistricts() {
+        return this.request('/districts');
+    },
+
+    async getDistrict(name) {
+        return this.request(`/districts/${encodeURIComponent(name)}`);
+    },
+
+    // 3. Water Quality
     async getWaterQuality(district = '', page = 0, size = 15) {
         const query = `?district=${encodeURIComponent(district)}&page=${page}&size=${size}`;
         return this.request(`/water-quality${query}`);
     },
 
-    // 3. Weather Data
+    // 4. Weather Data (Open-Meteo)
     async getCurrentWeather(district = 'Chennai') {
         return this.request(`/weather/current?district=${encodeURIComponent(district)}`);
     },
@@ -114,18 +139,22 @@ const api = {
         return this.request(`/weather${query}`);
     },
 
-    // 4. Disease Surveillance
+    async syncAllWeather() {
+        return this.request('/weather/sync-all', { method: 'POST' });
+    },
+
+    // 5. Disease Surveillance
     async getDiseases(district = '', page = 0, size = 15) {
         const query = `?district=${encodeURIComponent(district)}&page=${page}&size=${size}`;
         return this.request(`/diseases${query}`);
     },
 
-    // 5. Population & Geo
+    // 6. Population & Demographics
     async getPopulation() {
         return this.request('/population');
     },
 
-    // 6. Datasets & Upload
+    // 7. Datasets & Ingestion
     async uploadDataset(formData) {
         const url = `${API_BASE}/datasets/upload`;
         const resp = await fetch(url, {
@@ -143,12 +172,33 @@ const api = {
         return this.request('/datasets');
     },
 
-    // 7. Preprocessing
+    async getDataSources() {
+        return this.request('/data-sources');
+    },
+
+    // 8. Data Validation & Preprocessing
     async runPreprocessing() {
         return this.request('/preprocessing/run', { method: 'POST' });
     },
 
-    // 8. ML Model Management
+    async getValidationReport() {
+        return this.request('/validation/report');
+    },
+
+    async getPreprocessingLogs() {
+        return this.request('/preprocessing/logs');
+    },
+
+    // 9. Data Collection Automation
+    async getDataCollectionStatus() {
+        return this.request('/data-collection/status');
+    },
+
+    async triggerDataCollection() {
+        return this.request('/data-collection/trigger', { method: 'POST' });
+    },
+
+    // 10. ML Model Management
     async trainModel() {
         return this.request('/model/train', { method: 'POST' });
     },
@@ -157,7 +207,7 @@ const api = {
         return this.request('/model/evaluation');
     },
 
-    // 9. Prediction Engine
+    // 11. Prediction Engine
     async predictRisk(params) {
         return this.request('/predictions/predict', {
             method: 'POST',
@@ -165,11 +215,23 @@ const api = {
         });
     },
 
+    async predictRiskAuto(district) {
+        return this.request(`/predictions/auto/${encodeURIComponent(district)}`);
+    },
+
+    async predictAllDistricts() {
+        return this.request('/predictions/predict-all', { method: 'POST' });
+    },
+
     async getPredictionHistory() {
         return this.request('/predictions/history');
     },
 
-    // 10. Alerts
+    async getDistrictRiskSummary() {
+        return this.request('/predictions/district-summary');
+    },
+
+    // 12. Alerts
     async getAlerts() {
         return this.request('/alerts');
     },
@@ -178,7 +240,7 @@ const api = {
         return this.request(`/alerts/${id}/read`, { method: 'PUT' });
     },
 
-    // 11. Reports
+    // 13. Reports
     async getReports(district = '', startDate = '', endDate = '') {
         let query = '?';
         if (district) query += `district=${encodeURIComponent(district)}&`;
@@ -187,7 +249,7 @@ const api = {
         return this.request(`/reports${query}`);
     },
 
-    // 12. System & Big Data Processing
+    // 14. System & Big Data Processing
     async getSystemHealth() {
         return this.request('/system/health');
     },
@@ -196,7 +258,7 @@ const api = {
         return this.request('/system/spark/process', { method: 'POST' });
     },
 
-    // 13. Auth
+    // 15. Auth
     async login(username, password) {
         return this.request('/auth/login', {
             method: 'POST',
@@ -242,8 +304,6 @@ const api = {
 
 window.api = api;
 
-// Automatically bind session indicators on every page
 document.addEventListener('DOMContentLoaded', () => {
     api.initAuthUI();
 });
-

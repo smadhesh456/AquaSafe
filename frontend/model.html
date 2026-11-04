@@ -47,7 +47,7 @@
             <header class="top-navbar">
                 <div class="page-title">
                     <h3>Model Performance & Evaluation</h3>
-                    <p>Authentic 10-Fold Cross-Validation Metrics (Weka Random Forest)</p>
+                    <p>Authentic 10-Fold Cross-Validation Metrics (Weka Random Forest — 38 Tamil Nadu Districts)</p>
                 </div>
                 <div class="nav-indicators">
                     <button class="btn btn-sm btn-primary" id="btnRetrainModel">
@@ -69,7 +69,7 @@
                                 </div>
                             </div>
                             <div class="kpi-value text-primary" id="metricAccuracy">--%</div>
-                            <div class="kpi-subtitle">10-Fold Cross-Validation</div>
+                            <div class="kpi-subtitle">10-Fold Stratified Cross-Validation</div>
                         </div>
                     </div>
 
@@ -121,7 +121,7 @@
                                 <h5 class="fw-bold mb-0">Authentic Confusion Matrix</h5>
                                 <span class="badge bg-light text-dark border">Weka 3.8.6 Output</span>
                             </div>
-                            <p class="small text-muted mb-3">Predicted class vs True Ground Truth distribution calculated by Weka Cross-Validation engine.</p>
+                            <p class="small text-muted mb-3">Predicted class vs True Ground Truth distribution calculated by Weka Cross-Validation engine on 912 Tamil Nadu surveillance records.</p>
                             
                             <div class="table-responsive">
                                 <table class="table table-bordered text-center align-middle mb-0" id="confusionMatrixTable">
@@ -144,7 +144,7 @@
                     <div class="col-lg-6">
                         <div class="dashboard-card h-100">
                             <h5 class="fw-bold mb-3">Class-Specific Performance Breakdown</h5>
-                            <p class="small text-muted mb-3">Detailed classification metrics by public health risk level.</p>
+                            <p class="small text-muted mb-3">Detailed classification metrics by public health risk level across 38 districts.</p>
 
                             <div class="table-responsive">
                                 <table class="table custom-table mb-0">
@@ -172,7 +172,7 @@
                         <div class="col-md-3"><strong>Model Classifier:</strong> Weka Random Forest</div>
                         <div class="col-md-3"><strong>Ensemble Size:</strong> 100 Decision Trees</div>
                         <div class="col-md-3"><strong>Evaluation Strategy:</strong> 10-Fold Stratified CV</div>
-                        <div class="col-md-3"><strong>Dataset Sample Size:</strong> <span id="modelInstancesCount">240 Instances</span></div>
+                        <div class="col-md-3"><strong>Dataset Sample Size:</strong> <span id="modelInstancesCount">912 Instances</span></div>
                     </div>
 
                     <pre class="bg-dark text-success p-3 rounded-3 small font-monospace" style="max-height: 250px; overflow-y: auto;" id="cvLogSummary">
@@ -213,11 +213,11 @@ Loading cross-validation evaluation output from backend...
                 const evalData = await api.getModelEvaluation();
                 if (!evalData) return;
 
-                document.getElementById('metricAccuracy').textContent = evalData.accuracy + '%';
-                document.getElementById('metricPrecision').textContent = evalData.precision + '%';
-                document.getElementById('metricRecall').textContent = evalData.recall + '%';
-                document.getElementById('metricF1').textContent = evalData.f1Score + '%';
-                document.getElementById('modelInstancesCount').textContent = evalData.totalInstances + ' Instances';
+                document.getElementById('metricAccuracy').textContent = (evalData.accuracy != null ? evalData.accuracy.toFixed(1) : '--') + '%';
+                document.getElementById('metricPrecision').textContent = (evalData.precision != null ? evalData.precision.toFixed(1) : '--') + '%';
+                document.getElementById('metricRecall').textContent = (evalData.recall != null ? evalData.recall.toFixed(1) : '--') + '%';
+                document.getElementById('metricF1').textContent = (evalData.f1Score != null ? evalData.f1Score.toFixed(1) : '--') + '%';
+                document.getElementById('modelInstancesCount').textContent = (evalData.totalInstances || 912) + ' Instances';
 
                 // Render Confusion Matrix
                 const cmBody = document.getElementById('confusionMatrixBody');
@@ -256,9 +256,9 @@ Loading cross-validation evaluation output from backend...
                         return `
                             <tr>
                                 <td><span class="badge ${badge}">${cls}</span></td>
-                                <td>${metrics.precision}%</td>
-                                <td>${metrics.recall}%</td>
-                                <td>${metrics.f1Score}%</td>
+                                <td>${metrics.precision ? metrics.precision.toFixed(1) : '0.0'}%</td>
+                                <td>${metrics.recall ? metrics.recall.toFixed(1) : '0.0'}%</td>
+                                <td>${metrics.f1Score ? metrics.f1Score.toFixed(1) : '0.0'}%</td>
                             </tr>
                         `;
                     }).join('');

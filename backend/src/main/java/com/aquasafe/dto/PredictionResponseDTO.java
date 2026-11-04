@@ -1,6 +1,9 @@
 package com.aquasafe.dto;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 public class PredictionResponseDTO {
@@ -12,7 +15,10 @@ public class PredictionResponseDTO {
     private String modelVersion;
     private Map<String, Double> classProbabilities;
     private String message;
-    private String disclaimer = "Prediction indicates estimated risk based on available project data. It is not a medical diagnosis or confirmation of an outbreak.";
+    private String dataStatus = "STORED"; // LIVE, STORED, DEMO
+    private List<String> featureContributions = new ArrayList<>();
+    private Map<String, Object> inputParameters = new LinkedHashMap<>();
+    private String disclaimer = "Prediction indicates estimated epidemiological risk based on environmental & surveillance indicators. It does NOT diagnose patients or confirm an outbreak.";
 
     public PredictionResponseDTO() {}
 
@@ -46,6 +52,15 @@ public class PredictionResponseDTO {
 
     public String getMessage() { return message; }
     public void setMessage(String message) { this.message = message; }
+
+    public String getDataStatus() { return dataStatus; }
+    public void setDataStatus(String dataStatus) { this.dataStatus = dataStatus; }
+
+    public List<String> getFeatureContributions() { return featureContributions; }
+    public void setFeatureContributions(List<String> featureContributions) { this.featureContributions = featureContributions; }
+
+    public Map<String, Object> getInputParameters() { return inputParameters; }
+    public void setInputParameters(Map<String, Object> inputParameters) { this.inputParameters = inputParameters; }
 
     public String getDisclaimer() { return disclaimer; }
     public void setDisclaimer(String disclaimer) { this.disclaimer = disclaimer; }

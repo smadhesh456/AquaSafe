@@ -8,7 +8,8 @@ import java.time.LocalDateTime;
 @Table(name = "water_quality", indexes = {
     @Index(name = "idx_wq_district", columnList = "district"),
     @Index(name = "idx_wq_date", columnList = "date"),
-    @Index(name = "idx_wq_district_date", columnList = "district, date")
+    @Index(name = "idx_wq_district_date", columnList = "district, date"),
+    @Index(name = "idx_wq_status", columnList = "data_status")
 })
 public class WaterQuality {
 
@@ -40,20 +41,40 @@ public class WaterQuality {
     @Column(name = "water_temperature", nullable = false)
     private Double waterTemperature;
 
+    @Column(name = "source_name", length = 150)
+    private String sourceName = "CPCB & TNPCB Water Quality Monitoring Network";
+
+    @Column(name = "source_url", length = 500)
+    private String sourceUrl = "https://cpcb.nic.in/water-quality-data/";
+
+    @Column(name = "data_status", length = 20)
+    private String dataStatus = "STORED"; // LIVE, STORED, DEMO
+
+    @Column(name = "station_name", length = 150)
+    private String stationName;
+
     @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt = LocalDateTime.now();
 
     public WaterQuality() {}
 
     public WaterQuality(String district, String state, LocalDate date, Double ph, Double turbidity, Double tds, Double dissolvedOxygen, Double waterTemperature) {
+        this(district, state, date, ph, turbidity, tds, dissolvedOxygen, waterTemperature, "CPCB & TNPCB Water Quality Monitoring Network", "https://cpcb.nic.in/water-quality-data/", "STORED", null);
+    }
+
+    public WaterQuality(String district, String state, LocalDate date, Double ph, Double turbidity, Double tds, Double dissolvedOxygen, Double waterTemperature, String sourceName, String sourceUrl, String dataStatus, String stationName) {
         this.district = district;
-        this.state = state;
+        this.state = state != null ? state : "Tamil Nadu";
         this.date = date;
         this.ph = ph;
         this.turbidity = turbidity;
         this.tds = tds;
         this.dissolvedOxygen = dissolvedOxygen;
         this.waterTemperature = waterTemperature;
+        this.sourceName = sourceName != null ? sourceName : "CPCB & TNPCB Water Quality Monitoring Network";
+        this.sourceUrl = sourceUrl != null ? sourceUrl : "https://cpcb.nic.in/water-quality-data/";
+        this.dataStatus = dataStatus != null ? dataStatus : "STORED";
+        this.stationName = stationName;
         this.createdAt = LocalDateTime.now();
     }
 
@@ -83,6 +104,18 @@ public class WaterQuality {
 
     public Double getWaterTemperature() { return waterTemperature; }
     public void setWaterTemperature(Double waterTemperature) { this.waterTemperature = waterTemperature; }
+
+    public String getSourceName() { return sourceName; }
+    public void setSourceName(String sourceName) { this.sourceName = sourceName; }
+
+    public String getSourceUrl() { return sourceUrl; }
+    public void setSourceUrl(String sourceUrl) { this.sourceUrl = sourceUrl; }
+
+    public String getDataStatus() { return dataStatus; }
+    public void setDataStatus(String dataStatus) { this.dataStatus = dataStatus; }
+
+    public String getStationName() { return stationName; }
+    public void setStationName(String stationName) { this.stationName = stationName; }
 
     public LocalDateTime getCreatedAt() { return createdAt; }
     public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }

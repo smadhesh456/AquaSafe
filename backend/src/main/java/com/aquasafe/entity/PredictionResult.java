@@ -6,8 +6,8 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "prediction_results", indexes = {
     @Index(name = "idx_pred_district", columnList = "district"),
-    @Index(name = "idx_pred_date", columnList = "predictionDate"),
-    @Index(name = "idx_pred_risk", columnList = "riskLevel")
+    @Index(name = "idx_pred_date", columnList = "prediction_date"),
+    @Index(name = "idx_pred_risk", columnList = "risk_level")
 })
 public class PredictionResult {
 
@@ -22,7 +22,7 @@ public class PredictionResult {
     private LocalDateTime predictionDate = LocalDateTime.now();
 
     @Column(name = "risk_level", nullable = false, length = 20)
-    private String riskLevel; // LOW, MEDIUM, HIGH
+    private String riskLevel;
 
     @Column(nullable = false)
     private Double probability;
@@ -30,7 +30,6 @@ public class PredictionResult {
     @Column(name = "model_version", nullable = false, length = 50)
     private String modelVersion = "RandomForest-v1.0";
 
-    // Feature Snapshot
     private Double ph;
     private Double turbidity;
     private Double tds;
@@ -38,8 +37,12 @@ public class PredictionResult {
     @Column(name = "dissolved_oxygen")
     private Double dissolvedOxygen;
 
+    @Column(name = "water_temperature")
+    private Double waterTemperature;
+
     private Double temperature;
     private Double rainfall;
+    private Double precipitation;
     private Double humidity;
 
     @Column(name = "previous_disease_cases")
@@ -50,6 +53,16 @@ public class PredictionResult {
 
     @Column(name = "sanitation_coverage")
     private Double sanitationCoverage;
+
+    @Column(name = "clean_water_coverage")
+    private Double cleanWaterCoverage;
+
+    @Column(name = "data_status", length = 20)
+    private String dataStatus = "STORED";
+
+    @Lob
+    @Column(name = "feature_contributions", columnDefinition = "TEXT")
+    private String featureContributions;
 
     public PredictionResult() {}
 
@@ -91,11 +104,17 @@ public class PredictionResult {
     public Double getDissolvedOxygen() { return dissolvedOxygen; }
     public void setDissolvedOxygen(Double dissolvedOxygen) { this.dissolvedOxygen = dissolvedOxygen; }
 
+    public Double getWaterTemperature() { return waterTemperature; }
+    public void setWaterTemperature(Double waterTemperature) { this.waterTemperature = waterTemperature; }
+
     public Double getTemperature() { return temperature; }
     public void setTemperature(Double temperature) { this.temperature = temperature; }
 
     public Double getRainfall() { return rainfall; }
     public void setRainfall(Double rainfall) { this.rainfall = rainfall; }
+
+    public Double getPrecipitation() { return precipitation; }
+    public void setPrecipitation(Double precipitation) { this.precipitation = precipitation; }
 
     public Double getHumidity() { return humidity; }
     public void setHumidity(Double humidity) { this.humidity = humidity; }
@@ -108,4 +127,13 @@ public class PredictionResult {
 
     public Double getSanitationCoverage() { return sanitationCoverage; }
     public void setSanitationCoverage(Double sanitationCoverage) { this.sanitationCoverage = sanitationCoverage; }
+
+    public Double getCleanWaterCoverage() { return cleanWaterCoverage; }
+    public void setCleanWaterCoverage(Double cleanWaterCoverage) { this.cleanWaterCoverage = cleanWaterCoverage; }
+
+    public String getDataStatus() { return dataStatus; }
+    public void setDataStatus(String dataStatus) { this.dataStatus = dataStatus; }
+
+    public String getFeatureContributions() { return featureContributions; }
+    public void setFeatureContributions(String featureContributions) { this.featureContributions = featureContributions; }
 }
