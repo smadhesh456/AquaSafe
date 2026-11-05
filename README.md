@@ -4,6 +4,27 @@ AquaSafe is an epidemiological surveillance and predictive healthcare intelligen
 
 ---
 
+## 🗺️ Dynamic District Selection & Authentic 13-Parameter Surveillance
+
+AquaSafe features an authentic, district-based epidemiological surveillance architecture covering **all 38 recognized districts of Tamil Nadu**:
+
+### 1. Dynamic District-First Architecture
+- **No Hardcoded Defaults**: Prompts the user to select any Tamil Nadu district (`Ariyalur` to `Virudhunagar`).
+- **Dynamic Coordinate Resolution**: Coordinates are dynamically resolved to query localized meteorological and environmental feeds.
+- **Strict Data Isolation**: Reports are generated exclusively for the selected district without mixing cross-district or statewide data. Switching districts replaces previous data immediately.
+
+### 2. The 13 Monitored Surveillance Parameters
+- **Water Quality (CPCB & TNPCB Network)**: pH Level, Turbidity, Total Dissolved Solids (TDS), Dissolved Oxygen (DO), Water Temperature.
+- **Weather (Open-Meteo REST API)**: Air Temperature, Relative Humidity, Rainfall, Precipitation.
+- **Demographic & Sanitation Indicators**: Historical Disease Cases (IDSP / MoHFW), Population Density (Census of India 2011), Sanitation Coverage (Swachh Bharat Mission / NFHS-5), Clean Drinking Water Coverage (Jal Jeevan Mission *Har Ghar Jal*).
+
+### 3. Strict Authenticity & Machine Learning Safety Guard
+- **No Fake / Synthetic Data**: Unsampled parameters are explicitly marked as `DATA NOT AVAILABLE` (`[MISSING]`).
+- **Safety Guard**: If critical observations are missing, the ML engine returns `INSUFFICIENT VERIFIED DATA FOR RISK PREDICTION` instead of generating unsupported predictions.
+- **Decision Support Notice**: AquaSafe provides epidemiological risk assessment and early-warning decision support; it does not diagnose patients or confirm outbreaks.
+
+---
+
 ## ⚡ Quick Start (Single Command)
 
 To run the entire AquaSafe application with a single command:
