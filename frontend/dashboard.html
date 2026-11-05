@@ -3,49 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AquaSafe - Water-Borne Disease Risk Intelligence Dashboard</title>
-    <!-- Google Fonts: Inter -->
+    <title>AquaSafe - Water-Borne Disease Risk Prediction & Surveillance</title>
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- FontAwesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <!-- Chart.js 4 -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Bootstrap 5.3 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <div class="app-container">
         <!-- Sidebar Navigation -->
-        <aside class="sidebar">
+        <aside class="sidebar" id="appSidebar">
             <a href="dashboard.html" class="sidebar-brand">
                 <div class="brand-icon">
                     <i class="fa-solid fa-droplet"></i>
                 </div>
                 <div class="brand-text">
                     <h4>AquaSafe</h4>
-                    <span>Risk Intelligence</span>
+                    <span>Epidemiological AI</span>
                 </div>
             </a>
 
-            <ul class="sidebar-menu">
-                <li class="menu-category">Analytics & Monitoring</li>
-                <li><a href="dashboard.html" class="active"><i class="fa-solid fa-chart-pie"></i> Dashboard</a></li>
-                <li><a href="map.html"><i class="fa-solid fa-map-location-dot"></i> Risk Map</a></li>
-                <li><a href="prediction.html"><i class="fa-solid fa-wand-magic-sparkles"></i> Risk Prediction</a></li>
+            <nav class="sidebar-menu">
+                <div class="menu-label">Surveillance Hub</div>
+                <a href="dashboard.html" class="menu-item active">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span>District Dashboard</span>
+                </a>
+                <a href="data.html" class="menu-item">
+                    <i class="fa-solid fa-database"></i>
+                    <span>Data Explorer</span>
+                </a>
+                <a href="map.html" class="menu-item">
+                    <i class="fa-solid fa-map-location-dot"></i>
+                    <span>Spatial Map</span>
+                </a>
 
-                <li class="menu-category">Surveillance Data</li>
-                <li><a href="data.html"><i class="fa-solid fa-database"></i> Data Management</a></li>
-                <li><a href="model.html"><i class="fa-solid fa-brain"></i> Model Performance</a></li>
-                <li><a href="alerts.html"><i class="fa-solid fa-triangle-exclamation"></i> Alerts <span id="sidebarAlertBadge" class="badge bg-danger ms-auto" style="display:none;">0</span></a></li>
-                <li><a href="reports.html"><i class="fa-solid fa-file-waveform"></i> Reports</a></li>
+                <div class="menu-label">Intelligence & AI</div>
+                <a href="prediction.html" class="menu-item">
+                    <i class="fa-solid fa-brain"></i>
+                    <span>Risk Prediction</span>
+                </a>
+                <a href="model.html" class="menu-item">
+                    <i class="fa-solid fa-sliders"></i>
+                    <span>Model Analytics</span>
+                </a>
 
-                <li class="menu-category">System</li>
-                <li><a href="login.html"><i class="fa-solid fa-right-from-bracket"></i> Logout / Login</a></li>
-            </ul>
+                <div class="menu-label">Early Warning</div>
+                <a href="alerts.html" class="menu-item">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                    <span>Advisory Alerts</span>
+                    <span class="badge bg-danger rounded-pill ms-auto" id="sidebarAlertBadge" style="display:none;">0</span>
+                </a>
+                <a href="system.html" class="menu-item">
+                    <i class="fa-solid fa-server"></i>
+                    <span>System Architecture</span>
+                </a>
+            </nav>
 
             <div class="sidebar-footer">
                 <div class="d-flex align-items-center">
@@ -65,461 +84,235 @@
             <!-- Top Navbar -->
             <header class="top-navbar">
                 <div class="page-title">
-                    <h3>Epidemiological Intelligence Dashboard</h3>
-                    <p>Water-Borne Disease Prediction & Big Data Surveillance across 38 Tamil Nadu Districts</p>
+                    <h3>AquaSafe: Water-Borne Disease Risk Prediction</h3>
+                    <p>Big Data Analytics & Machine Learning across Tamil Nadu Districts</p>
                 </div>
 
                 <div class="nav-indicators d-flex align-items-center gap-2">
-                    <!-- Freshness Badge -->
                     <div id="dataFreshnessBadge" class="freshness-badge stored">
                         <span id="liveIndicatorDot" class="pulse-dot"></span>
-                        <span id="dataFreshnessText">STORED DATA</span>
+                        <span id="dataFreshnessText">GOVERNMENT VERIFIED</span>
                     </div>
 
-                    <!-- Sync All Weather Button -->
-                    <button id="btnSyncWeatherTop" class="btn btn-sm btn-outline-primary d-none d-md-inline-flex align-items-center gap-1">
-                        <i class="fa-solid fa-arrows-rotate"></i> Sync Weather (Open-Meteo)
-                    </button>
-
-                    <!-- Last Updated -->
                     <div class="text-muted small d-none d-lg-block">
-                        <i class="fa-regular fa-clock me-1"></i> Updated: <span id="lastUpdatedTimestamp" class="fw-semibold text-dark">--:--:--</span>
+                        <i class="fa-regular fa-clock me-1"></i> <span id="lastUpdatedTimestamp" class="fw-semibold text-dark">Ready</span>
                     </div>
 
-                    <!-- Alert Notification Icon -->
                     <a href="alerts.html" class="btn btn-light position-relative rounded-circle p-2">
                         <i class="fa-solid fa-bell text-secondary"></i>
-                        <span id="navAlertCountBadge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="display:none;">
-                            0
-                        </span>
+                        <span id="navAlertCountBadge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="display:none;">0</span>
                     </a>
                 </div>
             </header>
 
             <!-- Content Body -->
             <main class="content-body">
-                <!-- 7 KPI Overview Cards Row -->
-                <div class="row g-3 mb-4">
-                    <div class="col-sm-6 col-xl-3">
-                        <div class="dashboard-card kpi-card kpi-primary h-100 mb-0">
-                            <div class="kpi-header">
-                                <span class="kpi-title">Total Districts</span>
-                                <div class="kpi-icon bg-primary-subtle text-primary">
-                                    <i class="fa-solid fa-map-location-dot"></i>
-                                </div>
-                            </div>
-                            <div class="kpi-value" id="kpiTotalDistricts">38</div>
-                            <div class="kpi-subtitle">All Tamil Nadu Districts</div>
+                <!-- DISTRICT SELECTION & REFRESH CONTROL BAR -->
+                <div class="dashboard-card mb-4 border-start border-4 border-primary shadow-sm">
+                    <div class="row align-items-center g-3">
+                        <div class="col-lg-7">
+                            <label class="form-label fw-bold text-dark mb-1 d-flex align-items-center gap-2">
+                                <i class="fa-solid fa-map-pin text-primary"></i>
+                                <span>Select Tamil Nadu District to Generate Report:</span>
+                            </label>
+                            <select id="districtSelect" class="form-select form-select-lg border-primary-subtle fw-semibold">
+                                <option value="" selected disabled>-- Select a Tamil Nadu District --</option>
+                            </select>
+                            <small class="text-muted d-block mt-1">
+                                <i class="fa-solid fa-circle-info text-primary me-1"></i>
+                                Select a district to dynamically resolve coordinates and generate its localized surveillance report.
+                            </small>
                         </div>
-                    </div>
-
-                    <div class="col-sm-6 col-xl-3">
-                        <div class="dashboard-card kpi-card kpi-teal h-100 mb-0">
-                            <div class="kpi-header">
-                                <span class="kpi-title">Water Quality Records</span>
-                                <div class="kpi-icon bg-info-subtle text-info">
-                                    <i class="fa-solid fa-vial-circle-check"></i>
-                                </div>
-                            </div>
-                            <div class="kpi-value text-info" id="kpiWqRecords">0</div>
-                            <div class="kpi-subtitle">CPCB & TNPCB monitoring</div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-6 col-xl-3">
-                        <div class="dashboard-card kpi-card kpi-primary h-100 mb-0">
-                            <div class="kpi-header">
-                                <span class="kpi-title">Weather Records</span>
-                                <div class="kpi-icon bg-primary-subtle text-primary">
-                                    <i class="fa-solid fa-cloud-sun-rain"></i>
-                                </div>
-                            </div>
-                            <div class="kpi-value text-primary" id="kpiWeatherRecords">0</div>
-                            <div class="kpi-subtitle">Open-Meteo & IMD time series</div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-6 col-xl-3">
-                        <div class="dashboard-card kpi-card kpi-primary h-100 mb-0">
-                            <div class="kpi-header">
-                                <span class="kpi-title">Disease Reports</span>
-                                <div class="kpi-icon bg-secondary-subtle text-secondary">
-                                    <i class="fa-solid fa-notes-medical"></i>
-                                </div>
-                            </div>
-                            <div class="kpi-value text-secondary" id="kpiDiseaseReports">0</div>
-                            <div class="kpi-subtitle">IDSP epidemiological records</div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-4 col-xl-4">
-                        <div class="dashboard-card kpi-card kpi-high h-100 mb-0">
-                            <div class="kpi-header">
-                                <span class="kpi-title">High-Risk Districts</span>
-                                <div class="kpi-icon bg-danger-subtle text-danger">
-                                    <i class="fa-solid fa-triangle-exclamation"></i>
-                                </div>
-                            </div>
-                            <div class="kpi-value text-danger" id="kpiHighRisk">0</div>
-                            <div class="kpi-subtitle">Elevated turbidity or runoff</div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-4 col-xl-4">
-                        <div class="dashboard-card kpi-card kpi-med h-100 mb-0">
-                            <div class="kpi-header">
-                                <span class="kpi-title">Medium-Risk Districts</span>
-                                <div class="kpi-icon bg-warning-subtle text-warning">
-                                    <i class="fa-solid fa-circle-exclamation"></i>
-                                </div>
-                            </div>
-                            <div class="kpi-value text-warning" id="kpiMediumRisk">0</div>
-                            <div class="kpi-subtitle">Moderate surveillance advisory</div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-4 col-xl-4">
-                        <div class="dashboard-card kpi-card kpi-low h-100 mb-0">
-                            <div class="kpi-header">
-                                <span class="kpi-title">Low-Risk Districts</span>
-                                <div class="kpi-icon bg-success-subtle text-success">
-                                    <i class="fa-solid fa-circle-check"></i>
-                                </div>
-                            </div>
-                            <div class="kpi-value text-success" id="kpiLowRisk">0</div>
-                            <div class="kpi-subtitle">Nominal potable baselines</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ================= REAL DATA ACQUISITION & INTEGRATION MODULE ================= -->
-                <div class="dashboard-card mb-4 border-start border-4 border-primary">
-                    <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 pb-3 border-bottom mb-3">
-                        <div>
-                            <div class="d-flex align-items-center gap-2">
-                                <h4 class="fw-bold mb-0 text-dark">
-                                    <i class="fa-solid fa-satellite-dish text-primary me-2"></i>Real Data Acquisition & Integration Module
-                                </h4>
-                                <span class="badge bg-success-subtle text-success border border-success-subtle">
-                                    <i class="fa-solid fa-shield-halved me-1"></i> Authentic Data Only (No Synthetic Data)
-                                </span>
-                            </div>
-                            <p class="text-muted small mb-0 mt-1">
-                                13-Parameter Environmental, Meteorological & Epidemiological Integration. Initial focus: <strong>Nagapattinam District</strong> (Extensible across all 38 TN Districts).
-                            </p>
-                        </div>
-                        <div class="d-flex align-items-center gap-2 flex-wrap">
-                            <div class="input-group input-group-sm" style="width: 250px;">
-                                <label class="input-group-text bg-light fw-semibold" for="districtAcquisitionSelect">District:</label>
-                                <select class="form-select form-select-sm" id="districtAcquisitionSelect">
-                                    <option value="Nagapattinam" selected>Nagapattinam (Primary Focus)</option>
-                                </select>
-                            </div>
-                            <button id="btnRefreshAcquisition" class="btn btn-sm btn-primary d-inline-flex align-items-center gap-1 shadow-sm">
-                                <i class="fa-solid fa-arrows-rotate"></i> Refresh Verified Data
+                        <div class="col-lg-5 d-flex align-items-center justify-content-lg-end gap-2 flex-wrap">
+                            <button id="btnRefreshData" class="btn btn-primary btn-lg px-4 d-inline-flex align-items-center gap-2 shadow-sm" disabled>
+                                <i class="fa-solid fa-arrows-rotate"></i>
+                                <span>Refresh Data</span>
                             </button>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Summary Metrics Row -->
-                    <div class="row g-3 mb-4">
-                        <div class="col-6 col-md-4 col-lg-2">
-                            <div class="p-3 rounded bg-light border text-center h-100">
-                                <small class="text-muted d-block fw-semibold">Total Parameters</small>
-                                <div class="fs-4 fw-bold text-dark mt-1" id="acqTotalParams">13</div>
-                                <small class="text-muted" style="font-size: 0.72rem;">Fixed Specification</small>
-                            </div>
+                <!-- STATE A: INITIAL EMPTY PROMPT (Visible before district is selected) -->
+                <div id="initialPromptState" class="dashboard-card text-center py-5 border-dashed">
+                    <div class="avatar-lg rounded-circle bg-primary-subtle text-primary mx-auto mb-3 p-4 d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                        <i class="fa-solid fa-map-location-dot fa-2x"></i>
+                    </div>
+                    <h4 class="fw-bold text-dark mb-2">No District Selected</h4>
+                    <p class="text-muted mx-auto mb-4" style="max-width: 620px;">
+                        Please choose a Tamil Nadu district from the dropdown above to view its authentic 13-parameter report and machine learning disease risk assessment. AquaSafe never mixes data from different districts.
+                    </p>
+                    <div class="pt-3 border-top mx-auto" style="max-width: 700px;">
+                        <span class="text-muted small fw-semibold d-block mb-3">Or choose a major surveillance district:</span>
+                        <div class="d-flex flex-wrap justify-content-center gap-2" id="quickDistrictPills">
+                            <!-- Populated with pills like Chennai, Coimbatore, Madurai, Nagapattinam, Salem, Tiruchirappalli -->
                         </div>
-                        <div class="col-6 col-md-4 col-lg-2">
-                            <div class="p-3 rounded bg-success-subtle border border-success-subtle text-center h-100">
-                                <small class="text-success-emphasis d-block fw-semibold">Available Parameters</small>
-                                <div class="fs-4 fw-bold text-success mt-1" id="acqCollectedParams">12</div>
-                                <small class="text-muted" style="font-size: 0.72rem;">Verified Government Data</small>
+                    </div>
+                </div>
+
+                <!-- LOADING SPINNER (Visible during dynamic fetch) -->
+                <div id="reportLoadingSpinner" class="dashboard-card text-center py-5" style="display: none;">
+                    <div class="spinner-border text-primary mb-3" style="width: 3rem; height: 3rem;" role="status"></div>
+                    <h5 class="fw-bold text-dark" id="loadingDistrictText">Querying verified feeds...</h5>
+                    <p class="text-muted small mb-0">Connecting to Open-Meteo REST API, CPCB station logs, IDSP health bulletins, and Census demographics...</p>
+                </div>
+
+                <!-- STATE B: SELECTED DISTRICT REPORT (Belongs exclusively to the selected district) -->
+                <div id="districtReportSection" style="display: none;">
+                    <!-- 1. District Header Information Card -->
+                    <div class="dashboard-card mb-4 bg-light border-start border-4 border-info">
+                        <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
+                            <div>
+                                <div class="d-flex align-items-center gap-2 mb-1">
+                                    <h3 class="fw-bold text-dark mb-0" id="reportDistrictName">District Name</h3>
+                                    <span class="badge bg-primary-subtle text-primary border border-primary-subtle" id="reportGeographicId">TN-00</span>
+                                    <span class="badge bg-secondary-subtle text-secondary border border-secondary-subtle" id="reportZone">Zone</span>
+                                </div>
+                                <div class="text-muted small d-flex flex-wrap gap-3 mt-2">
+                                    <span><i class="fa-solid fa-location-crosshairs text-primary me-1"></i> Coordinates: <strong id="reportCoordinates" class="text-dark">--</strong></span>
+                                    <span><i class="fa-solid fa-flag text-primary me-1"></i> State: <strong>Tamil Nadu, India</strong></span>
+                                    <span><i class="fa-solid fa-clock-rotate-left text-primary me-1"></i> Last Updated: <strong id="reportSyncTime" class="text-dark">--</strong></span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-6 col-md-4 col-lg-2">
-                            <div class="p-3 rounded bg-danger-subtle border border-danger-subtle text-center h-100">
-                                <small class="text-danger-emphasis d-block fw-semibold">Missing Parameters</small>
-                                <div class="fs-4 fw-bold text-danger mt-1" id="acqMissingParams">1</div>
-                                <small class="text-danger" style="font-size: 0.72rem;" id="acqMissingNote">Turbidity (Unsampled)</small>
-                            </div>
-                        </div>
-                        <div class="col-6 col-md-4 col-lg-2">
-                            <div class="p-3 rounded bg-primary-subtle border border-primary-subtle text-center h-100">
-                                <small class="text-primary-emphasis d-block fw-semibold">Official Govt Sources</small>
-                                <div class="fs-4 fw-bold text-primary mt-1" id="acqOfficialSources">5</div>
-                                <small class="text-muted" style="font-size: 0.72rem;">CPCB, IDSP, Census, SBM, JJM</small>
-                            </div>
-                        </div>
-                        <div class="col-6 col-md-4 col-lg-2">
-                            <div class="p-3 rounded bg-info-subtle border border-info-subtle text-center h-100">
-                                <small class="text-info-emphasis d-block fw-semibold">Live REST Feeds</small>
-                                <div class="fs-4 fw-bold text-info mt-1" id="acqLiveFeeds">1</div>
-                                <small class="text-muted" style="font-size: 0.72rem;">Open-Meteo REST API</small>
-                            </div>
-                        </div>
-                        <div class="col-6 col-md-4 col-lg-2">
-                            <div class="p-3 rounded bg-light border text-center h-100">
-                                <small class="text-muted d-block fw-semibold">ML Prediction Guard</small>
-                                <div class="fs-6 fw-bold text-success mt-2" id="acqPredictionGuard">READY</div>
-                                <small class="text-muted" style="font-size: 0.72rem;" id="acqPredictionGuardSub">Sufficient verified data</small>
+                            <div class="text-end">
+                                <span class="badge bg-success-subtle text-success border border-success-subtle py-2 px-3 fw-semibold" id="reportDataAvailabilityBadge">
+                                    <i class="fa-solid fa-shield-check me-1"></i> 13 Parameters Audited
+                                </span>
                             </div>
                         </div>
                     </div>
 
-                    <!-- 13 Parameters Authentic Surveillance Table -->
-                    <div class="table-responsive rounded border mb-3">
-                        <table class="table custom-table table-hover align-middle mb-0" id="tableAcquisitionParameters">
-                            <thead class="table-light">
-                                <tr>
-                                    <th style="width: 45px;">#</th>
-                                    <th>Parameter Category</th>
-                                    <th>Parameter Name</th>
-                                    <th>Measured Value & Unit</th>
-                                    <th>Official Source</th>
-                                    <th>Monitoring Station / Coverage</th>
-                                    <th>Observation Date / Period</th>
-                                    <th>Status</th>
-                                    <th class="text-end">Provenance</th>
-                                </tr>
-                            </thead>
-                            <tbody id="acquisitionTableBody">
-                                <tr>
-                                    <td colspan="9" class="text-center py-4 text-muted">
-                                        <div class="spinner-border spinner-border-sm text-primary me-2"></div>
-                                        Retrieving verified data for Nagapattinam District...
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <!-- 2. OVERALL RISK PREDICTION SECTION -->
+                    <div class="dashboard-card mb-4 border-0 shadow-sm" id="riskPredictionContainer">
+                        <!-- Populated dynamically with Risk Level Badge (LOW RISK / MEDIUM RISK / HIGH RISK / INSUFFICIENT VERIFIED DATA FOR RISK PREDICTION), Confidence, Contributions, and Medical Disclaimer -->
                     </div>
 
-                    <!-- External Source Verification & Status Cards -->
-                    <div class="mt-4 pt-3 border-top">
+                    <!-- 3. WATER QUALITY PARAMETERS (5 Cards) -->
+                    <div class="mb-4">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <h5 class="fw-bold mb-0 text-dark">
+                                <i class="fa-solid fa-vial-circle-check text-info me-2"></i>Water Quality Parameters (CPCB & TNPCB Network)
+                            </h5>
+                            <span class="badge bg-info-subtle text-info border border-info-subtle">Parameters 1–5</span>
+                        </div>
+                        <div class="row g-3" id="waterQualityCardsRow">
+                            <!-- Populated with pH, Turbidity, TDS, DO, Water Temp -->
+                        </div>
+                    </div>
+
+                    <!-- 4. WEATHER PARAMETERS (4 Cards - Open-Meteo REST API) -->
+                    <div class="mb-4">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <h5 class="fw-bold mb-0 text-dark">
+                                <i class="fa-solid fa-cloud-sun-rain text-primary me-2"></i>Weather Parameters (Open-Meteo REST API)
+                            </h5>
+                            <span class="badge bg-primary-subtle text-primary border border-primary-subtle">Parameters 6–9</span>
+                        </div>
+                        <div class="row g-3" id="weatherCardsRow">
+                            <!-- Populated with Air Temp, Relative Humidity, Rainfall, Precipitation -->
+                        </div>
+                    </div>
+
+                    <!-- 5. OTHER RISK FACTORS (4 Cards - IDSP, Census 2011, SBM, JJM) -->
+                    <div class="mb-4">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <h5 class="fw-bold mb-0 text-dark">
+                                <i class="fa-solid fa-people-roof text-secondary me-2"></i>Demographics, Sanitation & Disease Surveillance
+                            </h5>
+                            <span class="badge bg-secondary-subtle text-secondary border border-secondary-subtle">Parameters 10–13</span>
+                        </div>
+                        <div class="row g-3" id="otherFactorsCardsRow">
+                            <!-- Populated with Historical Disease, Population Density, Sanitation, Clean Water -->
+                        </div>
+                    </div>
+
+                    <!-- 6. DATA SOURCES & INGESTION STATUS -->
+                    <div class="dashboard-card mb-4">
                         <div class="d-flex justify-content-between align-items-center mb-3">
                             <div>
-                                <h6 class="fw-bold mb-0 text-dark">
-                                    <i class="fa-solid fa-network-wired text-secondary me-2"></i>Official External Source Monitoring & Health
-                                </h6>
-                                <small class="text-muted">Direct connectivity audit to authenticated endpoints and published government gazettes</small>
-                            </div>
-                            <span class="badge bg-light text-secondary border">6 Monitored Sources</span>
-                        </div>
-                        <div class="row g-3" id="sourceMonitoringGrid">
-                            <div class="col-12 text-center text-muted py-3">
-                                <div class="spinner-border spinner-border-sm text-secondary me-2"></div>
-                                Auditing external source connectivity...
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Provenance Inspection Modal -->
-                <div class="modal fade" id="provenanceModal" tabindex="-1" aria-labelledby="provenanceModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content shadow border-0">
-                            <div class="modal-header bg-light">
-                                <h5 class="modal-title fw-bold" id="provenanceModalLabel">
-                                    <i class="fa-solid fa-fingerprint text-primary me-2"></i>Data Provenance Inspector
+                                <h5 class="fw-bold mb-0 text-dark">
+                                    <i class="fa-solid fa-network-wired text-primary me-2"></i>Official External Data Sources & Health Monitoring
                                 </h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <small class="text-muted">Live connection audit to authenticated endpoints and published government portals</small>
                             </div>
-                            <div class="modal-body p-4" id="provenanceModalBody">
-                                <!-- Populated dynamically by JS -->
-                            </div>
-                            <div class="modal-footer bg-light">
-                                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
-                                <a href="#" id="modalSourceLink" target="_blank" class="btn btn-primary btn-sm">
-                                    <i class="fa-solid fa-arrow-up-right-from-square me-1"></i> Visit Official Portal
-                                </a>
-                            </div>
+                            <span class="badge bg-light text-dark border">6 Official Sources</span>
                         </div>
-                    </div>
-                </div>
-                <!-- ================= END REAL DATA ACQUISITION & INTEGRATION MODULE ================= -->
-
-                <!-- Charts Section 1: Disease Trends & Risk Distribution -->
-                <div class="row g-4 mb-4">
-                    <div class="col-lg-8">
-                        <div class="dashboard-card h-100 mb-0">
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <div>
-                                    <h5 class="fw-bold mb-1">Epidemiological Disease Surveillance Trends</h5>
-                                    <small class="text-muted">IDSP reported burdens: Diarrhea, Typhoid, Hepatitis, and Cholera across Tamil Nadu</small>
-                                </div>
-                                <span class="badge bg-light text-dark border">Time-Series</span>
-                            </div>
-                            <div style="height: 310px; position: relative;">
-                                <canvas id="diseaseTrendChart"></canvas>
-                            </div>
+                        <div class="row g-3" id="sourcesHealthGrid">
+                            <!-- Populated with source cards -->
                         </div>
                     </div>
 
-                    <div class="col-lg-4">
-                        <div class="dashboard-card h-100 mb-0">
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <div>
-                                    <h5 class="fw-bold mb-1">Risk Level Distribution</h5>
-                                    <small class="text-muted">Machine learning classified risk proportions</small>
-                                </div>
-                            </div>
-                            <div style="height: 240px; position: relative;">
-                                <canvas id="riskDistChart"></canvas>
-                            </div>
-                            <div class="d-flex justify-content-around text-center mt-3 pt-2 border-top small">
-                                <div><span class="text-success fw-bold">● Low</span> Safe</div>
-                                <div><span class="text-warning fw-bold">● Med</span> Advisory</div>
-                                <div><span class="text-danger fw-bold">● High</span> Alert</div>
+                    <!-- 7. COMPREHENSIVE 13-PARAMETER TABULAR AUDIT -->
+                    <div class="dashboard-card mb-4">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <div>
+                                <h5 class="fw-bold mb-0 text-dark">
+                                    <i class="fa-solid fa-table-list text-primary me-2"></i>13-Parameter Comprehensive Audit & Provenance
+                                </h5>
+                                <small class="text-muted">Authentic values, measurement units, reporting periods, and provenance inspection</small>
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                <!-- Charts Section 2: Rainfall vs Disease & Monthly Breakdown -->
-                <div class="row g-4 mb-4">
-                    <div class="col-lg-6">
-                        <div class="dashboard-card h-100 mb-0">
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <div>
-                                    <h5 class="fw-bold mb-1">Rainfall Runoff vs Disease Burden</h5>
-                                    <small class="text-muted">Correlation between Open-Meteo precipitation events and reported cases</small>
-                                </div>
-                                <span class="badge bg-primary-subtle text-primary border border-primary-subtle">Correlative</span>
-                            </div>
-                            <div style="height: 290px; position: relative;">
-                                <canvas id="rainfallDiseaseChart"></canvas>
-                            </div>
+                        <div class="table-responsive rounded border">
+                            <table class="table custom-table table-hover align-middle mb-0" id="districtParamTable">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 40px;">#</th>
+                                        <th>Category</th>
+                                        <th>Parameter</th>
+                                        <th>Measured Value</th>
+                                        <th>Official Source</th>
+                                        <th>Sampling Station / Coverage</th>
+                                        <th>Observation Period</th>
+                                        <th>Status</th>
+                                        <th class="text-end">Provenance</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="districtParamTableBody">
+                                    <!-- Populated dynamically -->
+                                </tbody>
+                            </table>
                         </div>
                     </div>
 
-                    <div class="col-lg-6">
-                        <div class="dashboard-card h-100 mb-0">
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <div>
-                                    <h5 class="fw-bold mb-1">Monthly Disease Case Aggregates</h5>
-                                    <small class="text-muted">Total seasonal case burden across Tamil Nadu districts</small>
-                                </div>
-                                <span class="badge bg-light text-dark border">Monthly</span>
-                            </div>
-                            <div style="height: 290px; position: relative;">
-                                <canvas id="monthlyDiseaseChart"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Charts Section 3: Water Quality Variations & Temperature/Humidity -->
-                <div class="row g-4 mb-4">
-                    <div class="col-lg-6">
-                        <div class="dashboard-card h-100 mb-0">
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <div>
-                                    <h5 class="fw-bold mb-1">District Water Quality Variations</h5>
-                                    <small class="text-muted">CPCB/TNPCB monitoring station means: Turbidity (NTU) vs Dissolved Oxygen (mg/L)</small>
-                                </div>
-                            </div>
-                            <div style="height: 290px; position: relative;">
-                                <canvas id="waterQualityVarChart"></canvas>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-6">
-                        <div class="dashboard-card h-100 mb-0">
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <div>
-                                    <h5 class="fw-bold mb-1">Temperature & Relative Humidity Trends</h5>
-                                    <small class="text-muted">Meteorological conditions per district (Open-Meteo REST feed)</small>
-                                </div>
-                            </div>
-                            <div style="height: 290px; position: relative;">
-                                <canvas id="weatherTrendsChart"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Data Monitoring & Governance Panel -->
-                <div class="dashboard-card mb-4 border-top border-primary border-3">
-                    <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
+                    <!-- MANDATORY MEDICAL DISCLAIMER -->
+                    <div class="disclaimer-box mb-4">
+                        <i class="fa-solid fa-circle-exclamation text-primary fa-lg mt-1"></i>
                         <div>
-                            <h5 class="fw-bold mb-1"><i class="fa-solid fa-server text-primary me-2"></i>Data Governance & Real-Time Monitoring Panel</h5>
-                            <small class="text-muted">Transparency, verifiable provenance, API health, and data quality metrics.</small>
+                            <strong>Mandatory Public Health System Notice:</strong>
+                            AquaSafe is an engineering predictive analytics and early-warning support platform using big data analytics and machine learning.
+                            It is <strong>NOT</strong> a medical diagnosis tool and never confirms disease outbreaks. Predicted risk categories indicate estimated environmental and demographic vulnerability based on verified monitoring indicators.
                         </div>
-                        <button id="btnSyncAllDistricts" class="btn btn-sm btn-primary">
-                            <i class="fa-solid fa-cloud-arrow-down me-1"></i> Sync Live Weather (All 38 Districts)
-                        </button>
-                    </div>
-
-                    <div class="row g-3">
-                        <div class="col-md-3">
-                            <div class="p-3 rounded border bg-light">
-                                <small class="text-muted d-block mb-1">Open-Meteo API Status</small>
-                                <div class="d-flex align-items-center gap-2">
-                                    <span id="monApiDot" class="pulse-dot"></span>
-                                    <strong id="monApiStatus">CONNECTED (LIVE)</strong>
-                                </div>
-                                <small class="text-muted d-block mt-2" id="monLastWeatherSync">Last Update: Just now</small>
-                            </div>
-                        </div>
-
-                        <div class="col-md-3">
-                            <div class="p-3 rounded border bg-light">
-                                <small class="text-muted d-block mb-1">Data Provenance & Storage</small>
-                                <strong class="d-block text-dark">STORED & LIVE</strong>
-                                <small class="text-muted d-block mt-2">CPCB, IDSP, Census 2011, NFHS-5</small>
-                            </div>
-                        </div>
-
-                        <div class="col-md-3">
-                            <div class="p-3 rounded border bg-light">
-                                <small class="text-muted d-block mb-1">Total Records Ingested</small>
-                                <strong class="fs-5 d-block text-primary" id="monTotalRecords">2,774</strong>
-                                <small class="text-muted d-block mt-1">Missing Records: <span class="text-success fw-bold">0</span></small>
-                            </div>
-                        </div>
-
-                        <div class="col-md-3">
-                            <div class="p-3 rounded border bg-light">
-                                <small class="text-muted d-block mb-1">Data Validation Status</small>
-                                <strong class="d-block text-success"><i class="fa-solid fa-circle-check me-1"></i> PASSED</strong>
-                                <small class="text-muted d-block mt-2">Physical bounds & 38 TN Districts verified</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Recent Alerts & Critical Notices -->
-                <div class="dashboard-card">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h5 class="fw-bold mb-0">Recent Public Health Alerts</h5>
-                        <a href="alerts.html" class="btn btn-sm btn-outline-primary">View All Alerts <i class="fa-solid fa-arrow-right ms-1"></i></a>
-                    </div>
-                    <div class="list-group list-group-flush" id="recentAlertsList">
-                        <div class="p-3 text-center text-muted">
-                            <div class="spinner-border spinner-border-sm text-primary me-2"></div>
-                            Loading surveillance alerts...
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Mandatory Project Disclaimer Box -->
-                <div class="disclaimer-box">
-                    <i class="fa-solid fa-circle-exclamation text-primary fa-lg mt-1"></i>
-                    <div>
-                        <strong>Important Public Health System Notice:</strong>
-                        AquaSafe is an engineering predictive analytics platform using big data analytics and machine learning.
-                        It is <strong>NOT</strong> a medical diagnosis system and never confirms disease outbreaks. Predicted risk values indicate estimated environmental conditions based on recorded metrics.
                     </div>
                 </div>
             </main>
         </div>
     </div>
 
+    <!-- Provenance Inspector Modal -->
+    <div class="modal fade" id="provenanceModal" tabindex="-1" aria-labelledby="provenanceModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content shadow border-0">
+                <div class="modal-header bg-light">
+                    <h5 class="modal-title fw-bold" id="provenanceModalLabel">
+                        <i class="fa-solid fa-fingerprint text-primary me-2"></i>Data Provenance Inspector
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4" id="provenanceModalBody">
+                    <!-- Populated dynamically -->
+                </div>
+                <div class="modal-footer bg-light">
+                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+                    <a href="#" id="modalSourceLink" target="_blank" class="btn btn-primary btn-sm">
+                        <i class="fa-solid fa-arrow-up-right-from-square me-1"></i> Visit Official Portal
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/api.js"></script>
-    <script src="js/charts.js"></script>
     <script src="js/dashboard.js"></script>
 </body>
 </html>

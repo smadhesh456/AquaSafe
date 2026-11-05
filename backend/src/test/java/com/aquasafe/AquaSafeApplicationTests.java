@@ -1,10 +1,12 @@
 package com.aquasafe;
 
+import com.aquasafe.dto.DataAcquisitionSummaryDTO;
 import com.aquasafe.dto.PredictionRequestDTO;
 import com.aquasafe.dto.PredictionResponseDTO;
 import com.aquasafe.dto.PreprocessingStatsDTO;
 import com.aquasafe.service.DataPreprocessingService;
 import com.aquasafe.service.PredictionService;
+import com.aquasafe.service.RealDataAcquisitionService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -20,10 +22,14 @@ class AquaSafeApplicationTests {
     @Autowired
     private DataPreprocessingService preprocessingService;
 
+    @Autowired
+    private RealDataAcquisitionService acquisitionService;
+
     @Test
     void contextLoads() {
         assertNotNull(predictionService, "PredictionService should be injected");
         assertNotNull(preprocessingService, "DataPreprocessingService should be injected");
+        assertNotNull(acquisitionService, "RealDataAcquisitionService should be injected");
     }
 
     @Test
@@ -78,5 +84,19 @@ class AquaSafeApplicationTests {
         assertNotNull(stats);
         assertEquals("SUCCESS", stats.getStatus());
         assertTrue(stats.getRecordsAfterCleaning() > 0);
+    }
+
+    @Test
+    void testDistrictDynamicAcquisition() {
+        DataAcquisitionSummaryDTO summary = acquisitionService.acquireAndIntegrateDistrictData("Coimbatore", false);
+        assertNotNull(summary);
+        assertEquals("Coimbatore", summary.getDistrict());
+        assertEquals("Tamil Nadu", summary.getState());
+        assertEquals("TN-04", summary.getGeographicIdentifier());
+        assertEquals(13, summary.getTotalParameters());
+        assertNotNull(summary.getParameters());
+        assertEquals(13, summary.getParameters().size());
+        assertNotNull(summary.getRiskLevel());
+        assertFalse(summary.getRiskLevel().isEmpty());
     }
 }

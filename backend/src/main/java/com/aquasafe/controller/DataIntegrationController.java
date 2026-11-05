@@ -56,18 +56,11 @@ public class DataIntegrationController {
     }
 
     /**
-     * Get list of districts with Nagapattinam prioritized at top.
+     * Get list of all 38 recognized Tamil Nadu districts in alphabetical order.
      */
     @GetMapping("/districts")
     public ResponseEntity<List<District>> getDistrictsList() {
-        List<District> list = districtRepository.findAllByOrderByNameAsc();
-        // Place Nagapattinam at the front if present
-        list.sort((d1, d2) -> {
-            if ("Nagapattinam".equalsIgnoreCase(d1.getName())) return -1;
-            if ("Nagapattinam".equalsIgnoreCase(d2.getName())) return 1;
-            return d1.getName().compareToIgnoreCase(d2.getName());
-        });
-        return ResponseEntity.ok(list);
+        return ResponseEntity.ok(districtRepository.findAllByOrderByNameAsc());
     }
 }
 

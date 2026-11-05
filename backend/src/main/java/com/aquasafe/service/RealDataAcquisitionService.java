@@ -2,6 +2,8 @@ package com.aquasafe.service;
 
 import com.aquasafe.dto.DataAcquisitionSummaryDTO;
 import com.aquasafe.dto.ParameterRecordDTO;
+import com.aquasafe.dto.PredictionRequestDTO;
+import com.aquasafe.dto.PredictionResponseDTO;
 import com.aquasafe.dto.SourceMonitoringDTO;
 import com.aquasafe.entity.*;
 import com.aquasafe.repository.*;
@@ -33,6 +35,7 @@ public class RealDataAcquisitionService {
     private final IntegratedEnvironmentalDataRepository integratedRepository;
     private final DataCollectionLogRepository logRepository;
     private final DataSourceRepository dataSourceRepository;
+    private final PredictionService predictionService;
     private final RestTemplate restTemplate;
 
     @Value("${aquasafe.weather.api-url:https://api.open-meteo.com/v1/forecast}")
@@ -55,6 +58,7 @@ public class RealDataAcquisitionService {
             IntegratedEnvironmentalDataRepository integratedRepository,
             DataCollectionLogRepository logRepository,
             DataSourceRepository dataSourceRepository,
+            PredictionService predictionService,
             RestTemplateBuilder restTemplateBuilder) {
         this.districtRepository = districtRepository;
         this.weatherRepository = weatherRepository;
@@ -66,6 +70,7 @@ public class RealDataAcquisitionService {
         this.integratedRepository = integratedRepository;
         this.logRepository = logRepository;
         this.dataSourceRepository = dataSourceRepository;
+        this.predictionService = predictionService;
         this.restTemplate = restTemplateBuilder
                 .setConnectTimeout(Duration.ofMillis(3500))
                 .setReadTimeout(Duration.ofMillis(3500))
@@ -110,7 +115,7 @@ public class RealDataAcquisitionService {
 
         try {
             String openMeteoUrl = String.format(Locale.US,
-                "%s?latitude=%.4f&longitude=%.4f&current=temperature_2m,relative_humidity_2m,precipitation,rain,weather_code&timezone=Asia%%2FKolkata",
+                "%s?latitude=%.4f&longitude=%.4f&current=temperature_2m,relative_humidity_2m,precipitation,rain,weather_code&timezone=auto",
                 forecastApiUrl, lat, lon
             );
             weatherSourceUrl = openMeteoUrl;
@@ -487,6 +492,7 @@ public class RealDataAcquisitionService {
         DataAcquisitionSummaryDTO summary = new DataAcquisitionSummaryDTO();
         summary.setDistrict(district.getName());
         summary.setState(district.getState());
+        summary.setZone(district.getZone());
         summary.setLatitude(lat);
         summary.setLongitude(lon);
         summary.setGeographicIdentifier(district.getGeographicIdentifier());
@@ -498,10 +504,46 @@ public class RealDataAcquisitionService {
         summary.setLastSynchronizationTime(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
         summary.setOverallStatus(overallStatus);
         summary.setCanPredictRisk(canPredict);
-        summary.setRiskPredictionAdvisory(canPredict ?
-            "Sufficient verified environmental and demographic observations exist for reliable assessment." :
-            "INSUFFICIENT VERIFIED DATA FOR RELIABLE RISK PREDICTION. Missing critical verified indicators.");
         summary.setParameters(params);
+
+        // Run authentic Machine Learning prediction strictly for the selected district
+        try {
+            PredictionRequestDTO predReq = new PredictionRequestDTO();
+            predReq.setDistrict(district.getName());
+            predReq.setPh(ph);
+            predReq.setTurbidity(turbidity);
+            predReq.setTds(tds);
+            predReq.setDissolvedOxygen(dissolvedOxygen);
+            predReq.setWaterTemperature(waterTemp);
+            predReq.setTemperature(airTemp);
+            predReq.setRainfall(rainfall);
+            predReq.setPrecipitation(precipitation);
+            predReq.setHumidity(humidity);
+            predReq.setPreviousDiseaseCases(diseaseCases);
+            predReq.setPopulationDensity(popDensity);
+            predReq.setSanitationCoverage(sanitationCov);
+            predReq.setCleanWaterCoverage(drinkingWaterCov);
+            predReq.setDataStatus(weatherStatus);
+
+            PredictionResponseDTO predResp = predictionService.predictRisk(predReq);
+            if ("INSUFFICIENT_DATA".equalsIgnoreCase(predResp.getRiskLevel())) {
+                summary.setRiskLevel("INSUFFICIENT VERIFIED DATA FOR RISK PREDICTION");
+                summary.setRiskProbability(0.0);
+                summary.setRiskPredictionAdvisory("INSUFFICIENT VERIFIED DATA FOR RISK PREDICTION. Critical environmental or epidemiological observations are unavailable.");
+            } else {
+                summary.setRiskLevel(predResp.getRiskLevel().toUpperCase() + " RISK");
+                summary.setRiskProbability(predResp.getProbability());
+                summary.setRiskPredictionAdvisory(predResp.getMessage());
+            }
+            summary.setFeatureContributions(predResp.getFeatureContributions());
+            summary.setRecommendation(predResp.getMessage());
+            summary.setMedicalDisclaimer(predResp.getDisclaimer());
+        } catch (Exception e) {
+            log.warn("ML Risk evaluation failed for {}: {}", district.getName(), e.getMessage());
+            summary.setRiskLevel("INSUFFICIENT VERIFIED DATA FOR RISK PREDICTION");
+            summary.setRiskProbability(0.0);
+            summary.setRiskPredictionAdvisory("INSUFFICIENT VERIFIED DATA FOR RISK PREDICTION");
+        }
 
         return summary;
     }

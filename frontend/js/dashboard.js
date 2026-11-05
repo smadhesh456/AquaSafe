@@ -1,362 +1,398 @@
 /**
- * AquaSafe Dashboard Controller
- * Real-time KPI cards, multi-series charts, data governance panel, and SSE live stream handler
+ * AquaSafe - District-Based Epidemiological Intelligence Controller
+ * Dynamic District Selection, Authentic Multi-Source Data Collection & ML Disease Risk Evaluation
  */
+
+let allDistricts = [];
+let currentSelectedDistrict = null;
 
 document.addEventListener('DOMContentLoaded', async () => {
     initDashboard();
-    setupSseStream();
-    setupSyncButton();
 });
 
 async function initDashboard() {
     try {
-        await Promise.allSettled([
-            loadKpiSummary(),
-            loadChartsData(),
-            loadAcquisitionSection(),
-            loadMonitoringPanel(),
-            loadRecentAlerts()
-        ]);
+        await loadDistrictsDropdown();
+        setupEventListeners();
     } catch (err) {
-        console.error('Failed to initialize dashboard:', err);
+        console.error('Failed to initialize AquaSafe dashboard:', err);
     }
 }
 
-async function loadKpiSummary() {
-    try {
-        const summary = await api.getDashboardSummary();
-        updateKpiValues(summary);
-    } catch (err) {
-        console.warn('Could not fetch KPI summary from backend:', err);
-    }
-}
-
-function updateKpiValues(summary) {
-    if (!summary) return;
-
-    setText('kpiTotalDistricts', summary.totalDistricts || 38);
-    setText('kpiWqRecords', (summary.totalWaterQualityRecords || 912).toLocaleString());
-    setText('kpiWeatherRecords', (summary.totalWeatherRecords || 912).toLocaleString());
-    setText('kpiDiseaseReports', (summary.totalDiseaseReports || 912).toLocaleString());
-    setText('kpiHighRisk', summary.highRiskDistricts || 0);
-    setText('kpiMediumRisk', summary.mediumRiskDistricts || 0);
-    setText('kpiLowRisk', summary.lowRiskDistricts || 0);
-
-    const alertCount = summary.activeAlertsCount || 0;
-    const navBadge = document.getElementById('navAlertCountBadge');
-    if (navBadge) {
-        navBadge.textContent = alertCount;
-        navBadge.style.display = alertCount > 0 ? 'inline-block' : 'none';
-    }
-
-    // Update Data Freshness Badge
-    const badge = document.getElementById('dataFreshnessBadge');
-    const badgeText = document.getElementById('dataFreshnessText');
-    if (badge && badgeText) {
-        const status = summary.dataFreshness || 'STORED DATA';
-        badgeText.textContent = status;
-        badge.className = 'freshness-badge ' + (
-            status.includes('LIVE') ? 'live' : (status.includes('STORED') ? 'stored' : 'demo')
-        );
-    }
-
-    // Update Last Updated Timestamp
-    const updatedEl = document.getElementById('lastUpdatedTimestamp');
-    if (updatedEl && summary.lastUpdated) {
-        const d = new Date(summary.lastUpdated);
-        updatedEl.textContent = d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-    }
-}
-
-async function loadChartsData() {
-    try {
-        // 1. Disease Trends Chart (IDSP reported burdens)
-        const trends = await api.getDiseaseTrends();
-        AquaCharts.initDiseaseTrend('diseaseTrendChart', trends);
-
-        // 2. Risk Distribution Chart
-        const riskDist = await api.getRiskDistribution();
-        AquaCharts.initRiskDistribution('riskDistChart', riskDist);
-
-        // 3. Rainfall vs Disease Correlation
-        const rainfallCorr = await api.getRainfallVsDisease();
-        AquaCharts.initRainfallVsDisease('rainfallDiseaseChart', rainfallCorr);
-
-        // 4. Monthly Disease Aggregates
-        const monthly = await api.getMonthlyDisease();
-        AquaCharts.initMonthlyDisease('monthlyDiseaseChart', monthly);
-
-        // 5. Water Quality Variations
-        const waterVar = await api.getWaterQualityTrends();
-        AquaCharts.initWaterQualityVar('waterQualityVarChart', waterVar);
-
-        // 6. Weather Trends
-        const weatherTrends = await api.getWeatherTrends();
-        AquaCharts.initWeatherTrends('weatherTrendsChart', weatherTrends);
-    } catch (err) {
-        console.error('Chart loading error:', err);
-    }
-}
-
-async function loadMonitoringPanel() {
-    try {
-        const mon = await api.getMonitoringPanel();
-        if (!mon) return;
-
-        const isOnline = mon.apiOnline === true;
-        const apiDot = document.getElementById('monApiDot');
-        const apiStatus = document.getElementById('monApiStatus');
-        if (apiStatus) {
-            apiStatus.textContent = isOnline ? 'CONNECTED (LIVE)' : 'STORED DATA (FALLBACK)';
-            apiStatus.className = isOnline ? 'd-block text-success' : 'd-block text-warning';
-        }
-        if (apiDot) {
-            apiDot.style.background = isOnline ? '#10b981' : '#f59e0b';
-        }
-
-        const syncTime = document.getElementById('monLastWeatherSync');
-        if (syncTime && mon.lastSuccessfulWeatherUpdate) {
-            const d = new Date(mon.lastSuccessfulWeatherUpdate);
-            syncTime.textContent = 'Last Sync: ' + d.toLocaleTimeString();
-        }
-
-        const totalRec = document.getElementById('monTotalRecords');
-        if (totalRec && mon.totalRecordsCollected) {
-            totalRec.textContent = Number(mon.totalRecordsCollected).toLocaleString();
-        }
-    } catch (err) {
-        console.warn('Could not load monitoring panel data:', err);
-    }
-}
-
-async function loadRecentAlerts() {
-    const list = document.getElementById('recentAlertsList');
-    if (!list) return;
-
-    try {
-        const alerts = await api.getAlerts();
-        if (!alerts || alerts.length === 0) {
-            list.innerHTML = `
-                <div class="p-3 text-center text-muted">
-                    <i class="fa-solid fa-circle-check text-success fa-2x mb-2"></i>
-                    <p class="mb-0 small">No active critical alerts. All monitored parameters are within nominal thresholds.</p>
-                </div>`;
-            return;
-        }
-
-        list.innerHTML = alerts.slice(0, 4).map(a => `
-            <div class="list-group-item d-flex align-items-start gap-3 py-3 border-0 border-bottom">
-                <div class="kpi-icon ${a.riskLevel === 'HIGH' ? 'bg-danger-subtle text-danger' : 'bg-warning-subtle text-warning'}">
-                    <i class="fa-solid fa-triangle-exclamation"></i>
-                </div>
-                <div class="flex-grow-1">
-                    <div class="d-flex justify-content-between align-items-center mb-1">
-                        <strong class="text-dark">${a.district}</strong>
-                        <span class="badge ${a.riskLevel === 'HIGH' ? 'bg-danger' : 'bg-warning text-dark'}">${a.riskLevel} RISK</span>
-                    </div>
-                    <p class="small text-muted mb-0">${a.message}</p>
-                </div>
-            </div>
-        `).join('');
-    } catch (err) {
-        console.warn('Could not load alerts:', err);
-    }
-}
-
-function setupSyncButton() {
-    const btnTop = document.getElementById('btnSyncWeatherTop');
-    const btnMon = document.getElementById('btnSyncAllDistricts');
-
-    async function handleSync(btn) {
-        if (!btn) return;
-        const originalText = btn.innerHTML;
-        btn.disabled = true;
-        btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin me-1"></i> Syncing 38 Districts...';
-
-        try {
-            const resp = await api.syncAllWeather();
-            alert(`Weather sync complete: ${resp.successfulDistricts} districts updated from Open-Meteo REST service.`);
-            await initDashboard();
-        } catch (e) {
-            alert('Weather sync notice: ' + e.message);
-        } finally {
-            btn.disabled = false;
-            btn.innerHTML = originalText;
-        }
-    }
-
-    if (btnTop) btnTop.addEventListener('click', () => handleSync(btnTop));
-    if (btnMon) btnMon.addEventListener('click', () => handleSync(btnMon));
-}
-
-function setupSseStream() {
-    try {
-        const streamUrl = `${window.location.origin.includes('8080') ? window.location.origin : 'http://localhost:8080'}/api/dashboard/live-stream`;
-        const evtSource = new EventSource(streamUrl);
-
-        evtSource.addEventListener('DASHBOARD_UPDATE', (event) => {
-            try {
-                const data = JSON.parse(event.data);
-                updateKpiValues(data);
-            } catch (e) {}
-        });
-
-        evtSource.onerror = () => {
-            evtSource.close();
-            // Silent reconnect after 20s
-            setTimeout(setupSseStream, 20000);
-        };
-    } catch (err) {
-        console.debug('SSE stream fallback to periodic polling.');
-    }
-}
-
-function setText(id, text) {
-    const el = document.getElementById(id);
-    if (el) el.textContent = text;
-}
-
-
-// ============================================================================
-// REAL DATA ACQUISITION & INTEGRATION MODULE (Nagapattinam & Tamil Nadu)
-// ============================================================================
-
-let currentAcquisitionDistrict = 'Nagapattinam';
-let acquisitionDistrictsLoaded = false;
-
-async function loadAcquisitionSection(district = currentAcquisitionDistrict) {
-    currentAcquisitionDistrict = district;
-
-    // Load district dropdown once
-    if (!acquisitionDistrictsLoaded) {
-        await populateAcquisitionDistricts(district);
-        setupAcquisitionHandlers();
-        acquisitionDistrictsLoaded = true;
-    }
-
-    try {
-        const summary = await api.getAcquisitionParameters(district);
-        updateAcquisitionSummaryUI(summary);
-        renderAcquisitionTable(summary.parameters || []);
-    } catch (err) {
-        console.error('Failed to load acquisition parameters:', err);
-        const tbody = document.getElementById('acquisitionTableBody');
-        if (tbody) {
-            tbody.innerHTML = `
-                <tr>
-                    <td colspan="9" class="text-center py-4 text-danger">
-                        <i class="fa-solid fa-circle-exclamation me-1"></i> Failed to acquire parameters: ${err.message}
-                    </td>
-                </tr>`;
-        }
-    }
-
-    // Refresh official sources monitoring health
-    loadSourceMonitoring();
-}
-
-async function populateAcquisitionDistricts(selectedDistrict) {
-    const select = document.getElementById('districtAcquisitionSelect');
+/**
+ * Loads all 38 recognized Tamil Nadu districts dynamically into dropdown
+ */
+async function loadDistrictsDropdown() {
+    const select = document.getElementById('districtSelect');
     if (!select) return;
 
     try {
-        const districts = await api.getAcquisitionDistricts();
-        if (Array.isArray(districts) && districts.length > 0) {
-            select.innerHTML = districts.map(d => `
-                <option value="${d}" ${d.toLowerCase() === selectedDistrict.toLowerCase() ? 'selected' : ''}>
-                    ${d} ${d.toLowerCase() === 'nagapattinam' ? '(Primary Focus)' : ''}
-                </option>
-            `).join('');
-        }
-    } catch (e) {
-        console.warn('Could not populate district dropdown:', e);
+        const districtsData = await api.getAcquisitionDistricts();
+        allDistricts = Array.isArray(districtsData) ? districtsData : [];
+
+        // Sort alphabetically
+        allDistricts.sort((a, b) => {
+            const nameA = typeof a === 'string' ? a : a.name;
+            const nameB = typeof b === 'string' ? b : b.name;
+            return nameA.localeCompare(nameB);
+        });
+
+        select.innerHTML = '<option value="" selected disabled>-- Select a Tamil Nadu District --</option>';
+
+        allDistricts.forEach(d => {
+            const name = typeof d === 'string' ? d : d.name;
+            const opt = document.createElement('option');
+            opt.value = name;
+            opt.textContent = name;
+            select.appendChild(opt);
+        });
+
+        // Populate quick-select pills
+        populateQuickSelectPills();
+    } catch (err) {
+        console.error('Could not load districts dropdown:', err);
+        select.innerHTML = '<option value="" disabled>Error loading Tamil Nadu districts</option>';
     }
 }
 
-function updateAcquisitionSummaryUI(summary) {
+/**
+ * Quick-select pills for major surveillance districts
+ */
+function populateQuickSelectPills() {
+    const container = document.getElementById('quickDistrictPills');
+    if (!container) return;
+
+    const featured = ['Chennai', 'Coimbatore', 'Madurai', 'Nagapattinam', 'Salem', 'Thanjavur', 'Tiruchirappalli', 'Cuddalore'];
+
+    container.innerHTML = featured.map(name => `
+        <button type="button" class="btn btn-sm btn-outline-primary rounded-pill px-3 py-1 btn-quick-district" data-district="${name}">
+            <i class="fa-solid fa-location-dot me-1"></i>${name}
+        </button>
+    `).join('');
+
+    container.querySelectorAll('.btn-quick-district').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const dist = btn.getAttribute('data-district');
+            const select = document.getElementById('districtSelect');
+            if (select) {
+                select.value = dist;
+                selectAndLoadDistrict(dist);
+            }
+        });
+    });
+}
+
+function setupEventListeners() {
+    const select = document.getElementById('districtSelect');
+    if (select) {
+        select.addEventListener('change', (e) => {
+            const dist = e.target.value;
+            if (dist) {
+                selectAndLoadDistrict(dist);
+            }
+        });
+    }
+
+    const btnRefresh = document.getElementById('btnRefreshData');
+    if (btnRefresh) {
+        btnRefresh.addEventListener('click', () => {
+            if (currentSelectedDistrict) {
+                refreshDistrictData(currentSelectedDistrict);
+            }
+        });
+    }
+}
+
+/**
+ * Fetches and replaces the report exclusively for the chosen district
+ */
+async function selectAndLoadDistrict(districtName) {
+    if (!districtName) return;
+    currentSelectedDistrict = districtName;
+
+    // UI state transitions
+    const btnRefresh = document.getElementById('btnRefreshData');
+    if (btnRefresh) btnRefresh.disabled = false;
+
+    const promptState = document.getElementById('initialPromptState');
+    const reportSection = document.getElementById('districtReportSection');
+    const spinner = document.getElementById('reportLoadingSpinner');
+    const loadingText = document.getElementById('loadingDistrictText');
+
+    if (promptState) promptState.style.display = 'none';
+    if (reportSection) reportSection.style.display = 'none';
+    if (spinner) spinner.style.display = 'block';
+    if (loadingText) loadingText.textContent = `Querying verified feeds for ${districtName}...`;
+
+    try {
+        const summary = await api.getAcquisitionParameters(districtName);
+        renderDistrictReport(summary);
+
+        if (spinner) spinner.style.display = 'none';
+        if (reportSection) reportSection.style.display = 'block';
+
+        // Update last updated in navbar
+        const lastUpdatedEl = document.getElementById('lastUpdatedTimestamp');
+        if (lastUpdatedEl && summary.lastSynchronizationTime) {
+            lastUpdatedEl.textContent = summary.lastSynchronizationTime;
+        }
+
+        // Load external sources health
+        loadSourcesHealth();
+    } catch (err) {
+        console.error(`Failed to acquire data for ${districtName}:`, err);
+        if (spinner) spinner.style.display = 'none';
+        if (reportSection) {
+            reportSection.style.display = 'block';
+            reportSection.innerHTML = `
+                <div class="alert alert-danger p-4 rounded-3 shadow-sm">
+                    <h5 class="fw-bold"><i class="fa-solid fa-circle-exclamation me-2"></i>Failed to Load District Report</h5>
+                    <p class="mb-0">Unable to retrieve verified data for ${districtName}: ${err.message}</p>
+                </div>
+            `;
+        }
+    }
+}
+
+/**
+ * Forces live refresh of external feeds for the selected district
+ */
+async function refreshDistrictData(districtName) {
+    if (!districtName) return;
+
+    const btnRefresh = document.getElementById('btnRefreshData');
+    const originalHtml = btnRefresh ? btnRefresh.innerHTML : '';
+    if (btnRefresh) {
+        btnRefresh.disabled = true;
+        btnRefresh.innerHTML = '<i class="fa-solid fa-spinner fa-spin me-2"></i>Refreshing Feeds...';
+    }
+
+    try {
+        const refreshed = await api.refreshDistrictAcquisition(districtName);
+        renderDistrictReport(refreshed);
+        loadSourcesHealth();
+    } catch (err) {
+        alert(`Notice during refresh for ${districtName}: ` + err.message);
+    } finally {
+        if (btnRefresh) {
+            btnRefresh.disabled = false;
+            btnRefresh.innerHTML = originalHtml;
+        }
+    }
+}
+
+/**
+ * Renders the complete, exclusive district report
+ */
+function renderDistrictReport(summary) {
     if (!summary) return;
 
-    setText('acqTotalParams', summary.totalParameters || 13);
-    setText('acqCollectedParams', summary.successfullyCollectedParameters || 0);
-    setText('acqMissingParams', summary.missingParameters || 0);
+    // 1. Header Information
+    setText('reportDistrictName', `${summary.district} District`);
+    setText('reportGeographicId', summary.geographicIdentifier || 'TN');
+    setText('reportZone', `${summary.zone || 'Tamil Nadu'} Zone`);
+    setText('reportCoordinates', `${summary.latitude != null ? summary.latitude.toFixed(4) : '--'}° N, ${summary.longitude != null ? summary.longitude.toFixed(4) : '--'}° E`);
+    setText('reportSyncTime', summary.lastSynchronizationTime || 'Just now');
+    setText('reportDataAvailabilityBadge', `${summary.successfullyCollectedParameters} of 13 Parameters Available`);
 
-    const noteEl = document.getElementById('acqMissingNote');
-    if (noteEl) {
-        noteEl.textContent = summary.missingParameters > 0 ? `${summary.missingParameters} Unsampled/Unavailable` : 'All 13 Verified';
-    }
+    // 2. Risk Prediction Section
+    renderRiskPredictionSection(summary);
 
-    setText('acqOfficialSources', summary.officialDatasetParameters || 5);
+    // Filter parameter groups
+    const params = summary.parameters || [];
+    const wqParams = params.filter(p => p.parameterNumber >= 1 && p.parameterNumber <= 5);
+    const weatherParams = params.filter(p => p.parameterNumber >= 6 && p.parameterNumber <= 9);
+    const otherParams = params.filter(p => p.parameterNumber >= 10 && p.parameterNumber <= 13);
 
-    const liveFeeds = (summary.parameters || []).filter(p => p.dataStatus === 'LIVE').length;
-    setText('acqLiveFeeds', liveFeeds);
+    // 3. Water Quality Cards
+    renderParameterCards('waterQualityCardsRow', wqParams, [
+        { code: 'ph', benchmark: 'Standard: 6.5 – 8.5 pH', icon: 'fa-vial' },
+        { code: 'turbidity', benchmark: 'Potable Limit: ≤ 5.0 NTU', icon: 'fa-water' },
+        { code: 'tds', benchmark: 'Potable Limit: ≤ 500 mg/L', icon: 'fa-cubes-stacked' },
+        { code: 'dissolved_oxygen', benchmark: 'Baseline: ≥ 5.0 mg/L', icon: 'fa-lungs' },
+        { code: 'water_temperature', benchmark: 'Ambient Aquatic Range', icon: 'fa-temperature-quarter' }
+    ]);
 
-    const guardEl = document.getElementById('acqPredictionGuard');
-    const guardSub = document.getElementById('acqPredictionGuardSub');
-    if (guardEl) {
-        if (summary.canPredictRisk) {
-            guardEl.className = 'fs-6 fw-bold text-success mt-2';
-            guardEl.innerHTML = '<i class="fa-solid fa-circle-check me-1"></i>READY';
-            if (guardSub) guardSub.textContent = 'Sufficient verified data';
-        } else {
-            guardEl.className = 'fs-6 fw-bold text-danger mt-2';
-            guardEl.innerHTML = '<i class="fa-solid fa-triangle-exclamation me-1"></i>HALTED';
-            if (guardSub) guardSub.textContent = 'Insufficient verified data';
-        }
-    }
+    // 4. Weather Parameter Cards
+    renderParameterCards('weatherCardsRow', weatherParams, [
+        { code: 'air_temperature', benchmark: 'Open-Meteo 2m Sensor', icon: 'fa-temperature-high' },
+        { code: 'relative_humidity', benchmark: 'Relative Moisture %', icon: 'fa-droplet' },
+        { code: 'rainfall', benchmark: 'Direct Liquid Rain', icon: 'fa-cloud-rain' },
+        { code: 'precipitation', benchmark: 'Total Moisture (Rain+Drizzle)', icon: 'fa-cloud-showers-heavy' }
+    ]);
+
+    // 5. Other Risk Factor Cards
+    renderParameterCards('otherFactorsCardsRow', otherParams, [
+        { code: 'disease_cases', benchmark: 'IDSP Reported Cases', icon: 'fa-file-waveform' },
+        { code: 'population_density', benchmark: 'Census of India 2011', icon: 'fa-users' },
+        { code: 'sanitation_coverage', benchmark: 'NFHS-5 / SBM Target: 100%', icon: 'fa-restroom' },
+        { code: 'drinking_water_coverage', benchmark: 'Jal Jeevan Mission Target: 100%', icon: 'fa-faucet-drip' }
+    ]);
+
+    // 6. Comprehensive 13-Parameter Audit Table
+    renderAuditTable(params);
 }
 
-function renderAcquisitionTable(parameters) {
-    const tbody = document.getElementById('acquisitionTableBody');
-    if (!tbody) return;
+/**
+ * Overall Risk Prediction Section
+ */
+function renderRiskPredictionSection(summary) {
+    const container = document.getElementById('riskPredictionContainer');
+    if (!container) return;
 
-    if (!parameters || parameters.length === 0) {
-        tbody.innerHTML = `
-            <tr>
-                <td colspan="9" class="text-center py-4 text-muted">
-                    No acquisition records available for this district.
-                </td>
-            </tr>`;
+    const isInsufficient = summary.riskLevel && summary.riskLevel.includes('INSUFFICIENT');
+
+    if (isInsufficient) {
+        container.innerHTML = `
+            <div class="p-4 rounded-3 bg-light border border-warning shadow-sm">
+                <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-3">
+                    <div class="d-flex align-items-center gap-3">
+                        <span class="badge bg-warning text-dark px-3 py-2 fs-6 fw-bold">
+                            <i class="fa-solid fa-triangle-exclamation me-2"></i>INSUFFICIENT VERIFIED DATA FOR RISK PREDICTION
+                        </span>
+                    </div>
+                    <span class="badge bg-light text-secondary border small">Authentic Data Guard Active</span>
+                </div>
+                <h6 class="fw-bold text-dark mb-1">Advisory Status:</h6>
+                <p class="text-muted small mb-3">
+                    ${summary.riskPredictionAdvisory || 'Required environmental or demographic observations are unavailable from verified government sources for this district. AquaSafe never generates artificial values or produces unsupported predictions.'}
+                </p>
+                <div class="alert alert-light border mb-0 small text-secondary">
+                    <i class="fa-solid fa-circle-info text-primary me-1"></i>
+                    <strong>Public Health Guard:</strong> AquaSafe is a risk assessment and early-warning support system, not a medical diagnosis or confirmation of a disease outbreak. Risk levels are computed strictly when sufficient authentic measurements are verified.
+                </div>
+            </div>
+        `;
         return;
     }
 
-    const categoryBadgeClass = (cat) => {
-        switch ((cat || '').toUpperCase()) {
-            case 'WATER QUALITY': return 'bg-teal-subtle text-teal border border-teal-subtle';
-            case 'WEATHER': return 'bg-primary-subtle text-primary border border-primary-subtle';
-            case 'DISEASE SURVEILLANCE': return 'bg-danger-subtle text-danger border border-danger-subtle';
-            case 'POPULATION': return 'bg-info-subtle text-info border border-info-subtle';
-            case 'SANITATION & DRINKING WATER': return 'bg-secondary-subtle text-secondary border border-secondary-subtle';
-            default: return 'bg-light text-dark border';
-        }
-    };
+    // Determine badge and color for valid predictions
+    let badgeClass = 'bg-success text-white';
+    let riskIcon = 'fa-solid fa-circle-check';
+    let cardBgClass = 'bg-success-subtle border-success-subtle';
+    const risk = (summary.riskLevel || 'LOW RISK').toUpperCase();
 
-    const statusBadge = (status) => {
-        const s = (status || 'MISSING').toUpperCase();
-        switch (s) {
-            case 'LIVE': return '<span class="badge badge-status-live"><i class="fa-solid fa-bolt me-1"></i>LIVE</span>';
-            case 'OFFICIAL': return '<span class="badge badge-status-official"><i class="fa-solid fa-building-columns me-1"></i>OFFICIAL</span>';
-            case 'MISSING': return '<span class="badge badge-status-missing"><i class="fa-solid fa-circle-exclamation me-1"></i>MISSING</span>';
-            case 'ERROR': return '<span class="badge badge-status-error"><i class="fa-solid fa-xmark me-1"></i>ERROR</span>';
-            case 'STALE': return '<span class="badge badge-status-stale"><i class="fa-solid fa-clock-rotate-left me-1"></i>STALE</span>';
-            case 'DEMO': return '<span class="badge badge-status-demo"><i class="fa-solid fa-flask me-1"></i>DEMO</span>';
-            default: return `<span class="badge bg-secondary">${s}</span>`;
-        }
-    };
+    if (risk.includes('HIGH')) {
+        badgeClass = 'bg-danger text-white';
+        riskIcon = 'fa-solid fa-triangle-exclamation';
+        cardBgClass = 'bg-danger-subtle border-danger-subtle';
+    } else if (risk.includes('MEDIUM')) {
+        badgeClass = 'bg-warning text-dark';
+        riskIcon = 'fa-solid fa-circle-exclamation';
+        cardBgClass = 'bg-warning-subtle border-warning-subtle';
+    }
+
+    const contributions = summary.featureContributions || [];
+    const contributionsHtml = contributions.length > 0 ? `
+        <div class="mt-3 pt-3 border-top">
+            <h6 class="fw-bold text-dark mb-2 small"><i class="fa-solid fa-magnifying-glass-chart text-primary me-1"></i> Contributing Epidemiological & Environmental Risk Indicators:</h6>
+            <ul class="mb-0 small ps-3">
+                ${contributions.map(c => `<li class="mb-1 text-dark">${c}</li>`).join('')}
+            </ul>
+        </div>
+    ` : '';
+
+    container.innerHTML = `
+        <div class="p-4 rounded-3 ${cardBgClass} border shadow-sm">
+            <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-3">
+                <div class="d-flex align-items-center gap-3">
+                    <span class="badge ${badgeClass} px-3 py-2 fs-6 fw-bold">
+                        <i class="${riskIcon} me-2"></i>${summary.riskLevel}
+                    </span>
+                    <span class="fw-semibold small text-muted">
+                        Confidence Probability: <strong class="text-dark">${(summary.riskProbability * 100).toFixed(1)}%</strong>
+                    </span>
+                </div>
+                <span class="badge bg-light text-secondary border small">Validated Weka Random Forest ML</span>
+            </div>
+
+            <div class="mb-2">
+                <h6 class="fw-bold text-dark mb-1">Public Health Decision Advisory:</h6>
+                <p class="text-dark mb-0 small">${summary.recommendation || summary.riskPredictionAdvisory || 'Normal baseline surveillance parameters observed.'}</p>
+            </div>
+
+            ${contributionsHtml}
+
+            <div class="mt-3 pt-3 border-top small text-muted">
+                <i class="fa-solid fa-shield-halved text-primary me-1"></i>
+                <strong>Notice:</strong> AquaSafe is a risk assessment and early-warning support system, not a medical diagnosis or confirmation of a disease outbreak.
+            </div>
+        </div>
+    `;
+}
+
+/**
+ * Generic Parameter Cards Renderer
+ */
+function renderParameterCards(containerId, paramsList, metaBenchmarks) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+
+    if (!paramsList || paramsList.length === 0) {
+        container.innerHTML = '<div class="col-12 text-muted small">No parameters recorded in this category.</div>';
+        return;
+    }
+
+    container.innerHTML = paramsList.map(p => {
+        const isMissing = !p.available || (p.dataStatus && p.dataStatus.toUpperCase() === 'MISSING') || (p.displayValue && p.displayValue.includes('DATA NOT AVAILABLE'));
+
+        const meta = metaBenchmarks.find(m => m.code === p.parameterCode) || { benchmark: '', icon: 'fa-chart-simple' };
+
+        const valueHtml = isMissing
+            ? `<div class="param-missing-cell mt-1"><i class="fa-solid fa-triangle-exclamation me-1"></i>DATA NOT AVAILABLE</div>`
+            : `<div class="param-value-cell mt-1">${p.numericValue != null ? p.numericValue : p.displayValue} <small class="text-muted fs-6 fw-normal">${p.unit || ''}</small></div>`;
+
+        const statusClass = (p.dataStatus || 'OFFICIAL').toLowerCase();
+
+        return `
+            <div class="col-md-6 col-lg-4 col-xl">
+                <div class="dashboard-card h-100 p-3 d-flex flex-column justify-content-between mb-0">
+                    <div>
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <span class="kpi-title text-dark">${p.parameterName}</span>
+                            <span class="badge badge-status-${statusClass}">${p.dataStatus || 'OFFICIAL'}</span>
+                        </div>
+                        ${valueHtml}
+                        <div class="text-muted small mt-2" style="font-size: 0.75rem;">
+                            <i class="fa-solid fa-scale-balanced me-1"></i>${meta.benchmark}
+                        </div>
+                    </div>
+                    <div class="pt-2 border-top mt-2 d-flex justify-content-between align-items-center" style="font-size: 0.72rem;">
+                        <span class="text-muted text-truncate" style="max-width: 140px;" title="${p.sourceName}">${p.sourceName}</span>
+                        <span class="text-muted">${p.collectionDate || 'Routine'}</span>
+                    </div>
+                </div>
+            </div>
+        `;
+    }).join('');
+}
+
+/**
+ * Audit Table
+ */
+function renderAuditTable(parameters) {
+    const tbody = document.getElementById('districtParamTableBody');
+    if (!tbody) return;
+
+    if (!parameters || parameters.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="9" class="text-center py-4 text-muted">No records available.</td></tr>';
+        return;
+    }
 
     tbody.innerHTML = parameters.map(p => {
         const isMissing = !p.available || (p.dataStatus && p.dataStatus.toUpperCase() === 'MISSING') || (p.displayValue && p.displayValue.includes('DATA NOT AVAILABLE'));
 
-        const valueDisplay = isMissing 
-            ? `<span class="param-missing-cell"><i class="fa-solid fa-triangle-exclamation me-1"></i>DATA NOT AVAILABLE FROM VERIFIED SOURCE</span>`
+        const valueDisplay = isMissing
+            ? `<span class="param-missing-cell"><i class="fa-solid fa-triangle-exclamation me-1"></i>DATA NOT AVAILABLE</span>`
             : `<span class="param-value-cell">${p.numericValue != null ? p.numericValue : p.displayValue}</span> <span class="text-muted small">${p.unit || ''}</span>`;
 
         const encodedParam = encodeURIComponent(JSON.stringify(p));
+        const statusClass = (p.dataStatus || 'OFFICIAL').toLowerCase();
 
         return `
             <tr>
                 <td class="text-muted fw-bold">${p.parameterNumber}</td>
-                <td><span class="badge ${categoryBadgeClass(p.category)}">${p.category}</span></td>
+                <td><span class="badge bg-light text-dark border">${p.category}</span></td>
                 <td>
                     <strong>${p.parameterName}</strong>
                     <div class="text-muted" style="font-size: 0.72rem;"><code>${p.parameterCode}</code></div>
@@ -373,9 +409,9 @@ function renderAcquisitionTable(parameters) {
                     <div>${p.collectionDate || 'N/A'}</div>
                     <span class="badge bg-light text-secondary border mt-1" style="font-size: 0.7rem;">${p.referencePeriod || 'Surveillance Cycle'}</span>
                 </td>
-                <td>${statusBadge(p.dataStatus)}</td>
+                <td><span class="badge badge-status-${statusClass}">${p.dataStatus || 'OFFICIAL'}</span></td>
                 <td class="text-end">
-                    <button class="btn btn-sm btn-outline-primary py-0 px-2 btn-inspect-provenance" data-param="${encodedParam}">
+                    <button class="btn btn-sm btn-outline-primary py-0 px-2 btn-inspect-audit" data-param="${encodedParam}">
                         <i class="fa-solid fa-fingerprint me-1"></i>Inspect
                     </button>
                 </td>
@@ -383,8 +419,8 @@ function renderAcquisitionTable(parameters) {
         `;
     }).join('');
 
-    // Attach inspect click handlers
-    document.querySelectorAll('.btn-inspect-provenance').forEach(btn => {
+    // Attach inspect handlers
+    tbody.querySelectorAll('.btn-inspect-audit').forEach(btn => {
         btn.addEventListener('click', (e) => {
             const raw = e.currentTarget.getAttribute('data-param');
             if (raw) {
@@ -399,8 +435,11 @@ function renderAcquisitionTable(parameters) {
     });
 }
 
-async function loadSourceMonitoring() {
-    const grid = document.getElementById('sourceMonitoringGrid');
+/**
+ * 6 Official External Data Sources Monitoring
+ */
+async function loadSourcesHealth() {
+    const grid = document.getElementById('sourcesHealthGrid');
     if (!grid) return;
 
     try {
@@ -409,7 +448,6 @@ async function loadSourceMonitoring() {
 
         grid.innerHTML = sources.map(s => {
             const isOnline = (s.connectionStatus || '').toUpperCase() === 'ONLINE' || (s.connectionStatus || '').toUpperCase() === 'ACCESSIBLE';
-            const statusClass = isOnline ? 'text-success' : 'text-danger';
             const statusBadgeClass = isOnline ? 'bg-success-subtle text-success border border-success-subtle' : 'bg-danger-subtle text-danger border border-danger-subtle';
 
             return `
@@ -424,11 +462,11 @@ async function loadSourceMonitoring() {
                                     ${s.category}
                                 </span>
                             </div>
-                            <h6 class="fw-bold mb-1 text-dark" style="font-size: 0.9rem;">${s.sourceName}</h6>
+                            <h6 class="fw-bold mb-1 text-dark" style="font-size: 0.88rem;">${s.sourceName}</h6>
                             <p class="small text-muted mb-2" style="font-size: 0.78rem;">${s.notes || ''}</p>
                         </div>
                         <div class="pt-2 border-top d-flex justify-content-between align-items-center small">
-                            <span class="text-muted">Records: <strong class="text-dark">${s.recordsRetrieved.toLocaleString()}</strong></span>
+                            <span class="text-muted">Last Query: <strong class="text-dark">${s.lastSuccessfulCollection ? s.lastSuccessfulCollection.split(' ')[1] : 'Recent'}</strong></span>
                             <a href="${s.portalUrl}" target="_blank" class="text-primary text-decoration-none fw-semibold">
                                 <i class="fa-solid fa-arrow-up-right-from-square me-1"></i>Portal
                             </a>
@@ -438,10 +476,13 @@ async function loadSourceMonitoring() {
             `;
         }).join('');
     } catch (err) {
-        console.warn('Failed to load source monitoring grid:', err);
+        console.warn('Could not load source monitoring:', err);
     }
 }
 
+/**
+ * Shows provenance inspector modal
+ */
 function showProvenanceModal(p) {
     const body = document.getElementById('provenanceModalBody');
     const link = document.getElementById('modalSourceLink');
@@ -466,7 +507,7 @@ function showProvenanceModal(p) {
                 <div class="p-2 bg-light rounded border">
                     <small class="text-muted d-block" style="font-size: 0.72rem;">Authentic Observation Value</small>
                     <div class="${isMissing ? 'text-danger fw-bold' : 'text-dark fw-bold'} mt-1" style="font-size: 0.95rem;">
-                        ${isMissing ? 'DATA NOT AVAILABLE FROM VERIFIED SOURCE' : (p.numericValue + ' ' + (p.unit || ''))}
+                        ${isMissing ? 'DATA NOT AVAILABLE' : (p.numericValue + ' ' + (p.unit || ''))}
                     </div>
                 </div>
             </div>
@@ -511,7 +552,6 @@ function showProvenanceModal(p) {
         </div>
     `;
 
-    // Show modal via Bootstrap Modal API
     const modalEl = document.getElementById('provenanceModal');
     if (modalEl && window.bootstrap && window.bootstrap.Modal) {
         const modal = bootstrap.Modal.getOrCreateInstance(modalEl);
@@ -519,36 +559,7 @@ function showProvenanceModal(p) {
     }
 }
 
-function setupAcquisitionHandlers() {
-    const districtSelect = document.getElementById('districtAcquisitionSelect');
-    if (districtSelect) {
-        districtSelect.addEventListener('change', (e) => {
-            loadAcquisitionSection(e.target.value);
-        });
-    }
-
-    const btnRefresh = document.getElementById('btnRefreshAcquisition');
-    if (btnRefresh) {
-        btnRefresh.addEventListener('click', async () => {
-            const select = document.getElementById('districtAcquisitionSelect');
-            const targetDistrict = select ? select.value : currentAcquisitionDistrict;
-
-            const originalHtml = btnRefresh.innerHTML;
-            btnRefresh.disabled = true;
-            btnRefresh.innerHTML = '<i class="fa-solid fa-spinner fa-spin me-1"></i> Syncing Verified Feeds...';
-
-            try {
-                const refreshed = await api.refreshDistrictAcquisition(targetDistrict);
-                updateAcquisitionSummaryUI(refreshed);
-                renderAcquisitionTable(refreshed.parameters || []);
-                loadSourceMonitoring();
-                alert(`Real Data Acquisition synchronized for ${targetDistrict}. Verified feeds re-queried.`);
-            } catch (err) {
-                alert(`Sync notice for ${targetDistrict}: ` + err.message);
-            } finally {
-                btnRefresh.disabled = false;
-                btnRefresh.innerHTML = originalHtml;
-            }
-        });
-    }
+function setText(id, text) {
+    const el = document.getElementById(id);
+    if (el) el.textContent = text;
 }
