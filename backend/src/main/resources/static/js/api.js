@@ -3,8 +3,8 @@
  * Communicates with the Spring Boot backend service
  */
 
-const API_BASE = window.location.origin.includes('8080') 
-    ? window.location.origin + '/api' 
+const API_BASE = window.location.origin.includes('8080')
+    ? window.location.origin + '/api'
     : 'http://localhost:8080/api';
 
 const api = {
@@ -266,14 +266,31 @@ const api = {
         });
     },
 
+    // 16. Real Data Acquisition & Integration Module (Nagapattinam & Tamil Nadu)
+    async getAcquisitionParameters(district = 'Nagapattinam') {
+        return this.request(`/acquisition/parameters/${encodeURIComponent(district)}`);
+    },
+
+    async refreshDistrictAcquisition(district = 'Nagapattinam') {
+        return this.request(`/acquisition/refresh/${encodeURIComponent(district)}`, { method: 'POST' });
+    },
+
+    async getSourcesMonitoring() {
+        return this.request('/acquisition/sources-monitoring');
+    },
+
+    async getAcquisitionDistricts() {
+        return this.request('/acquisition/districts');
+    },
+
     // Session UI Sync Helper
     initAuthUI() {
         try {
             const user = this.getUser();
             const nameEl = document.getElementById('navUsername');
             if (nameEl && user && user.username) {
-                nameEl.textContent = user.username.toLowerCase() === 'admin' 
-                    ? 'System Administrator' 
+                nameEl.textContent = user.username.toLowerCase() === 'admin'
+                    ? 'System Administrator'
                     : (user.username.toLowerCase() === 'analyst' ? 'Public Health Analyst' : user.username);
             }
             const roleEl = document.getElementById('navUserRole');
@@ -295,7 +312,7 @@ const api = {
                     navBadge.textContent = unreadCount > 0 ? unreadCount : '!';
                     navBadge.style.display = unreadCount > 0 ? 'inline-block' : 'none';
                 }
-            }).catch(() => {});
+            }).catch(() => { });
         } catch (e) {
             console.debug('AquaSafe Auth UI init notice:', e);
         }

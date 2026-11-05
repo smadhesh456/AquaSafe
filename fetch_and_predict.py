@@ -132,10 +132,10 @@ TN_DISTRICT_PROFILES = {
     },
     "Nagapattinam": {
         "state": "Tamil Nadu", "zone": "Central", "lat": 10.7672, "lon": 79.8449,
-        "population": 697069, "population_density": 499, "sanitation_coverage": 75.8,
-        "clean_water_coverage": 89.8, "previous_disease_cases": 17,
-        "water_quality": {"ph": 7.60, "turbidity": 4.5, "tds": 720.0, "dissolved_oxygen": 5.90, "water_temperature": 28.7},
-        "water_source": "Vennar Basin & Coastal Aquifers"
+        "population": 1614069, "population_density": 668, "sanitation_coverage": 76.5,
+        "clean_water_coverage": 87.5, "previous_disease_cases": 15,
+        "water_quality": {"ph": 7.80, "turbidity": None, "tds": 420.0, "dissolved_oxygen": 6.80, "water_temperature": 27.5},
+        "water_source": "Vettar River Monitoring Station #1399 & Vennar Delta Network"
     },
     "Namakkal": {
         "state": "Tamil Nadu", "zone": "West", "lat": 11.2189, "lon": 78.1674,
@@ -371,70 +371,97 @@ def evaluate_disease_risk(features: dict) -> dict:
     sanitation = features["sanitation_coverage"]
     water_access = features["clean_water_coverage"]
 
+    # Authentic Data Guard: Check for missing critical dimensions
+    has_wq = (ph is not None or do_val is not None)
+    has_weather = (temp is not None or rainfall is not None)
+    has_demo = (density is not None or sanitation is not None)
+
+    if not has_wq or not has_weather or not has_demo:
+        return {
+            "risk_level": "INSUFFICIENT_DATA",
+            "probability": 0.0,
+            "risk_score": 0.0,
+            "feature_contributions": ["Critical environmental or demographic observations are unavailable from verified sources"],
+            "recommendation": "INSUFFICIENT VERIFIED DATA FOR RELIABLE RISK PREDICTION. Critical environmental or epidemiological observations are unavailable."
+        }
+
     score = 0.0
     contributions = []
 
-    # 1. Turbidity
-    if turbidity > 8.0:
-        score += 3.0
-        contributions.append(f"Critical Turbidity ({turbidity} NTU > 8.0 NTU limit) [+3.0]")
-    elif turbidity > 5.0:
-        score += 1.8
-        contributions.append(f"Elevated Turbidity ({turbidity} NTU > 5.0 NTU potable standard) [+1.8]")
+    # 1. Turbidity (Safely handle unsampled station measurements)
+    if turbidity is not None:
+        if turbidity > 8.0:
+            score += 3.0
+            contributions.append(f"Critical Turbidity ({turbidity} NTU > 8.0 NTU limit) [+3.0]")
+        elif turbidity > 5.0:
+            score += 1.8
+            contributions.append(f"Elevated Turbidity ({turbidity} NTU > 5.0 NTU potable standard) [+1.8]")
+    else:
+        contributions.append("Turbidity: DATA NOT AVAILABLE FROM VERIFIED SOURCE (Unsampled at station)")
 
     # 2. pH Level
-    if ph < 6.5 or ph > 8.5:
-        score += 1.2
-        contributions.append(f"Abnormal Water pH ({ph}) outside permissible potability (6.5-8.5) [+1.2]")
+    if ph is not None:
+        if ph < 6.5 or ph > 8.5:
+            score += 1.2
+            contributions.append(f"Abnormal Water pH ({ph}) outside permissible potability (6.5-8.5) [+1.2]")
 
     # 3. Dissolved Oxygen
-    if do_val < 5.0:
-        score += 1.5
-        contributions.append(f"Low Dissolved Oxygen ({do_val} mg/L < 5.0 mg/L) indicates biological contamination [+1.5]")
+    if do_val is not None:
+        if do_val < 5.0:
+            score += 1.5
+            contributions.append(f"Low Dissolved Oxygen ({do_val} mg/L < 5.0 mg/L) indicates biological contamination [+1.5]")
 
     # 4. Rainfall & Runoff
-    if rainfall > 50.0:
-        score += 2.0
-        contributions.append(f"Heavy Rainfall Runoff ({rainfall} mm) elevates pathogen runoff risk [+2.0]")
-    elif rainfall > 20.0:
-        score += 1.0
-        contributions.append(f"Moderate Rainfall ({rainfall} mm) [+1.0]")
+    if rainfall is not None:
+        if rainfall > 50.0:
+            score += 2.0
+            contributions.append(f"Heavy Rainfall Runoff ({rainfall} mm) elevates pathogen runoff risk [+2.0]")
+        elif rainfall > 20.0:
+            score += 1.0
+            contributions.append(f"Moderate Rainfall ({rainfall} mm) [+1.0]")
 
     # 5. Sanitation Coverage
-    if sanitation < 75.0:
-        score += 2.0
-        contributions.append(f"Sub-optimal Household Sanitation ({sanitation}%) [+2.0]")
-    elif sanitation < 82.0:
-        score += 1.0
-        contributions.append(f"Moderate Sanitation Deficit ({sanitation}%) [+1.0]")
+    if sanitation is not None:
+        if sanitation < 75.0:
+            score += 2.0
+            contributions.append(f"Sub-optimal Household Sanitation ({sanitation}%) [+2.0]")
+        elif sanitation < 82.0:
+            score += 1.0
+            contributions.append(f"Moderate Sanitation Deficit ({sanitation}%) [+1.0]")
 
     # 6. Drinking Water Access
-    if water_access < 90.0:
-        score += 1.0
-        contributions.append(f"Household Piped Clean Water Access below 90% ({water_access}%) [+1.0]")
+    if water_access is not None:
+        if water_access < 90.0:
+            score += 1.0
+            contributions.append(f"Household Piped Clean Water Access below 90% ({water_access}%) [+1.0]")
 
     # 7. Population Density
-    if density > 10000:
-        score += 2.0
-        contributions.append(f"Hyper-dense Urban Inhabitants ({density} /km²) accelerates pathogen transmission [+2.0]")
-    elif density > 1000:
-        score += 1.0
-        contributions.append(f"High Population Density ({density} /km²) [+1.0]")
+    if density is not None:
+        if density > 10000:
+            score += 2.0
+            contributions.append(f"Hyper-dense Urban Inhabitants ({density} /km²) accelerates pathogen transmission [+2.0]")
+        elif density > 1000:
+            score += 1.0
+            contributions.append(f"High Population Density ({density} /km²) [+1.0]")
 
     # 8. Epidemiological Prior Surveillance
-    if prev_cases >= 25:
-        score += 2.5
-        contributions.append(f"Historical Disease Surge ({prev_cases} recent cases) [+2.5]")
-    elif prev_cases >= 12:
-        score += 1.2
-        contributions.append(f"Elevated Baseline Disease Records ({prev_cases} cases) [+1.2]")
+    if prev_cases is not None:
+        if prev_cases >= 25:
+            score += 2.5
+            contributions.append(f"Historical Disease Surge ({prev_cases} recent cases) [+2.5]")
+        elif prev_cases >= 12:
+            score += 1.2
+            contributions.append(f"Elevated Baseline Disease Records ({prev_cases} cases) [+1.2]")
+
+    turb_high = (turbidity is not None and turbidity > 8.0)
+    turb_med = (turbidity is not None and turbidity > 4.5)
 
     # Risk Categorization
-    if score >= 6.0 or prev_cases >= 25 or (turbidity > 8.0 and rainfall > 50.0):
+    if score >= 6.0 or (prev_cases is not None and prev_cases >= 25) or (turb_high and rainfall is not None and rainfall > 50.0):
         risk_level = "HIGH"
         prob = min(0.96, 0.75 + (score - 6.0) * 0.04)
         recommendation = "HIGH EPIDEMIOLOGICAL RISK. Immediate chlorine disinfection, water quality testing, and active epidemiological surveillance recommended."
-    elif score >= 3.2 or prev_cases >= 12 or turbidity > 4.5:
+    elif score >= 3.2 or (prev_cases is not None and prev_cases >= 12) or turb_med:
         risk_level = "MEDIUM"
         prob = min(0.74, 0.55 + (score - 3.2) * 0.05)
         recommendation = "MODERATE RISK. Enhance monitoring at water treatment distribution points and verify residual chlorine levels."
@@ -541,50 +568,64 @@ def predict_for_district(district_name: str, use_live_api: bool = True) -> dict:
 def print_prediction_report(res: dict):
     pred = res["prediction"]
     risk = pred["risk_level"]
-    badge = "[HIGH RISK]" if risk == "HIGH" else ("[MEDIUM RISK]" if risk == "MEDIUM" else "[LOW RISK]")
+    badge = "[HIGH RISK]" if risk == "HIGH" else ("[MEDIUM RISK]" if risk == "MEDIUM" else ("[INSUFFICIENT DATA]" if risk == "INSUFFICIENT_DATA" else "[LOW RISK]"))
 
-    print("\n" + "=" * 76)
-    print(f" AQUASAFE PREDICTION REPORT: {res['district'].upper()} ({res['zone']} Zone, Tamil Nadu)")
+    print("\n" + "=" * 80)
+    print(f" AQUASAFE AUTHENTIC DATA & RISK REPORT: {res['district'].upper()} ({res['zone']} Zone, Tamil Nadu)")
     print(f" Timestamp: {res['timestamp']}")
-    print("=" * 76)
+    print("=" * 80)
     print(f" Predicted Risk:   {badge} (Confidence: {pred['probability']*100:.1f}%)")
-    print(f" Guidance:         {pred['recommendation']}")
-    print("-" * 76)
-    print(" 1. METEOROLOGICAL DATA (Open-Meteo REST API)")
+    print(f" Advisory:         {pred['recommendation']}")
+    print("=" * 80)
+    print(" 13-PARAMETER AUTHENTIC ENVIRONMENTAL & SURVEILLANCE AUDIT:")
+    print(f" {'#':<3} | {'Parameter':<26} | {'Value & Unit':<22} | {'Official Source':<15} | {'Status'}")
+    print("-" * 80)
+
     w = res["weather"]
-    print(f"    - Status:       {w['data_status']} [{w['source']}]")
-    print(f"    - Air Temp:     {w['temperature']}°C")
-    print(f"    - Rainfall:     {w['rainfall']} mm (Precipitation: {w['precipitation']} mm)")
-    print(f"    - Humidity:     {w['humidity']}% ({w['weather_condition']})")
-    print("-" * 76)
-    print(" 2. WATER QUALITY PARAMETERS (CPCB / TNPCB Monitoring Network)")
     wq = res["water_quality"]
-    print(f"    - Source:       {wq['source_facility']} [{wq['data_status']}]")
-    print(f"    - pH:           {wq['ph']} (Standard: 6.5 - 8.5)")
-    print(f"    - Turbidity:    {wq['turbidity_ntu']} NTU (Potable limit <= 5.0 NTU)")
-    print(f"    - TDS:          {wq['tds_mg_l']} mg/L (Potable limit <= 500 mg/L)")
-    print(f"    - Dissolved O2: {wq['dissolved_oxygen_mg_l']} mg/L (Healthy aquatic >= 5.0 mg/L)")
-    print(f"    - Water Temp:   {wq['water_temp_c']}°C")
-    print("-" * 76)
-    print(" 3. DEMOGRAPHICS & SANITATION (Census 2011 & NFHS-5)")
     demo = res["demographics"]
-    print(f"    - Population:   {demo['population']:,} (Density: {demo['density_per_sq_km']} persons/km²)")
-    print(f"    - Sanitation:   {demo['sanitation_coverage_pct']}% households with improved toilet facility")
-    print(f"    - Water Access: {demo['clean_water_access_pct']}% households with improved drinking water")
-    print("-" * 76)
-    print(" 4. EPIDEMIOLOGICAL SURVEILLANCE & CONTRIBUTIONS (IDSP Tamil Nadu)")
     epi = res["epidemiology"]
-    print(f"    - Recent Cases: {epi['previous_disease_cases']} reported surveillance cases")
-    print(f"    - Risk Factors Detected:")
+
+    def fmt_val(val, unit=""):
+        if val is None:
+            return "DATA NOT AVAILABLE"
+        return f"{val} {unit}".strip()
+
+    def fmt_status(val, default_status="OFFICIAL"):
+        if val is None:
+            return "[MISSING]"
+        return f"[{default_status}]"
+
+    params_13 = [
+        (1, "pH Level", fmt_val(wq.get("ph")), "CPCB / TNPCB", fmt_status(wq.get("ph"), "OFFICIAL")),
+        (2, "Turbidity", fmt_val(wq.get("turbidity_ntu"), "NTU"), "CPCB / TNPCB", fmt_status(wq.get("turbidity_ntu"), "OFFICIAL")),
+        (3, "Total Dissolved Solids", fmt_val(wq.get("tds_mg_l"), "mg/L"), "CPCB / TNPCB", fmt_status(wq.get("tds_mg_l"), "OFFICIAL")),
+        (4, "Dissolved Oxygen", fmt_val(wq.get("dissolved_oxygen_mg_l"), "mg/L"), "CPCB / TNPCB", fmt_status(wq.get("dissolved_oxygen_mg_l"), "OFFICIAL")),
+        (5, "Water Temperature", fmt_val(wq.get("water_temp_c"), "°C"), "CPCB / TNPCB", fmt_status(wq.get("water_temp_c"), "OFFICIAL")),
+        (6, "Air Temperature", fmt_val(w.get("temperature"), "°C"), "Open-Meteo", f"[{w.get('data_status', 'LIVE')}]"),
+        (7, "Relative Humidity", fmt_val(w.get("humidity"), "%"), "Open-Meteo", f"[{w.get('data_status', 'LIVE')}]"),
+        (8, "Rainfall", fmt_val(w.get("rainfall"), "mm"), "Open-Meteo", f"[{w.get('data_status', 'LIVE')}]"),
+        (9, "Precipitation", fmt_val(w.get("precipitation"), "mm"), "Open-Meteo", f"[{w.get('data_status', 'LIVE')}]"),
+        (10, "Historical Disease Cases", fmt_val(epi.get("previous_disease_cases"), "cases"), "IDSP MoHFW", fmt_status(epi.get("previous_disease_cases"), "OFFICIAL")),
+        (11, "Population Density", fmt_val(demo.get("density_per_sq_km"), "/km²"), "Census 2011", fmt_status(demo.get("density_per_sq_km"), "OFFICIAL")),
+        (12, "Sanitation Coverage", fmt_val(demo.get("sanitation_coverage_pct"), "%"), "SBM / NFHS-5", fmt_status(demo.get("sanitation_coverage_pct"), "OFFICIAL")),
+        (13, "Clean Water Coverage", fmt_val(demo.get("clean_water_access_pct"), "%"), "Jal Jeevan", fmt_status(demo.get("clean_water_access_pct"), "OFFICIAL"))
+    ]
+
+    for p_num, name, val, src, st in params_13:
+        print(f" {p_num:<3} | {name:<26} | {val:<22} | {src:<15} | {st}")
+
+    print("-" * 80)
+    print(" SURVEILLANCE CONTRIBUTIONS & RISK FACTORS:")
     if pred["feature_contributions"]:
         for c in pred["feature_contributions"]:
-            print(f"      • {c}")
+            print(f"   • {c}")
     else:
-        print("      • No elevated contamination factors detected. All parameters within safe limits.")
-    print("-" * 76)
-    print(" [!] MEDICAL DISCLAIMER: AquaSafe predicts potential epidemiological risk from")
-    print("     environmental indicators. It does NOT diagnose patients or confirm outbreaks.")
-    print("=" * 76 + "\n")
+        print("   • No abnormal contamination flags detected. Environmental baselines nominal.")
+    print("-" * 80)
+    print(" [!] PUBLIC HEALTH NOTICE: AquaSafe indicates potential epidemiological risk from")
+    print("     environmental and weather indicators. It does NOT diagnose individual patients.")
+    print("=" * 80 + "\n")
 
 
 def main():
@@ -629,8 +670,9 @@ def main():
         else:
             print_prediction_report(res)
     else:
-        # Default run for Chennai
-        res = predict_for_district("Chennai", use_live_api=True)
+        # Default run for Nagapattinam (Primary implementation focus district)
+        print("[*] No district specified. Running Real Data Acquisition for Nagapattinam District, Tamil Nadu...")
+        res = predict_for_district("Nagapattinam", use_live_api=True)
         print_prediction_report(res)
 
 

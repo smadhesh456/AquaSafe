@@ -27,6 +27,7 @@ public class PredictionService {
     private final DiseaseRecordRepository diseaseRepository;
     private final DataCollectionService dataCollectionService;
     private final DistrictRepository districtRepository;
+    private final IntegratedEnvironmentalDataRepository integratedDataRepository;
 
     public PredictionService(
             WekaModelService mlService,
@@ -36,7 +37,8 @@ public class PredictionService {
             PopulationDataRepository populationRepository,
             DiseaseRecordRepository diseaseRepository,
             DataCollectionService dataCollectionService,
-            DistrictRepository districtRepository) {
+            DistrictRepository districtRepository,
+            IntegratedEnvironmentalDataRepository integratedDataRepository) {
         this.mlService = mlService;
         this.predictionRepository = predictionRepository;
         this.alertService = alertService;
@@ -45,10 +47,31 @@ public class PredictionService {
         this.diseaseRepository = diseaseRepository;
         this.dataCollectionService = dataCollectionService;
         this.districtRepository = districtRepository;
+        this.integratedDataRepository = integratedDataRepository;
     }
 
     @Transactional
     public PredictionResponseDTO predictRisk(PredictionRequestDTO req) throws Exception {
+        // Enforce authentic data guard: Halt if critical dimensions lack verified data
+        boolean hasWaterQuality = req != null && (req.getPh() != null || req.getTds() != null || req.getDissolvedOxygen() != null);
+        boolean hasWeather = req != null && (req.getTemperature() != null || req.getRainfall() != null);
+        boolean hasDemographics = req != null && (req.getPopulationDensity() != null || req.getSanitationCoverage() != null);
+
+        if (!hasWaterQuality || !hasWeather || !hasDemographics) {
+            String dist = (req != null && req.getDistrict() != null) ? req.getDistrict() : "Unknown";
+            log.warn("Prediction halted for {}: insufficient verified data across required dimensions.", dist);
+            PredictionResponseDTO response = new PredictionResponseDTO();
+            response.setDistrict(dist);
+            response.setRiskLevel("INSUFFICIENT_DATA");
+            response.setProbability(0.0);
+            response.setPredictionDate(java.time.LocalDateTime.now());
+            response.setModelVersion("RandomForest-v2.0-TN");
+            response.setDataStatus("MISSING");
+            response.setMessage("INSUFFICIENT VERIFIED DATA FOR RELIABLE RISK PREDICTION. Critical environmental or epidemiological observations are unavailable.");
+            response.setFeatureContributions(List.of("Required parameter fields are missing verified observations"));
+            return response;
+        }
+
         PredictionResponseDTO response = mlService.predict(req);
 
         // Persist prediction snapshot into database
@@ -111,15 +134,39 @@ public class PredictionService {
         PredictionRequestDTO req = new PredictionRequestDTO();
         req.setDistrict(districtName);
 
-        // 1. Fetch live or stored weather
-        WeatherData weather = dataCollectionService.fetchLiveWeatherForDistrict(districtName, "AUTO_PREDICTION");
-        req.setTemperature(weather.getTemperature());
-        req.setRainfall(weather.getRainfall());
-        req.setPrecipitation(weather.getPrecipitation());
-        req.setHumidity(weather.getHumidity());
-        req.setDataStatus(weather.getDataStatus());
+        // 1. Check if integrated record exists first
+        Optional<IntegratedEnvironmentalData> intOpt = integratedDataRepository
+                .findTopByDistrictIgnoreCaseOrderByObservationDateDescIntegrationTimestampDesc(districtName);
+        if (intOpt.isPresent()) {
+            IntegratedEnvironmentalData ied = intOpt.get();
+            req.setPh(ied.getPhValue());
+            req.setTurbidity(ied.getTurbidityValue());
+            req.setTds(ied.getTdsValue());
+            req.setDissolvedOxygen(ied.getDoValue());
+            req.setWaterTemperature(ied.getWaterTempValue());
+            req.setTemperature(ied.getAirTempValue());
+            req.setRainfall(ied.getRainfallValue());
+            req.setPrecipitation(ied.getPrecipitationValue());
+            req.setHumidity(ied.getHumidityValue());
+            req.setPreviousDiseaseCases(ied.getDiseaseCasesValue());
+            req.setPopulationDensity(ied.getPopulationDensityValue());
+            req.setSanitationCoverage(ied.getSanitationCoverageValue());
+            req.setCleanWaterCoverage(ied.getDrinkingWaterCoverageValue());
+            req.setDataStatus(ied.getOverallStatus());
+            return req;
+        }
 
-        // 2. Fetch latest Water Quality
+        // 2. Fetch live or stored weather
+        WeatherData weather = dataCollectionService.fetchLiveWeatherForDistrict(districtName, "AUTO_PREDICTION");
+        if (weather != null) {
+            req.setTemperature(weather.getTemperature());
+            req.setRainfall(weather.getRainfall());
+            req.setPrecipitation(weather.getPrecipitation());
+            req.setHumidity(weather.getHumidity());
+            req.setDataStatus(weather.getDataStatus());
+        }
+
+        // 3. Fetch latest Water Quality from genuine monitoring stations
         Optional<WaterQuality> wqOpt = waterQualityRepository.findTopByDistrictOrderByDateDesc(districtName);
         if (wqOpt.isPresent()) {
             WaterQuality wq = wqOpt.get();
@@ -128,30 +175,20 @@ public class PredictionService {
             req.setTds(wq.getTds());
             req.setDissolvedOxygen(wq.getDissolvedOxygen());
             req.setWaterTemperature(wq.getWaterTemperature());
-        } else {
-            req.setPh(7.4);
-            req.setTurbidity(3.2);
-            req.setTds(480.0);
-            req.setDissolvedOxygen(6.5);
-            req.setWaterTemperature(28.0);
         }
 
-        // 3. Fetch Demographics & Sanitation
+        // 4. Fetch Demographics & Sanitation
         Optional<PopulationData> popOpt = populationRepository.findByDistrictIgnoreCase(districtName);
         if (popOpt.isPresent()) {
             PopulationData pop = popOpt.get();
             req.setPopulationDensity(pop.getPopulationDensity());
             req.setSanitationCoverage(pop.getSanitationCoverage());
-            req.setCleanWaterCoverage(pop.getCleanWaterCoverage() != null ? pop.getCleanWaterCoverage() : 92.0);
-        } else {
-            req.setPopulationDensity(550);
-            req.setSanitationCoverage(82.0);
-            req.setCleanWaterCoverage(91.0);
+            req.setCleanWaterCoverage(pop.getCleanWaterCoverage());
         }
 
-        // 4. Fetch recent Disease cases
+        // 5. Fetch recent Disease cases
         Optional<DiseaseRecord> disOpt = diseaseRepository.findTopByDistrictOrderByDateDesc(districtName);
-        req.setPreviousDiseaseCases(disOpt.map(DiseaseRecord::getTotalCases).orElse(12));
+        disOpt.ifPresent(record -> req.setPreviousDiseaseCases(record.getTotalCases()));
 
         return req;
     }

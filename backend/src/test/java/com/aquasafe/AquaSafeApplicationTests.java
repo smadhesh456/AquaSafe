@@ -48,9 +48,22 @@ class AquaSafeApplicationTests {
         assertNotNull(response);
         assertEquals("Chennai", response.getDistrict());
         assertNotNull(response.getRiskLevel(), "Risk level should not be null");
-        assertTrue(response.getProbability() >= 0.0 && response.getProbability() <= 1.0, "Probability must be between 0 and 1");
+        assertTrue(response.getProbability() >= 0.0 && response.getProbability() <= 1.0,
+                "Probability must be between 0 and 1");
         assertNotNull(response.getClassProbabilities());
         assertNotNull(response.getDisclaimer(), "Public health disclaimer must be present");
+    }
+
+    @Test
+    void testMissingDataProtectionGuard() throws Exception {
+        PredictionRequestDTO missingReq = new PredictionRequestDTO();
+        missingReq.setDistrict("Nagapattinam");
+        // Missing critical water quality and demographics
+        PredictionResponseDTO response = predictionService.predictRisk(missingReq);
+        assertNotNull(response);
+        assertEquals("INSUFFICIENT_DATA", response.getRiskLevel());
+        assertTrue(response.getMessage().contains("INSUFFICIENT VERIFIED DATA FOR RELIABLE RISK PREDICTION"));
+        assertEquals("MISSING", response.getDataStatus());
     }
 
     @Test

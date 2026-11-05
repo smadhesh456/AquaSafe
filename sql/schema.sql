@@ -127,13 +127,126 @@ CREATE TABLE IF NOT EXISTS sanitation_data (
     rural_sanitation DECIMAL(5, 2),
     urban_sanitation DECIMAL(5, 2),
     reference_year VARCHAR(50) DEFAULT '2019-2021 (NFHS-5)',
-    source_name VARCHAR(150) DEFAULT 'NFHS-5 & Jal Jeevan Mission',
-    data_status VARCHAR(20) DEFAULT 'STORED',
+    source_name VARCHAR(150) DEFAULT 'NFHS-5 & Swachh Bharat Mission',
+    data_status VARCHAR(20) DEFAULT 'OFFICIAL',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     INDEX idx_sanitation_district (district)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- 8. Data Collection Logs Table (Automated & Manual Ingestion Records)
+-- 8. Drinking Water Data Table (Jal Jeevan Mission)
+CREATE TABLE IF NOT EXISTS drinking_water_data (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    district VARCHAR(100) NOT NULL UNIQUE,
+    state VARCHAR(100) NOT NULL DEFAULT 'Tamil Nadu',
+    clean_water_coverage DECIMAL(5, 2) NOT NULL,
+    household_tap_coverage DECIMAL(5, 2),
+    drinking_water_access DECIMAL(5, 2),
+    reference_year VARCHAR(50) DEFAULT '2023-2024 (Jal Jeevan Mission)',
+    source_name VARCHAR(150) DEFAULT 'Jal Jeevan Mission (Har Ghar Jal)',
+    source_url VARCHAR(500) DEFAULT 'https://ejalshakti.gov.in/',
+    data_status VARCHAR(20) DEFAULT 'OFFICIAL',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    INDEX idx_water_district (district)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- 9. Integrated Environmental Data Table (Centralized 13-Parameter Alignment)
+CREATE TABLE IF NOT EXISTS integrated_environmental_data (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    district VARCHAR(100) NOT NULL,
+    latitude DECIMAL(9, 6) NOT NULL,
+    longitude DECIMAL(9, 6) NOT NULL,
+    observation_date DATE NOT NULL,
+    integration_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    
+    -- Water Quality Parameters (CPCB / TNPCB)
+    ph_value DECIMAL(4, 2),
+    ph_unit VARCHAR(20) DEFAULT 'pH units',
+    ph_source VARCHAR(150),
+    ph_status VARCHAR(20) DEFAULT 'OFFICIAL',
+    
+    turbidity_value DECIMAL(6, 2),
+    turbidity_unit VARCHAR(20) DEFAULT 'NTU',
+    turbidity_source VARCHAR(150),
+    turbidity_status VARCHAR(20) DEFAULT 'MISSING',
+    
+    tds_value DECIMAL(7, 2),
+    tds_unit VARCHAR(20) DEFAULT 'mg/L',
+    tds_source VARCHAR(150),
+    tds_status VARCHAR(20) DEFAULT 'OFFICIAL',
+    
+    do_value DECIMAL(5, 2),
+    do_unit VARCHAR(20) DEFAULT 'mg/L',
+    do_source VARCHAR(150),
+    do_status VARCHAR(20) DEFAULT 'OFFICIAL',
+    
+    water_temp_value DECIMAL(5, 2),
+    water_temp_unit VARCHAR(20) DEFAULT '°C',
+    water_temp_source VARCHAR(150),
+    water_temp_status VARCHAR(20) DEFAULT 'OFFICIAL',
+    
+    -- Weather Parameters (Open-Meteo)
+    air_temp_value DECIMAL(5, 2),
+    air_temp_unit VARCHAR(20) DEFAULT '°C',
+    air_temp_source VARCHAR(150),
+    air_temp_status VARCHAR(20) DEFAULT 'LIVE',
+    
+    humidity_value DECIMAL(5, 2),
+    humidity_unit VARCHAR(20) DEFAULT '%',
+    humidity_source VARCHAR(150),
+    humidity_status VARCHAR(20) DEFAULT 'LIVE',
+    
+    rainfall_value DECIMAL(6, 2),
+    rainfall_unit VARCHAR(20) DEFAULT 'mm',
+    rainfall_source VARCHAR(150),
+    rainfall_status VARCHAR(20) DEFAULT 'LIVE',
+    
+    precipitation_value DECIMAL(6, 2),
+    precipitation_unit VARCHAR(20) DEFAULT 'mm',
+    precipitation_source VARCHAR(150),
+    precipitation_status VARCHAR(20) DEFAULT 'LIVE',
+    
+    -- Disease Parameter (IDSP / NCDC)
+    disease_cases_value INT,
+    disease_name VARCHAR(100),
+    disease_reporting_period VARCHAR(100),
+    disease_source VARCHAR(150),
+    disease_status VARCHAR(20) DEFAULT 'OFFICIAL',
+    
+    -- Population & Sanitation Parameters
+    population_density_value INT,
+    population_density_unit VARCHAR(30) DEFAULT 'persons/km²',
+    census_reference_year VARCHAR(50) DEFAULT '2011',
+    population_source VARCHAR(150),
+    population_status VARCHAR(20) DEFAULT 'OFFICIAL',
+    
+    sanitation_coverage_value DECIMAL(5, 2),
+    sanitation_coverage_unit VARCHAR(20) DEFAULT '%',
+    sanitation_reference_year VARCHAR(50) DEFAULT '2019-2021 (NFHS-5)',
+    sanitation_source VARCHAR(150),
+    sanitation_status VARCHAR(20) DEFAULT 'OFFICIAL',
+    
+    drinking_water_coverage_value DECIMAL(5, 2),
+    drinking_water_coverage_unit VARCHAR(20) DEFAULT '%',
+    drinking_water_reference_year VARCHAR(50) DEFAULT '2023-2024 (Jal Jeevan Mission)',
+    drinking_water_source VARCHAR(150),
+    drinking_water_status VARCHAR(20) DEFAULT 'OFFICIAL',
+    
+    -- Summary Audit Metrics
+    total_parameters INT DEFAULT 13,
+    collected_parameters INT DEFAULT 0,
+    official_parameters INT DEFAULT 0,
+    missing_parameters INT DEFAULT 0,
+    overall_status VARCHAR(30) DEFAULT 'OFFICIAL',
+    can_predict_risk BOOLEAN DEFAULT FALSE,
+    monitoring_station VARCHAR(200),
+    validation_notes TEXT,
+    
+    INDEX idx_integ_district (district),
+    INDEX idx_integ_date (observation_date),
+    INDEX idx_integ_status (overall_status)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- 10. Data Collection Logs Table (Automated & Manual Ingestion Records)
 CREATE TABLE IF NOT EXISTS data_collection_logs (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     category VARCHAR(50) NOT NULL,

@@ -266,6 +266,23 @@ const api = {
         });
     },
 
+    // 16. Real Data Acquisition & Integration Module (Nagapattinam & Tamil Nadu)
+    async getAcquisitionParameters(district = 'Nagapattinam') {
+        return this.request(`/acquisition/parameters/${encodeURIComponent(district)}`);
+    },
+
+    async refreshDistrictAcquisition(district = 'Nagapattinam') {
+        return this.request(`/acquisition/refresh/${encodeURIComponent(district)}`, { method: 'POST' });
+    },
+
+    async getSourcesMonitoring() {
+        return this.request('/acquisition/sources-monitoring');
+    },
+
+    async getAcquisitionDistricts() {
+        return this.request('/acquisition/districts');
+    },
+
     // Session UI Sync Helper
     initAuthUI() {
         try {
